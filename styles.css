@@ -1,0 +1,18 @@
+/* styles.css */
+
+/* Your new line goes here */
+body {
+    background-color: #f0f0f0;
+    border-top: 1px solid black;
+    
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: blue;
+    font-weight: bold;
+}
+
+p {
+    color: black;
+    font-size: 16px;
+}
