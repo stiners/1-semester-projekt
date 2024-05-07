@@ -1,3 +1,6 @@
+  
+
+
 // Select the button container
 var buttonContainer = document.getElementById("emptyBaskBtn");
 
@@ -12,3 +15,4 @@ button.addEventListener("click", function () {
 
 // Append the button to the button container
 buttonContainer.appendChild(button);
+
