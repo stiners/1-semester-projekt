@@ -1,43 +1,54 @@
+html {
+  background-color: #eee;
+}
+
 .parent {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-column-gap: 1em;
-  grid-row-gap: 1em;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  margin: 1rem;
 }
 
 #titleGrid {
   grid-column: 1/5;
   grid-row: 1/10;
-  background-color: aquamarine;
+  background-color: #ddd;
+  place-content: center;
 }
 #circlesGrid {
   grid-column: 1/4;
   grid-row: 10/60;
-  background-color: blue;
+  background-color: #ccc;
 }
 
 .shoppingBasket {
   grid-column: 4/5;
+  font-family: "Prompt", sans-serif;
+  font-weight: 100;
+  font-style: normal;
 }
 
 #shopBaskTitleGrid {
   grid-row: 10/15;
-  background-color: blueviolet;
+  background-color: #ccc;
+  place-content: center;
 }
 
 #foodListGrid {
   grid-row: 15/45;
-  background-color: yellow;
+  background-color: #ccc;
 }
 #emptyBasketGrid {
   grid-column: 4/5;
   grid-row: 45/50;
-  background-color: gray;
+  background-color: #ccc;
+  place-content: center;
 }
 #calculateGrid {
   grid-column: 4/5;
   grid-row: 50/60;
-  background-color: green;
+  background-color: #ccc;
 }
 
 #emptyBaskBtn {
@@ -52,4 +63,24 @@
 
 #emptyBaskBtn:hover {
   background-color: #0056b3;
+}
+
+#title {
+  font-size: 45px;
+  text-align: center;
+  align-self: center;
+  margin: 0;
+  font-family: "Bungee Spice", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#shopBaskTitle {
+  text-align: center;
+  font-size: larger;
+}
+
+#emptyBasket {
+  text-align: center;
+  font-size: larger;
 }
