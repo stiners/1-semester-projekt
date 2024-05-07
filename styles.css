@@ -84,3 +84,8 @@ html {
   text-align: center;
   font-size: larger;
 }
+
+sub {
+  vertical-align: -0.3em;
+  font-size: smaller;
+}
