@@ -1,5 +1,5 @@
 
-const myDiv = d3.select(".cirkler");
+const myDiv = d3.select("#circles");
 
 const circlePos = [
     { radius: 30, cx: 100, cy: 100, kategori: "Grøntsager og grøntsagsprodukter" },
@@ -30,6 +30,7 @@ circles.append("title")
     .text(d => d.kategori);
 
 // Kategorien på cirkel er overens med den kategori der bliver trukket fra databasen
+
 function handleClick(d, i) {
     const kategori = d.kategori;
 
@@ -44,7 +45,7 @@ function handleClick(d, i) {
 
 // funktion som fetch d
 function fetchCategoryData(kategori, callback) {
-    pool.query("SELECT * FROM food_tmp WHERE kategori = $1;", [kategori], (error, results) => {
+    pool.query("SELECT mad.*, mad_kategori.kategori AS kategori_name FROM mad JOIN mad_kategori ON mad.kategori_id = mad_kategori.id WHERE mad_kategori.kategori = $1;", [kategori], (error, results) => {
         if (error) {
             callback(error, null);
         } else {
