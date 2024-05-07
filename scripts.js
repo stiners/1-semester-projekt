@@ -1,7 +1,7 @@
   
 
 // Select the button container
-var buttonContainer = document.getElementById("emptyBaskBtn");
+var buttonContainer = document.getElementById("emptyBaskBtnGrid");
 // Create a new button element
 var newButton = document.createElement("button");
 newButton.textContent = "Click me";
@@ -10,11 +10,12 @@ newButton.addEventListener("click", function () {
   alert("Button clicked!");
 });
 // Append the button to the button container
-buttonContainer.appendChild(newButton);
+//buttonContainer.appendChild(newButton); der er noget der driller
 
-var calculateButton = document.querySelector("#calculate button");
+
+var calculateButton = document.querySelector("#calculateGrid button");
 calculateButton.addEventListener("click", function() {
-  var foodList = document.getElementById("foodList");
+  var foodList = document.getElementById("foodListGrid");
   
   if (!foodList) {
     console.log("Element with id 'foodList' not found");
