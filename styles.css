@@ -5,31 +5,45 @@
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
-.overskrift {
+#title {
   grid-area: 1 / 1 / 3 / 13;
   background-color: aquamarine;
 }
-.cirkler {
+#circles {
   grid-area: 3 / 1 / 13 / 10;
   background-color: blue;
 }
-.indkøbskurv {
+#shoppingBasket {
   grid-area: 3 / 10 / 13 / 13;
   background-color: black;
 }
-.madliste {
+#shopBaskTitle {
   grid-area: 3 / 10 / 4 / 13;
   background-color: red;
 }
-.rydKurv {
+#foodList {
   grid-area: 4 / 10 / 11 / 13;
   background-color: yellow;
 }
-.beregn {
+#emptyBasket {
   grid-area: 11 / 10 / 12 / 13;
   background-color: gray;
 }
-.indkøbOverskrift {
+#calculate {
   grid-area: 12 / 10 / 13 / 13;
   background-color: green;
+}
+
+#emptyBaskBtn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#emptyBaskBtn:hover {
+  background-color: #0056b3;
 }
