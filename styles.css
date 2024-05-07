@@ -5,12 +5,12 @@
   grid-row-gap: 1em;
 }
 
-#title {
+#titleGrid {
   grid-column: 1/5;
   grid-row: 1/10;
   background-color: aquamarine;
 }
-#circles {
+#circlesGrid {
   grid-column: 1/4;
   grid-row: 10/60;
   background-color: blue;
@@ -20,21 +20,21 @@
   grid-column: 4/5;
 }
 
-#shopBaskTitle {
+#shopBaskTitleGrid {
   grid-row: 10/15;
   background-color: blueviolet;
 }
 
-#foodList {
+#foodListGrid {
   grid-row: 15/45;
   background-color: yellow;
 }
-#emptyBasket {
+#emptyBasketGrid {
   grid-column: 4/5;
   grid-row: 45/50;
   background-color: gray;
 }
-#calculate {
+#calculateGrid {
   grid-column: 4/5;
   grid-row: 50/60;
   background-color: green;
