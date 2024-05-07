@@ -1,9 +1,53 @@
 .parent {
   display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 1em;
+  grid-row-gap: 1em;
+}
+
+#title {
+  grid-column: 1/5;
+  grid-row: 1/10;
+  background-color: aquamarine;
+}
+#circles {
+  grid-column: 1/4;
+  grid-row: 10/60;
+  background-color: blue;
+}
+
+.shoppingBasket {
+  grid-column: 4/5;
+}
+
+#shopBaskTitle {
+  grid-row: 10/15;
+  background-color: blueviolet;
+}
+
+#foodList {
+  grid-row: 15/45;
+  background-color: yellow;
+}
+#emptyBasket {
+  grid-column: 4/5;
+  grid-row: 45/50;
+  background-color: gray;
+}
+#calculate {
+  grid-column: 4/5;
+  grid-row: 50/60;
+  background-color: green;
+}
+
+/* ORIGINAL KODE: */
+
+/* .parent {
+  display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-column-gap: 1em;
+  grid-row-gap: 1em;
 }
 #title {
   grid-area: 1 / 1 / 3 / 13;
@@ -32,6 +76,9 @@
 #calculate {
   grid-area: 12 / 10 / 13 / 13;
   background-color: green;
+
+} */
+
 }
 
 #emptyBaskBtn {
@@ -47,3 +94,4 @@
 #emptyBaskBtn:hover {
   background-color: #0056b3;
 }
+
