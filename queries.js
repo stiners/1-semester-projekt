@@ -11,7 +11,7 @@ const pool = new Pool({
 
 //route for /foods
 const getFoods = (request, response) => {
-  pool.query("SELECT * FROM food_tmp", (error, results) => {
+  pool.query("SELECT * FROM mad", (error, results) => {
     if (error) {
       throw error;
     }
