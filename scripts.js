@@ -1,4 +1,27 @@
-  
+// Specify the API endpoint for food
+const apiUrl = 'http://localhost:4000/foods';
+
+// Make a GET request using the Fetch API
+fetch(apiUrl)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(foods => {
+        // Process the retrieved foods
+        let html = '';
+        
+        foods.forEach(food => {
+            html += `<p>${food.food_item}</p>`;
+            console.log(food);
+        });
+        document.getElementById("test").innerHTML = html; 
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 
 // Select the button container
 var buttonContainer = document.getElementById("emptyBaskBtnGrid");
