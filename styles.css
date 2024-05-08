@@ -10,7 +10,7 @@ html {
   margin: 1rem;
 }
 
-#titleGrid {
+#headerGrid {
   grid-column: 1/5;
   grid-row: 1/10;
   background-color: #ddd;
@@ -29,7 +29,7 @@ html {
   font-style: normal;
 }
 
-#shopBaskTitleGrid {
+#shopBaskHeaderGrid {
   grid-row: 10/15;
   background-color: #ccc;
   place-content: center;
@@ -65,7 +65,7 @@ html {
   background-color: #0056b3;
 }
 
-#title {
+#header {
   font-size: 45px;
   text-align: center;
   align-self: center;
@@ -75,7 +75,7 @@ html {
   font-style: normal;
 }
 
-#shopBaskTitle {
+#shopBaskHeader {
   text-align: center;
   font-size: larger;
 }
@@ -88,4 +88,12 @@ html {
 sub {
   vertical-align: -0.3em;
   font-size: smaller;
+}
+
+#stinesKnap {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
 }
