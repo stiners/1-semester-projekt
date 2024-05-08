@@ -1,3 +1,9 @@
+var numbers = [];
+
+// Definition af CO2-udslipstærskler
+const grøn_tærskel = 1000; // Definér grøn tærskelværdi
+const gul_tærskel = 2000; // Definér gul tærskelværdi
+
 // Select the button container
 var buttonContainer = document.getElementById("emptyBaskBtnGrid");
 // Create a new button element
@@ -21,7 +27,7 @@ function calculateCO2() {
     console.log("Element with id 'foodList' not found");
     return;
   }
-  var numbers = foodList.innerText.split(" ").map(function (item) {
+  numbers = foodList.innerText.split(" ").map(function (item) {
     var number = Number(item);
     if (isNaN(number)) {
       console.log("Non-numeric character found:", item);
@@ -29,6 +35,7 @@ function calculateCO2() {
     }
     return number;
   });
+
   var sum = numbers.reduce(function (a, b) {
     return a + b;
   }, 0);
@@ -76,10 +83,6 @@ innerCircle.textContent = sum; // Opdater summen i den indre cirkel
 function changeouterCircleColor(color) {
   document.querySelector(".outerCircle").style.backgroundColor = color;
 }
-
-// Definition af CO2-udslipstærskler
-const grøn_tærskel = 1000; // Definér grøn tærskelværdi
-const gul_tærskel = 2000; // Definér gul tærskelværdi
 
 // I MÅ HELST IKKE SLETTE DETTE :D
 // var stinesPlaceholderBtn = document.createElement("button");
