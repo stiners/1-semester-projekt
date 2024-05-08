@@ -17,14 +17,47 @@
     <title>Dokumentet12</title>
   </head>
   <body>
+  
     <div class="parent">
       <div id="titleGrid">
         <h1 id="title">Hvor meget CO<sub>2</sub> udleder dit måltid i dag?</h1>
       </div>
-      <div id="circlesGrid"></div>
+
+      <!-- Beregn knap -->
+<div class="calculateButton" id="calculateGrid2">
+  <button type="button" onclick="calculateCO2()">Beregn</button>
+</div>
+
+
+<!-- Ydre cirkel, oprettes kun efter "Beregn" -knappen er klikket -->
+
+
+
+ <!-- Knapper til farveændring af den indre cirkel -->
+ 
+
+<!-- Knapper til farveændring af den indre cirkel -->
+
+
+      <div id="circlesGrid">
+        <div id="outerCircle" class="outerCircle" style="display: none;"></div>
+        <div class="infoBox">
+          <h2>CO<sub>2</sub> Værdi Inddeling </h2>
+          <ul>
+            <li>Grøn: <span id="greenThreshold"></span></li>
+            <li>Gul: <span id="yellowThreshold"></span></li>
+            <li>Rød: <span id="redThreshold"></span></li>
+          </ul>
+          <div id="emptyBasket">
+        
+            <button id="greenButton" onclick="changeouterCircleColor('green')">Grøn</button>
+            <button id="yellowButton" onclick="changeouterCircleColor('yellow')">Gul</button>
+            <button id="redButton" onclick="changeouterCircleColor('red')">Rød</button>
+          </div>
+        </div>
+      </div>
 
       <div class="soppingBasket" id="emptyBasketGrid">tøm kurv-knap</div>
-      <div class="soppingBasket" id="calculateGrid"><button type="button">Beregn</button>beregn-knap</div>
 
       <div class="shoppingBasket" id="shopBaskTitleGrid">
         <p id="shopBaskTitle">Indkøbskurv</p>
@@ -33,11 +66,14 @@
       <div class="shoppingBasket" id="emptyBasketGrid">
         <p id="emptyBasket">Tøm kurven</p>
       </div>
-      <div class="shoppingBasket" id="calculateGrid"><button type="button">Beregn</button></div>
 
 
-      </div>
+      <div class="parent">
+       
+       
     </div>
+
+    
     <script src="scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="cirkel_d3.js"></script>
