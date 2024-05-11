@@ -103,13 +103,9 @@ document.addEventListener("DOMContentLoaded", function () {
   buttonContainer.appendChild(stinesPlaceholderBtn);
 
   // Add event listener to the button
-  stinesPlaceholderBtn.addEventListener("click", function () {
-    // Create a new item element to represent the item in the shopping basket
-    var newItem = document.createElement("div");
-    newItem.textContent = "Item added to basket"; // Example content for the item
-
-    // Append the new item to the shopping basket container
-    var shoppingBasket = document.getElementById("foodListGrid");
-    shoppingBasket.appendChild(newItem);
-  });
+  stinesPlaceholderBtn.addEventListener("click", function () {});
 });
+
+// Append the new item to the shopping basket container
+// var shoppingBasket = document.getElementById("foodListGrid");
+// shoppingBasket.appendChild(newItem);
