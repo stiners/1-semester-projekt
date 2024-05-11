@@ -15,11 +15,11 @@ app.use(
     extended: true,
   })
 );
- app.use(
-   cors({
-     origin: "*",
-   })
- );
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 app.get("/", (request, response) => {
   response.json({ info: "Node.js, Express, and Postgres API" });
