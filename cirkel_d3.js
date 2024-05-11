@@ -1,4 +1,6 @@
-const myDiv = d3.select("#circles");
+const myDiv = d3.select("#circlesGrid");
+
+let mainData;
 
 const circlePos = [
   {
@@ -26,36 +28,36 @@ const circles = svg
   .attr("cy", (d) => d.cy)
   .attr("r", (d) => d.radius)
   .attr("fill", "yellow")
-  .on("click", handleClick);
+  .attr("kategori", (d) => d.kategori)
+  .classed("circleClass", true);
 
 // Tilføjer titel til cirkelerne, hvor jeg refererer til min circle position.
 circles.append("title").text((d) => d.kategori);
 
-// Kategorien på cirkel er overens med den kategori der bliver trukket fra databasen
-function handleClick(d, i) {
-  const kategori = d.kategori;
-
-  fetchCategoryData(kategori, (error, categoryData) => {
-    if (error) {
-      console.error("Error fetching category data:", error);
-    } else {
-      console.log("Fetched category data:", categoryData);
-    }
+const circleDivs = document.querySelectorAll(".circleClass");
+circleDivs.forEach((circle) => {
+  circle.addEventListener("click", function (event) {
+    const kategori = circle.getAttribute("kategori");
+    handleClick(kategori);
   });
-}
+});
 
-// funktion som fetch d
-function fetchCategoryData(kategori, callback) {
-  pool.query(
-    "SELECT mad.*, mad_kategori.kategori AS kategori_name FROM mad JOIN mad_kategori ON mad.kategori_id = mad_kategori.id WHERE mad_kategori.kategori = $1;",
-    [kategori],
-    (error, results) => {
-      if (error) {
-        callback(error, null);
-      } else {
-        // Process the query results and pass them to the callback function
-        callback(null, results.rows);
+// Kategorien på cirkel er overens med den kategori der bliver trukket fra databasen
+function handleClick(kategori) {
+  console.log(kategori);
+  fetch(`http://localhost:4000/category/${kategori}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
       }
-    }
-  );
+      return response.json();
+    })
+    .then((categoryData) => {
+      console.log("Fetched category data:", categoryData);
+      mainData = categoryData;
+      // Process the fetched data as needed
+    })
+    .catch((error) => {
+      console.error("Error fetching category data:", error);
+    });
 }
