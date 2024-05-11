@@ -90,7 +90,6 @@ sub {
   font-size: smaller;
 }
 
-
 #stinesKnap {
   background-color: blue;
   color: white;
@@ -103,7 +102,7 @@ sub {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform:translate(-50%, +50%) ;
+  transform: translate(-50%, +50%);
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -112,7 +111,6 @@ sub {
   justify-content: center;
   align-items: center;
   margin-top: 1000px;
-
 }
 
 /* Tilføjet for at style den ydre cirkel */
@@ -146,7 +144,6 @@ sub {
   border: 2px solid #ccc;
   border-radius: 20px;
   padding: 20px;
-  margin-top: 1000px;
 }
 
 .infoBox h2 {
@@ -176,4 +173,3 @@ sub {
 .infoBox button:hover {
   opacity: 0.8;
 }
-
