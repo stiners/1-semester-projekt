@@ -25,6 +25,7 @@ app.get("/", (request, response) => {
   response.json({ info: "Node.js, Express, and Postgres API" });
   // response.sendFile(__dirname + "/index.html");
 });
+app.get("/category/:kategori", db.fetchCategoryData);
 app.get("/foods", db.getFoods);
 app.post("/insert-food", db.insertFood);
 app.post("/populateFoods", db.populateFoods);

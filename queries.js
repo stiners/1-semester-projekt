@@ -9,6 +9,26 @@ const pool = new Pool({
   },
 });
 
+const fetchCategoryData = (request, response) => {
+  const kategori = request.params.kategori;
+  pool.query(
+    `SELECT * FROM mad WHERE kategori_id = (
+        SELECT id FROM mad_kategori WHERE kategori = $1
+    )`,
+    [kategori],
+    (error, results) => {
+      if (error) {
+        console.error('Error fetching category data:', error);
+        response.status(500).json({ error: 'Internal server error' });
+      } else {
+        console.log('Fetched category data:', results.rows); // Log fetched data
+        response.status(200).json(results.rows);
+      }
+    }
+  );
+};
+
+
 //route for /foods
 const getFoods = (request, response) => {
   pool.query("SELECT * FROM mad", (error, results) => {
@@ -115,6 +135,7 @@ module.exports = {
   getFoods,
   insertFood,
   populateFoods,
+  fetchCategoryData,
 };
 
 // In the context of parameterized queries using the pg library in Node.js, the placeholders are represented by $1, $2, and so on, instead of using ${name} syntax
