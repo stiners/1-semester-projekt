@@ -84,28 +84,17 @@ function changeouterCircleColor(color) {
   document.querySelector(".outerCircle").style.backgroundColor = color;
 }
 
-// I MÅ HELST IKKE SLETTE DETTE :D
-// var stinesPlaceholderBtn = document.createElement("button");
-// stinesPlaceholderBtn.textContent = "Stines Knap";
-// stinesPlaceholderBtn.setAttribute("id", "stinesKnap");
-// stinesPlaceholderBtn.addEventListener("click", function () {
-//   console.log("du har klikket på stines knap");
-// });
-// var buttonContainer = document.getElementById("circlesGrid");
-// buttonContainer.appendChild(stinesPlaceholderBtn);
+// Function to empty the shopping basket
+function emptyBasket() {
+  const shopBasket = document.getElementById("foodListGrid");
+  while (shopBasket.firstChild) {
+    shopBasket.removeChild(shopBasket.firstChild);
+  }
+}
 
+// Attach event listener to the button when DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
-  var stinesPlaceholderBtn = document.createElement("button");
-  stinesPlaceholderBtn.textContent = "Stines Knap";
-  stinesPlaceholderBtn.setAttribute("id", "stinesKnap");
-
-  var buttonContainer = document.getElementById("circlesGrid");
-  buttonContainer.appendChild(stinesPlaceholderBtn);
-
-  // Add event listener to the button
-  stinesPlaceholderBtn.addEventListener("click", function () {});
+  document
+    .getElementById("emptyBaskBtn")
+    .addEventListener("click", emptyBasket);
 });
-
-// Append the new item to the shopping basket container
-// var shoppingBasket = document.getElementById("foodListGrid");
-// shoppingBasket.appendChild(newItem);

@@ -16,6 +16,7 @@ html {
   background-color: #ddd;
   place-content: center;
 }
+
 #circlesGrid {
   grid-column: 1/4;
   grid-row: 10/60;
@@ -35,20 +36,22 @@ html {
   place-content: center;
 }
 
+#shopBaskHeader {
+  text-align: center;
+  font-size: larger;
+}
+
 #foodListGrid {
   grid-row: 15/45;
   background-color: #ccc;
 }
+
 #emptyBasketGrid {
   grid-column: 4/5;
   grid-row: 45/50;
   background-color: #ccc;
   place-content: center;
-}
-#calculateGrid {
-  grid-column: 4/5;
-  grid-row: 50/60;
-  background-color: #ccc;
+  text-align: center;
 }
 
 #emptyBaskBtn {
@@ -59,10 +62,46 @@ html {
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  font-family: "Prompt", sans-serif;
 }
 
 #emptyBaskBtn:hover {
   background-color: #0056b3;
+}
+
+#emptyBasket {
+  text-align: center;
+  font-size: larger;
+}
+
+#calculateGrid {
+  grid-column: 4/5;
+  grid-row: 50/60;
+  background-color: #ccc;
+  place-content: center;
+  text-align: center;
+}
+
+#calculateBtn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "Prompt", sans-serif;
+}
+
+.calculateButton {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "Prompt", sans-serif;
 }
 
 #header {
@@ -75,27 +114,9 @@ html {
   font-style: normal;
 }
 
-#shopBaskHeader {
-  text-align: center;
-  font-size: larger;
-}
-
-#emptyBasket {
-  text-align: center;
-  font-size: larger;
-}
-
 sub {
   vertical-align: -0.3em;
   font-size: smaller;
-}
-
-#stinesKnap {
-  background-color: blue;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
 }
 
 .circle {
