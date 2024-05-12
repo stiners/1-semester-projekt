@@ -23,22 +23,26 @@ calculateButton.addEventListener("click", calculateCO2);
 
 // Funktion til at beregne CO2 og oprette cirklen
 function calculateTotalCO2() {
-  return shoppingBasketData.reduce((total, item) => total + Number(item.co2e_pr_kg || 0), 0);
+  return shoppingBasketData.reduce(
+    (total, item) => total + Number(item.co2e_pr_kg || 0),
+    0
+  );
 }
 
 function calculateCO2() {
   const totalLandbrugAndTransport = calculateSumOfLandbrugAndTransport();
-  console.log('Total Landbrug and Transport:', totalLandbrugAndTransport);
+  console.log("Total Landbrug and Transport:", totalLandbrugAndTransport);
 
   const totalCO2 = calculateTotalCO2();
-  console.log('Total CO2:', totalCO2);
+  console.log("Total CO2:", totalCO2);
 }
 
 function calculateSumOfLandbrugAndTransport() {
-  return shoppingBasketData.reduce((total, item) => total + Number(item.landbrug || 0) + (item.transport || 0), 0);
+  return shoppingBasketData.reduce(
+    (total, item) => total + Number(item.landbrug || 0) + (item.transport || 0),
+    0
+  );
 }
-
-
 
 // Bestem farven baseret på det beregnede CO2-udslip
 let color;
@@ -69,46 +73,3 @@ innerCircle.textContent = sum; // Opdater summen i den indre cirkel
 function changeouterCircleColor(color) {
   document.querySelector(".outerCircle").style.backgroundColor = color;
 }
-
-
-// I MÅ HELST IKKE SLETTE DETTE :D
-// let stinesPlaceholderBtn = document.createElement("button");
-// stinesPlaceholderBtn.textContent = "Stines Knap";
-// stinesPlaceholderBtn.setAttribute("id", "stinesKnap");
-// stinesPlaceholderBtn.addEventListener("click", function () {
-//   console.log("du har klikket på stines knap");
-// });
-// let buttonContainer = document.getElementById("circlesGrid");
-// buttonContainer.appendChild(stinesPlaceholderBtn);
-
-// Function to empty the shopping basket
-function emptyBasket() {
-  const shopBasket = document.getElementById("foodListGrid");
-  while (shopBasket.firstChild) {
-    shopBasket.removeChild(shopBasket.firstChild);
-  }
-}
-
-
-// Attach event listener to the button when DOM is loaded
-document.addEventListener("DOMContentLoaded", function () {
-
-  let stinesPlaceholderBtn = document.createElement("button");
-  stinesPlaceholderBtn.textContent = "Stines Knap";
-  stinesPlaceholderBtn.setAttribute("id", "stinesKnap");
-
-  let buttonContainer = document.getElementById("circlesGrid");
-  buttonContainer.appendChild(stinesPlaceholderBtn);
-
-  // Add event listener to the button
-  stinesPlaceholderBtn.addEventListener("click", function () {});
-});
-
-// Append the new item to the shopping basket container
-// let shoppingBasket = document.getElementById("foodListGrid");
-// shoppingBasket.appendChild(newItem);
-
-  document
-    .getElementById("emptyBaskBtn")
-    .addEventListener("click", emptyBasket);
-
