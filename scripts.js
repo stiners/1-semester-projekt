@@ -84,6 +84,7 @@ function changeouterCircleColor(color) {
   document.querySelector(".outerCircle").style.backgroundColor = color;
 }
 
+
 // I MÅ HELST IKKE SLETTE DETTE :D
 // let stinesPlaceholderBtn = document.createElement("button");
 // stinesPlaceholderBtn.textContent = "Stines Knap";
@@ -94,7 +95,18 @@ function changeouterCircleColor(color) {
 // let buttonContainer = document.getElementById("circlesGrid");
 // buttonContainer.appendChild(stinesPlaceholderBtn);
 
+// Function to empty the shopping basket
+function emptyBasket() {
+  const shopBasket = document.getElementById("foodListGrid");
+  while (shopBasket.firstChild) {
+    shopBasket.removeChild(shopBasket.firstChild);
+  }
+}
+
+
+// Attach event listener to the button when DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
+
   let stinesPlaceholderBtn = document.createElement("button");
   stinesPlaceholderBtn.textContent = "Stines Knap";
   stinesPlaceholderBtn.setAttribute("id", "stinesKnap");
@@ -109,3 +121,9 @@ document.addEventListener("DOMContentLoaded", function () {
 // Append the new item to the shopping basket container
 // let shoppingBasket = document.getElementById("foodListGrid");
 // shoppingBasket.appendChild(newItem);
+
+  document
+    .getElementById("emptyBaskBtn")
+    .addEventListener("click", emptyBasket);
+});
+
