@@ -30,6 +30,7 @@ const circles = svg
   .attr("r", (d) => d.radius)
   .attr("fill", "yellow")
   .attr("kategori", (d) => d.kategori)
+  .attr("expanded", false)
   .classed("circleClass", true);
 
 // Tilføjer titel til cirkelerne, hvor jeg refererer til min circle position.
@@ -39,32 +40,39 @@ const circleDivs = document.querySelectorAll(".circleClass");
 circleDivs.forEach((circle) => {
   circle.addEventListener("click", function (event) {
     const kategori = circle.getAttribute("kategori");
-    handleClick(kategori);
+    const clickedCircle = event.target;
+    handleClick(clickedCircle, kategori);
   });
 });
 
 // Kategorien på cirkel er overens med den kategori der bliver trukket fra databasen
-function handleClick(kategori) {
-  console.log(kategori);
-  fetch(`http://localhost:4000/category/${kategori}`)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    })
-    .then((categoryData) => {
-      console.log("Fetched category data:", categoryData);
-      mainData = categoryData;
-      // Process the fetched data as needed
-      createFoodItemCircles(categoryData.slice(0, 3));
-    })
-    .catch((error) => {
-      console.error("Error fetching category data:", error);
-    });
+function handleClick(clickedCircle, kategori) {
+  if (clickedCircle.getAttribute("expanded") === "false") {
+    clickedCircle.setAttribute("expanded", true);
+
+    fetch(`http://localhost:4000/category/${kategori}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((categoryData) => {
+        console.log("Fetched category data:", categoryData);
+        mainData = categoryData;
+        // Process the fetched data as needed
+        createFoodItemCircles(kategori, categoryData.slice(0, 3));
+      })
+      .catch((error) => {
+        console.error("Error fetching category data:", error);
+      });
+  } else {
+    removeFoodItemCircles(kategori);
+    clickedCircle.setAttribute("expanded", false);
+  }
 }
 
-function createFoodItemCircles(foodItems) {
+function createFoodItemCircles(kategori, foodItems) {
   foodItems.forEach((foodItem) => {
     const circle = svg
       .append("circle")
@@ -73,6 +81,7 @@ function createFoodItemCircles(foodItems) {
       .attr("r", 25)
       .attr("fill", "purple")
       .attr("produkt", foodItem.produkt)
+      .attr("kategori", kategori)
       .classed("foodItemCircle", true);
 
     circle.append("title").text(foodItem.produkt);
@@ -108,6 +117,15 @@ function emptyBasket() {
     shopBasket.removeChild(shopBasket.firstChild);
     shoppingBasketData = [];
   }
+}
+
+function removeFoodItemCircles(kategori) {
+  const foodItemCircles = document.querySelectorAll(".foodItemCircle");
+  foodItemCircles.forEach((circle) => {
+    if (circle.getAttribute("kategori") === kategori) {
+      circle.remove();
+    }
+  });
 }
 
 // Attach event listener to the button when DOM is loaded
