@@ -100,3 +100,19 @@ function addToShoppingBasket(foodItem) {
 
   foodListGrid.appendChild(foodItemDiv);
 }
+
+// Function to empty the shopping basket
+function emptyBasket() {
+  const shopBasket = document.getElementById("foodListGrid");
+  while (shopBasket.firstChild) {
+    shopBasket.removeChild(shopBasket.firstChild);
+    shoppingBasketData = [];
+  }
+}
+
+// Attach event listener to the button when DOM is loaded
+document.addEventListener("DOMContentLoaded", function () {
+  document
+    .getElementById("emptyBaskBtn")
+    .addEventListener("click", emptyBasket);
+});

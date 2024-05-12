@@ -83,18 +83,3 @@ innerCircle.textContent = sum; // Opdater summen i den indre cirkel
 function changeouterCircleColor(color) {
   document.querySelector(".outerCircle").style.backgroundColor = color;
 }
-
-// Function to empty the shopping basket
-function emptyBasket() {
-  const shopBasket = document.getElementById("foodListGrid");
-  while (shopBasket.firstChild) {
-    shopBasket.removeChild(shopBasket.firstChild);
-  }
-}
-
-// Attach event listener to the button when DOM is loaded
-document.addEventListener("DOMContentLoaded", function () {
-  document
-    .getElementById("emptyBaskBtn")
-    .addEventListener("click", emptyBasket);
-});
