@@ -1,13 +1,13 @@
-var numbers = [];
+let numbers = [];
 
 // Definition af CO2-udslipstærskler
 const grøn_tærskel = 1000; // Definér grøn tærskelværdi
 const gul_tærskel = 2000; // Definér gul tærskelværdi
 
 // Select the button container
-var buttonContainer = document.getElementById("emptyBaskBtnGrid");
+let buttonContainer = document.getElementById("emptyBaskBtnGrid");
 // Create a new button element
-var newButton = document.createElement("button");
+let newButton = document.createElement("button");
 newButton.textContent = "Click me";
 // Add a click event listener to the button
 newButton.addEventListener("click", function () {
@@ -16,19 +16,19 @@ newButton.addEventListener("click", function () {
 // Append the button to the button container
 //buttonContainer.appendChild(newButton); der er noget der driller
 
-var calculateButton = document.querySelector("#calculateGrid button");
+let calculateButton = document.querySelector("#calculateGrid button");
 calculateButton.addEventListener("click", function () {});
 
 // Funktion til at beregne CO2 og oprette cirklen
 function calculateCO2() {
-  var foodList = document.getElementById("foodListGrid");
+  let foodList = document.getElementById("foodListGrid");
 
   if (!foodList) {
     console.log("Element with id 'foodList' not found");
     return;
   }
   numbers = foodList.innerText.split(" ").map(function (item) {
-    var number = Number(item);
+    let number = Number(item);
     if (isNaN(number)) {
       console.log("Non-numeric character found:", item);
       return 0;
@@ -36,12 +36,12 @@ function calculateCO2() {
     return number;
   });
 
-  var sum = numbers.reduce(function (a, b) {
+  let sum = numbers.reduce(function (a, b) {
     return a + b;
   }, 0);
   console.log("Sum:", sum);
 
-  var number = Number(item);
+  let number = Number(item);
   if (isNaN(number)) {
     console.log("Non-numeric character found:", item);
     return 0;
@@ -49,7 +49,7 @@ function calculateCO2() {
   return number;
 }
 
-var sum = numbers.reduce(function (a, b) {
+let sum = numbers.reduce(function (a, b) {
   return a + b;
 }, 0);
 console.log("Sum:", sum);
@@ -84,6 +84,17 @@ function changeouterCircleColor(color) {
   document.querySelector(".outerCircle").style.backgroundColor = color;
 }
 
+
+// I MÅ HELST IKKE SLETTE DETTE :D
+// let stinesPlaceholderBtn = document.createElement("button");
+// stinesPlaceholderBtn.textContent = "Stines Knap";
+// stinesPlaceholderBtn.setAttribute("id", "stinesKnap");
+// stinesPlaceholderBtn.addEventListener("click", function () {
+//   console.log("du har klikket på stines knap");
+// });
+// let buttonContainer = document.getElementById("circlesGrid");
+// buttonContainer.appendChild(stinesPlaceholderBtn);
+
 // Function to empty the shopping basket
 function emptyBasket() {
   const shopBasket = document.getElementById("foodListGrid");
@@ -92,9 +103,27 @@ function emptyBasket() {
   }
 }
 
+
 // Attach event listener to the button when DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
+
+  let stinesPlaceholderBtn = document.createElement("button");
+  stinesPlaceholderBtn.textContent = "Stines Knap";
+  stinesPlaceholderBtn.setAttribute("id", "stinesKnap");
+
+  let buttonContainer = document.getElementById("circlesGrid");
+  buttonContainer.appendChild(stinesPlaceholderBtn);
+
+  // Add event listener to the button
+  stinesPlaceholderBtn.addEventListener("click", function () {});
+});
+
+// Append the new item to the shopping basket container
+// let shoppingBasket = document.getElementById("foodListGrid");
+// shoppingBasket.appendChild(newItem);
+
   document
     .getElementById("emptyBaskBtn")
     .addEventListener("click", emptyBasket);
 });
+
