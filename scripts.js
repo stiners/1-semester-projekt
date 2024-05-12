@@ -1,13 +1,13 @@
-var numbers = [];
+let numbers = [];
 
 // Definition af CO2-udslipstærskler
 const grøn_tærskel = 1000; // Definér grøn tærskelværdi
 const gul_tærskel = 2000; // Definér gul tærskelværdi
 
 // Select the button container
-var buttonContainer = document.getElementById("emptyBaskBtnGrid");
+let buttonContainer = document.getElementById("emptyBaskBtnGrid");
 // Create a new button element
-var newButton = document.createElement("button");
+let newButton = document.createElement("button");
 newButton.textContent = "Click me";
 // Add a click event listener to the button
 newButton.addEventListener("click", function () {
@@ -16,43 +16,33 @@ newButton.addEventListener("click", function () {
 // Append the button to the button container
 //buttonContainer.appendChild(newButton); der er noget der driller
 
-var calculateButton = document.querySelector("#calculateGrid button");
-calculateButton.addEventListener("click", function () {});
+//til at hente data om co2 fra indkøbskurven
+
+let calculateButton = document.querySelector("#calculateGrid button");
+calculateButton.addEventListener("click", calculateCO2);
 
 // Funktion til at beregne CO2 og oprette cirklen
-function calculateCO2() {
-  var foodList = document.getElementById("foodListGrid");
-
-  if (!foodList) {
-    console.log("Element with id 'foodList' not found");
-    return;
-  }
-  numbers = foodList.innerText.split(" ").map(function (item) {
-    var number = Number(item);
-    if (isNaN(number)) {
-      console.log("Non-numeric character found:", item);
-      return 0;
-    }
-    return number;
-  });
-
-  var sum = numbers.reduce(function (a, b) {
-    return a + b;
-  }, 0);
-  console.log("Sum:", sum);
-
-  var number = Number(item);
-  if (isNaN(number)) {
-    console.log("Non-numeric character found:", item);
-    return 0;
-  }
-  return number;
+function calculateTotalCO2() {
+  return shoppingBasketData.reduce(
+    (total, item) => total + Number(item.co2e_pr_kg || 0),
+    0
+  );
 }
 
-var sum = numbers.reduce(function (a, b) {
-  return a + b;
-}, 0);
-console.log("Sum:", sum);
+function calculateCO2() {
+  const totalLandbrugAndTransport = calculateSumOfLandbrugAndTransport();
+  console.log("Total Landbrug and Transport:", totalLandbrugAndTransport);
+
+  const totalCO2 = calculateTotalCO2();
+  console.log("Total CO2:", totalCO2);
+}
+
+function calculateSumOfLandbrugAndTransport() {
+  return shoppingBasketData.reduce(
+    (total, item) => total + Number(item.landbrug || 0) + (item.transport || 0),
+    0
+  );
+}
 
 // Bestem farven baseret på det beregnede CO2-udslip
 let color;

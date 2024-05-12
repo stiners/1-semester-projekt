@@ -85,6 +85,15 @@ function createFoodItemCircles(kategori, foodItems) {
       .classed("foodItemCircle", true);
 
     circle.append("title").text(foodItem.produkt);
+    // Add a text tag to the circle.
+    svg
+      .append("text")
+      .attr("x", circle.attr("cx"))
+      .attr("y", circle.attr("cy"))
+      .text(foodItem.produkt)
+      .attr("font-family", "sans-serif")
+      .attr("font-size", "12px")
+      .attr("fill", "black");
   });
 
   const foodItemCircles = document.querySelectorAll(".foodItemCircle");
@@ -98,9 +107,26 @@ function createFoodItemCircles(kategori, foodItems) {
     });
   });
 }
+function addToShoppingBasket(foodItem) {
+  // Create a new object with only the properties you need
+  const foodItemProperties = {
+    produkt: foodItem.produkt,
+    co2e_pr_kg: foodItem.co2e_pr_kg,
+    landbrug: foodItem.landbrug,
+    forarbejdning: foodItem.forarbejdning,
+    emballage: foodItem.emballage,
+    transport: foodItem.transport,
+    detail: foodItem.detail,
+  };
+
+  // Push the new object to the array
+  shoppingBasketData.push(foodItemProperties);
+}
 
 function addToShoppingBasket(foodItem) {
   shoppingBasketData.push(foodItem);
+
+  console.log("Shopping basket data:", shoppingBasketData);
 
   let foodListGrid = document.getElementById("foodListGrid");
 
