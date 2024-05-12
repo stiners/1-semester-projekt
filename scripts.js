@@ -16,43 +16,29 @@ newButton.addEventListener("click", function () {
 // Append the button to the button container
 //buttonContainer.appendChild(newButton); der er noget der driller
 
+//til at hente data om co2 fra indkøbskurven
+
 let calculateButton = document.querySelector("#calculateGrid button");
-calculateButton.addEventListener("click", function () {});
+calculateButton.addEventListener("click", calculateCO2);
 
 // Funktion til at beregne CO2 og oprette cirklen
-function calculateCO2() {
-  let foodList = document.getElementById("foodListGrid");
-
-  if (!foodList) {
-    console.log("Element with id 'foodList' not found");
-    return;
-  }
-  numbers = foodList.innerText.split(" ").map(function (item) {
-    let number = Number(item);
-    if (isNaN(number)) {
-      console.log("Non-numeric character found:", item);
-      return 0;
-    }
-    return number;
-  });
-
-  let sum = numbers.reduce(function (a, b) {
-    return a + b;
-  }, 0);
-  console.log("Sum:", sum);
-
-  let number = Number(item);
-  if (isNaN(number)) {
-    console.log("Non-numeric character found:", item);
-    return 0;
-  }
-  return number;
+function calculateTotalCO2() {
+  return shoppingBasketData.reduce((total, item) => total + Number(item.co2e_pr_kg || 0), 0);
 }
 
-let sum = numbers.reduce(function (a, b) {
-  return a + b;
-}, 0);
-console.log("Sum:", sum);
+function calculateCO2() {
+  const totalLandbrugAndTransport = calculateSumOfLandbrugAndTransport();
+  console.log('Total Landbrug and Transport:', totalLandbrugAndTransport);
+
+  const totalCO2 = calculateTotalCO2();
+  console.log('Total CO2:', totalCO2);
+}
+
+function calculateSumOfLandbrugAndTransport() {
+  return shoppingBasketData.reduce((total, item) => total + Number(item.landbrug || 0) + (item.transport || 0), 0);
+}
+
+
 
 // Bestem farven baseret på det beregnede CO2-udslip
 let color;
@@ -125,5 +111,4 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("emptyBaskBtn")
     .addEventListener("click", emptyBasket);
-});
 
