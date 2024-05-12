@@ -76,6 +76,14 @@ function createFoodItemCircles(foodItems) {
       .classed("foodItemCircle", true);
 
     circle.append("title").text(foodItem.produkt);
+    // Add a text tag to the circle.
+    svg.append("text")
+      .attr("x", circle.attr("cx"))
+      .attr("y", circle.attr("cy"))
+      .text(foodItem.produkt)
+      .attr("font-family", "sans-serif")
+      .attr("font-size", "12px")
+      .attr("fill", "black");
   });
 
   const foodItemCircles = document.querySelectorAll(".foodItemCircle");
@@ -89,14 +97,31 @@ function createFoodItemCircles(foodItems) {
     });
   });
 }
-
 function addToShoppingBasket(foodItem) {
-  shoppingBasketData.push(foodItem);
+  // Create a new object with only the properties you need
+  const foodItemProperties = {
+    produkt: foodItem.produkt,
+    co2e_pr_kg: foodItem.co2e_pr_kg,
+    landbrug: foodItem.landbrug,
+    forarbejdning: foodItem.forarbejdning,
+    emballage: foodItem.emballage,
+    transport: foodItem.transport,
+    detail: foodItem.detail
+  };
 
-  let foodListGrid = document.getElementById("foodListGrid");
+  // Push the new object to the array
+    shoppingBasketData.push(foodItemProperties);
+  }
 
-  const foodItemDiv = document.createElement("div");
-  foodItemDiv.innerText = foodItem.produkt;
+  function addToShoppingBasket(foodItem) {
+    shoppingBasketData.push(foodItem);
 
-  foodListGrid.appendChild(foodItemDiv);
-}
+    console.log("Shopping basket data:", shoppingBasketData);
+
+    let foodListGrid = document.getElementById("foodListGrid");
+
+    const foodItemDiv = document.createElement("div");
+    foodItemDiv.innerText = foodItem.produkt;
+
+    foodListGrid.appendChild(foodItemDiv);
+  }
