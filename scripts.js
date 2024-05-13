@@ -46,6 +46,7 @@ function calculateSumOfLandbrugAndTransport() {
 
 // Bestem farven baseret på det beregnede CO2-udslip
 let color;
+let sum;
 if (sum < grøn_tærskel) {
   color = "green";
 } else if (sum < gul_tærskel) {

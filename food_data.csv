@@ -1,8 +1,8 @@
-﻿
+﻿Kategori,Fødevare,Total kg CO2e/kg,Landbrug,ILUC,Forarbejdning,Emballage,Transport,Detailprodukter
 Peberfrugt,Grøntsager og grøntsagsprodukter,0.96,0.44,0.09,0.00,0.14,0.28,0.01
 Tomat,Grøntsager og grøntsagsprodukter,0.46,0.18,0.02,0.00,0.14,0.11,0.01
 Squash,Grøntsager og grøntsagsprodukter,0.73,0.31,0.11,0.00,0.06,0.25,0.01
-Aubergine,Grøntsager og grøntsagsProdukt,Kategori,Total kg CO2e/kg,Landbrug,ILUC,Forarbejdning,Emballage,Transport,Detailprodukter,0.87,0.37,0.06,0.00,0.14,0.30,0.01
+Aubergine,Grøntsager og grøntsagsProdukt,0.87,0.37,0.06,0.00,0.14,0.30,0.01
 Tomat. soltørret,Grøntsager og grøntsagsprodukter,2.33,1.50,0.25,0.00,0.26,0.32,0.01
 Græskar,Grøntsager og grøntsagsprodukter,0.73,0.31,0.11,0.00,0.06,0.25,0.01
 Agurk,Grøntsager og grøntsagsprodukter,0.37,0.13,0.02,0.00,0.14,0.08,0.01
