@@ -4,16 +4,24 @@ let mainData;
 let shoppingBasketData = [];
 
 const circlePos = [
-  {
-    radius: 30,
-    cx: 100,
-    cy: 100,
-    kategori: "Grøntsager og grøntsagsprodukter",
-  },
-  { radius: 40, cx: 800, cy: 200, kategori: "Kød og fjerkræ" },
-  { radius: 50, cx: 400, cy: 300, kategori: "Vin. øl og spiritus" },
+ 
+  { radius: 30, cx: 100, cy: 100, kategori: "Grøntsager og grøntsagsprodukter" },
+  { radius: 40, cx: 100, cy: 200, kategori: "Kød og fjerkræ" },
+  { radius: 50, cx: 100, cy: 300, kategori: "Vin. øl og spiritus" },
   { radius: 60, cx: 100, cy: 400, kategori: "Brød og bageartikler" },
-  { radius: 70, cx: 700, cy: 500, kategori: "Korn og kornprodukter" },
+  { radius: 30, cx: 100, cy: 500, kategori: "Korn og kornprodukter" },
+  { radius: 30, cx: 100, cy: 600, kategori: "Færdigretter" },
+  { radius: 20, cx: 100, cy: 650, kategori: "Svampe og svampeprodukter" },
+  { radius: 20, cx: 500, cy: 100, kategori: "Nødder og frø" },
+  { radius: 20, cx: 500, cy: 200, kategori: "Slik og sukkervarer" },
+  { radius: 20, cx: 500, cy: 300, kategori: "Frugt og frugtprodukter" },
+  { radius: 20, cx: 500, cy: 400, kategori: "Planteprodukter og -drikke" },
+  { radius: 20, cx: 500, cy: 500, kategori: "Fisk og skaldyr" },
+  { radius: 20, cx: 500, cy: 600, kategori: "Smagsgivere og krydderier" },
+  { radius: 20, cx: 500, cy: 650, kategori: "Mælk. mejeriprodukter og æg" },
+  { radius: 20, cx: 800, cy: 100, kategori: "Bælgfrugter og bælgfrugtprodukter" },
+  { radius: 20, cx: 800, cy: 200, kategori: "Drikkevarer" },
+  
 ];
 
 // Append an SVG element to the selected div
