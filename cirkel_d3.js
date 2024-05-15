@@ -47,6 +47,7 @@ const circles = svg
   .attr("fill", "yellow")
   .attr("kategori", (d) => d.kategori)
   .attr("expanded", false)
+  .style("hover", "black")
   .classed("circleClass", true);
 
 // Tilføjer titel til cirkelerne, hvor jeg refererer til min circle position.
@@ -97,6 +98,14 @@ circles.on("click", function () {
     clickedCircle.attr("data-expanded", "true");
   }
 });
+
+d3.selectAll(".circleClass")
+  .on("mouseenter", function () {
+    d3.select(this).classed("hovered", true);
+  })
+  .on("mouseleave", function () {
+    d3.select(this).classed("hovered", false);
+  });
 
 // Kategorien på cirkel er overens med den kategori der bliver trukket fra databasen
 function handleClick(clickedCircle, kategori) {
