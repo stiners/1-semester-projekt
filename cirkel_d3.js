@@ -88,7 +88,7 @@ circles.on("click", function () {
       .attr("data-original-cy", clickedCircle.attr("cy"))
       .transition()
       .duration(500)
-      .attr("r", 1000)
+      .attr("r", 1200)
       .on("end", function () {
         this.parentNode.appendChild(this);
       });
