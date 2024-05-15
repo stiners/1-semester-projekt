@@ -135,6 +135,11 @@ sub {
   margin-top: 1000px;
 }
 
+.circleClass:hover {
+  stroke: orange;
+  stroke-width: 2px;
+}
+
 /* Tilføjet for at style den ydre cirkel */
 .outerCircle {
   position: relative;
