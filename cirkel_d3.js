@@ -4,8 +4,12 @@ let mainData;
 let shoppingBasketData = [];
 
 const circlePos = [
- 
-  { radius: 30, cx: 100, cy: 100, kategori: "Grøntsager og grøntsagsprodukter" },
+  {
+    radius: 30,
+    cx: 100,
+    cy: 100,
+    kategori: "Grøntsager og grøntsagsprodukter",
+  },
   { radius: 40, cx: 100, cy: 200, kategori: "Kød og fjerkræ" },
   { radius: 50, cx: 100, cy: 300, kategori: "Vin. øl og spiritus" },
   { radius: 60, cx: 100, cy: 400, kategori: "Brød og bageartikler" },
@@ -19,9 +23,13 @@ const circlePos = [
   { radius: 20, cx: 500, cy: 500, kategori: "Fisk og skaldyr" },
   { radius: 20, cx: 500, cy: 600, kategori: "Smagsgivere og krydderier" },
   { radius: 20, cx: 500, cy: 650, kategori: "Mælk. mejeriprodukter og æg" },
-  { radius: 20, cx: 800, cy: 100, kategori: "Bælgfrugter og bælgfrugtprodukter" },
+  {
+    radius: 20,
+    cx: 800,
+    cy: 100,
+    kategori: "Bælgfrugter og bælgfrugtprodukter",
+  },
   { radius: 20, cx: 800, cy: 200, kategori: "Drikkevarer" },
-  
 ];
 
 // Append an SVG element to the selected div
@@ -51,6 +59,43 @@ circleDivs.forEach((circle) => {
     const clickedCircle = event.target;
     handleClick(clickedCircle, kategori);
   });
+});
+
+// Attach click event listener
+circles.on("click", function () {
+  const clickedCircle = d3.select(this);
+
+  if (clickedCircle.attr("data-expanded") === "true") {
+    // If the circle is expanded, transition it back to its original size and position
+
+    clickedCircle
+      .transition()
+      .duration(500)
+      .attr("r", clickedCircle.attr("data-original-r"))
+      .attr("cx", clickedCircle.attr("data-original-cx"))
+      .attr("cy", clickedCircle.attr("data-original-cy"))
+      .on("end", function () {
+        this.parentNode.appendChild(this);
+      });
+
+    // Reset the expanded attribute
+    clickedCircle.attr("data-expanded", "false");
+  } else {
+    // If the circle is not expanded, transition it to a larger size and store its original size and position
+    clickedCircle
+      .attr("data-original-r", clickedCircle.attr("r"))
+      .attr("data-original-cx", clickedCircle.attr("cx"))
+      .attr("data-original-cy", clickedCircle.attr("cy"))
+      .transition()
+      .duration(500)
+      .attr("r", 1000)
+      .on("end", function () {
+        this.parentNode.appendChild(this);
+      });
+
+    // Set the expanded attribute
+    clickedCircle.attr("data-expanded", "true");
+  }
 });
 
 // Kategorien på cirkel er overens med den kategori der bliver trukket fra databasen

@@ -21,6 +21,7 @@ html {
   grid-column: 1/4;
   grid-row: 10/60;
   background-color: #ccc;
+  overflow: hidden;
 }
 
 .shoppingBasket {
