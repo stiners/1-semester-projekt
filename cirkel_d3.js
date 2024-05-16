@@ -146,16 +146,7 @@ function createFoodItemCircles(kategori, foodItems) {
       .attr("kategori", kategori)
       .classed("foodItemCircle", true);
 
-    circle.append("title").text(foodItem.produkt);
-    // Add a text tag to the circle.
-    svg
-      .append("text")
-      .attr("x", circle.attr("cx"))
-      .attr("y", circle.attr("cy"))
-      .text(foodItem.produkt)
-      .attr("font-family", "sans-serif")
-      .attr("font-size", "12px")
-      .attr("fill", "black");
+  
   });
 
   const foodItemCircles = document.querySelectorAll(".foodItemCircle");
