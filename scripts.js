@@ -14,11 +14,11 @@ newButton.addEventListener("click", function () {
   alert("Button clicked!");
 });
 
-// calculate button selector
+// Calculate button selector
 let calculateButton = document.querySelector("#calculateGrid button");
 calculateButton.addEventListener("click", calculateCO2);
 
-// Funktions for calculation af CO2
+// Functions for calculation of CO2
 function calculateTotalCO2() {
   return shoppingBasketData.reduce(
     (total, item) => total + Number(item.co2e_pr_kg || 0),
@@ -26,7 +26,7 @@ function calculateTotalCO2() {
   );
 }
 
-// function for calculation of landbrug
+// Function for calculation of landbrug
 function calculateTotalLandbrug() {
   return shoppingBasketData.reduce(
     (total, item) => total + Number(item.landbrug || 0),
@@ -34,15 +34,15 @@ function calculateTotalLandbrug() {
   );
 }
 
-// function for calculation of forarbejdning
+// Function for calculation of forarbejdning
 function calculateTotalForarbejdning() {
   return shoppingBasketData.reduce(
-    (total, item) => total + Number(item.forarbejdning || 0),
+    (total, item) => total + Math.abs(Number(item.forarbejdning || 0)),
     0
   );
 }
 
-// function for calculation of emballage
+// Function for calculation of emballage
 function calculateTotalEmballage() {
   return shoppingBasketData.reduce(
     (total, item) => total + Number(item.emballage || 0),
@@ -50,7 +50,7 @@ function calculateTotalEmballage() {
   );
 }
 
-// function for calculation of transport
+// Function for calculation of transport
 function calculateTotalTransport() {
   return shoppingBasketData.reduce(
     (total, item) => total + Number(item.transport || 0),
@@ -58,7 +58,7 @@ function calculateTotalTransport() {
   );
 }
 
-// fonction for calculation of detail
+// Function for calculation of detail
 function calculateTotalDetail() {
   return shoppingBasketData.reduce(
     (total, item) => total + Number(item.detail || 0),
@@ -66,27 +66,56 @@ function calculateTotalDetail() {
   );
 }
 
-// Hovedfunktion til at beregne CO2 og logge resultaterne
+// Main function to calculate CO2 and log the results
 function calculateCO2() {
   const totalLandbrug = calculateTotalLandbrug();
-  console.log("Total Landbrug:", totalLandbrug);
-
   const totalForarbejdning = calculateTotalForarbejdning();
-  console.log("Total Forarbejdning:", totalForarbejdning);
-
   const totalEmballage = calculateTotalEmballage();
-  console.log("Total Emballage:", totalEmballage);
-
   const totalTransport = calculateTotalTransport();
-  console.log("Total Transport:", totalTransport);
-
   const totalDetail = calculateTotalDetail();
-  console.log("Total Detail:", totalDetail);
-
   const totalCO2 = calculateTotalCO2();
-  console.log("Total CO2:", totalCO2);
-}
+  
+  // Calculate percentages of total CO2
+  
+ // Array of totals
+const totals = [totalLandbrug, totalForarbejdning, totalEmballage, totalTransport, totalDetail];
 
+// Calculate total of non-zero values
+const totalOfNonZero = totals.reduce((sum, total) => sum + total, 0);
+
+// Calculate percentages in a single step
+const percentages = totals.map(total => {
+  if (totalOfNonZero !== 0) {
+    return ((total / totalOfNonZero) * 100).toFixed(2);
+  } else {
+    // If all input values are zero, distribute percentages equally
+    return (100 / totals.length).toFixed(2);
+  }
+});
+
+// Destructure the percentages array
+const [percentLandbrug, percentForarbejdning, percentEmballage, percentTransport, percentDetail] = percentages;
+
+// Sum of all percentages
+const totalPercentage = percentages.reduce((sum, percent) => sum + parseFloat(percent), 0).toFixed(2);
+ // Round the totals to 2 decimal places for logging
+ const roundedTotalLandbrug = totalLandbrug.toFixed(2);
+ const roundedTotalForarbejdning = totalForarbejdning.toFixed(2);
+ const roundedTotalEmballage = totalEmballage.toFixed(2);
+ const roundedTotalTransport = totalTransport.toFixed(2);
+ const roundedTotalDetail = totalDetail.toFixed(2);
+ const roundedTotalCO2 = totalCO2.toFixed(2);
+
+// Log the results
+console.log("Total CO2:", totalCO2);
+console.log("Total Landbrug:", totalLandbrug, "(Landbrug Procent:", percentLandbrug + "%)");
+console.log("Total Forarbejdning:", totalForarbejdning, "(Forarbejdning Procent:", percentForarbejdning + "%)");
+console.log("Total Emballage:", totalEmballage, "(Emballage Procent:", percentEmballage + "%)");
+console.log("Total Transport:", totalTransport, "(Transport Procent:", percentTransport + "%)");
+console.log("Total Detail:", totalDetail, "(Detail Procent:", percentDetail + "%)");
+console.log("Total Procent:", totalPercentage + "%");
+
+}
 
 
 
