@@ -129,6 +129,38 @@ if (sum < grøn_tærskel) {
 } else {
   color = "red";
 }
+// Funktion til at opdatere farvespektrummet
+function updateColorSpectrum() {
+  const colorSpectrum = document.getElementById('colorSpectrum');
+  colorSpectrum.style.display = "block"; // Vis farvespektrummet
+
+  // Definer grænser for farveskift
+  const grøn_tærskel = 100; // Eksempelværdi, skal ændres efter dine behov
+  const gul_tærskel = 200; // Eksempelværdi, skal ændres efter dine behov
+
+  // Anvend lineær gradient til baggrund
+  colorSpectrum.style.background = `linear-gradient(to right, green ${grøn_tærskel}px, yellow ${gul_tærskel}px, red ${gul_tærskel}px)`;
+}
+
+// Hent knappen og tilføj en event listener til klik
+document.getElementById('calculateGrid').addEventListener('click', updateColorSpectrum);
+
+function calculateCO2() {
+  // Simpel beregning
+  let greenThreshold = 0;
+  let yellowThreshold = 500;
+  let redThreshold = 1000;
+
+  // Vis farvespektrum
+  let colorSpectrum = document.getElementById('colorSpectrum');
+  colorSpectrum.style.display = "block";
+
+  // Vis tallene
+  let colorValues = document.getElementById('colorValues');
+  c.appendChild(innerCircle);
+}
+
+
 /*
 // Opdater farven på den ydre cirkel
 const outerCircle = document.getElementById("outerCircle");
