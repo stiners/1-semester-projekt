@@ -1,4 +1,4 @@
-﻿Kategori,Fødevare,Total kg CO2e/kg,Landbrug,ILUC,Forarbejdning,Emballage,Transport,Detailprodukter
+﻿Produkt,Kategori,Total kg CO2e/kg,Landbrug,ILUC,Forarbejdning,Emballage,Transport,Detailprodukter
 Peberfrugt,Grøntsager og grøntsagsprodukter,0.96,0.44,0.09,0.00,0.14,0.28,0.01
 Tomat,Grøntsager og grøntsagsprodukter,0.46,0.18,0.02,0.00,0.14,0.11,0.01
 Squash,Grøntsager og grøntsagsprodukter,0.73,0.31,0.11,0.00,0.06,0.25,0.01

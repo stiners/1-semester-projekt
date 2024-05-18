@@ -145,8 +145,6 @@ function createFoodItemCircles(kategori, foodItems) {
       .attr("produkt", foodItem.produkt)
       .attr("kategori", kategori)
       .classed("foodItemCircle", true);
-
-  
   });
 
   const foodItemCircles = document.querySelectorAll(".foodItemCircle");
