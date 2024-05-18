@@ -18,16 +18,15 @@ const fetchCategoryData = (request, response) => {
     [kategori],
     (error, results) => {
       if (error) {
-        console.error('Error fetching category data:', error);
-        response.status(500).json({ error: 'Internal server error' });
+        console.error("Error fetching category data:", error);
+        response.status(500).json({ error: "Internal server error" });
       } else {
-        console.log('Fetched category data:', results.rows); // Log fetched data
+        console.log("Fetched category data:", results.rows); // Log fetched data
         response.status(200).json(results.rows);
       }
     }
   );
 };
-
 
 //route for /foods
 const getFoods = (request, response) => {

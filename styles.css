@@ -105,6 +105,14 @@ html {
   font-family: "Prompt", sans-serif;
 }
 
+#barChartGrid {
+  grid-column: 1/5;
+  grid-row: 60/110;
+  background-color: #ccc;
+  place-content: center;
+  text-align: center;
+}
+
 #header {
   font-size: 45px;
   text-align: center;
