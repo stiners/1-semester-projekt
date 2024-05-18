@@ -13,15 +13,12 @@ newButton.textContent = "Click me";
 newButton.addEventListener("click", function () {
   alert("Button clicked!");
 });
-// Append the button to the button container
-//buttonContainer.appendChild(newButton); der er noget der driller
 
-//til at hente data om co2 fra indkøbskurven
-
+// calculate button selector
 let calculateButton = document.querySelector("#calculateGrid button");
 calculateButton.addEventListener("click", calculateCO2);
 
-// Funktion til at beregne CO2 og oprette cirklen
+// Funktions for calculation af CO2
 function calculateTotalCO2() {
   return shoppingBasketData.reduce(
     (total, item) => total + Number(item.co2e_pr_kg || 0),
@@ -29,20 +26,69 @@ function calculateTotalCO2() {
   );
 }
 
+// function for calculation of landbrug
+function calculateTotalLandbrug() {
+  return shoppingBasketData.reduce(
+    (total, item) => total + Number(item.landbrug || 0),
+    0
+  );
+}
+
+// function for calculation of forarbejdning
+function calculateTotalForarbejdning() {
+  return shoppingBasketData.reduce(
+    (total, item) => total + Number(item.forarbejdning || 0),
+    0
+  );
+}
+
+// function for calculation of emballage
+function calculateTotalEmballage() {
+  return shoppingBasketData.reduce(
+    (total, item) => total + Number(item.emballage || 0),
+    0
+  );
+}
+
+// function for calculation of transport
+function calculateTotalTransport() {
+  return shoppingBasketData.reduce(
+    (total, item) => total + Number(item.transport || 0),
+    0
+  );
+}
+
+// fonction for calculation of detail
+function calculateTotalDetail() {
+  return shoppingBasketData.reduce(
+    (total, item) => total + Number(item.detail || 0),
+    0
+  );
+}
+
+// Hovedfunktion til at beregne CO2 og logge resultaterne
 function calculateCO2() {
-  const totalLandbrugAndTransport = calculateSumOfLandbrugAndTransport();
-  console.log("Total Landbrug and Transport:", totalLandbrugAndTransport);
+  const totalLandbrug = calculateTotalLandbrug();
+  console.log("Total Landbrug:", totalLandbrug);
+
+  const totalForarbejdning = calculateTotalForarbejdning();
+  console.log("Total Forarbejdning:", totalForarbejdning);
+
+  const totalEmballage = calculateTotalEmballage();
+  console.log("Total Emballage:", totalEmballage);
+
+  const totalTransport = calculateTotalTransport();
+  console.log("Total Transport:", totalTransport);
+
+  const totalDetail = calculateTotalDetail();
+  console.log("Total Detail:", totalDetail);
 
   const totalCO2 = calculateTotalCO2();
   console.log("Total CO2:", totalCO2);
 }
 
-function calculateSumOfLandbrugAndTransport() {
-  return shoppingBasketData.reduce(
-    (total, item) => total + Number(item.landbrug || 0) + (item.transport || 0),
-    0
-  );
-}
+
+
 
 // Bestem farven baseret på det beregnede CO2-udslip
 let color;
@@ -54,7 +100,7 @@ if (sum < grøn_tærskel) {
 } else {
   color = "red";
 }
-
+/*
 // Opdater farven på den ydre cirkel
 const outerCircle = document.getElementById("outerCircle");
 outerCircle.style.display = "block"; // Vis cirklen
@@ -74,3 +120,4 @@ innerCircle.textContent = sum; // Opdater summen i den indre cirkel
 function changeouterCircleColor(color) {
   document.querySelector(".outerCircle").style.backgroundColor = color;
 }
+*/
