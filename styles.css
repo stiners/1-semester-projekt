@@ -261,8 +261,11 @@ sub {
 }
 /* The Close Button */
 .close {
-  color: white;
-  float: right;
+  position: absolute;
+  top: 5px; /* Adjust as necessary */
+  right: 15px; /* Adjust as necessary */
+  color: rgb(246, 43, 43);
+  /* float: right; */
   font-size: 28px;
   font-weight: bold;
 }
