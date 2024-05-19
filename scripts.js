@@ -20,50 +20,32 @@ calculateButton.addEventListener("click", calculateCO2);
 
 // Functions for calculation of CO2
 function calculateTotalCO2() {
-  return shoppingBasketData.reduce(
-    (total, item) => total + Number(item.co2e_pr_kg || 0),
-    0
-  );
+  return shoppingBasketData.reduce((total, item) => total + Number(item.co2e_pr_kg || 0), 0);
 }
 
 // Function for calculation of landbrug
 function calculateTotalLandbrug() {
-  return shoppingBasketData.reduce(
-    (total, item) => total + Number(item.landbrug || 0),
-    0
-  );
+  return shoppingBasketData.reduce((total, item) => total + Number(item.landbrug || 0), 0);
 }
 
 // Function for calculation of forarbejdning
 function calculateTotalForarbejdning() {
-  return shoppingBasketData.reduce(
-    (total, item) => total + Math.abs(Number(item.forarbejdning || 0)),
-    0
-  );
+  return shoppingBasketData.reduce((total, item) => total + Math.abs(Number(item.forarbejdning || 0)), 0);
 }
 
 // Function for calculation of emballage
 function calculateTotalEmballage() {
-  return shoppingBasketData.reduce(
-    (total, item) => total + Number(item.emballage || 0),
-    0
-  );
+  return shoppingBasketData.reduce((total, item) => total + Number(item.emballage || 0), 0);
 }
 
 // Function for calculation of transport
 function calculateTotalTransport() {
-  return shoppingBasketData.reduce(
-    (total, item) => total + Number(item.transport || 0),
-    0
-  );
+  return shoppingBasketData.reduce((total, item) => total + Number(item.transport || 0), 0);
 }
 
 // Function for calculation of detail
 function calculateTotalDetail() {
-  return shoppingBasketData.reduce(
-    (total, item) => total + Number(item.detail || 0),
-    0
-  );
+  return shoppingBasketData.reduce((total, item) => total + Number(item.detail || 0), 0);
 }
 
 // Main function to calculate CO2 and log the results
@@ -74,50 +56,47 @@ function calculateCO2() {
   const totalTransport = calculateTotalTransport();
   const totalDetail = calculateTotalDetail();
   const totalCO2 = calculateTotalCO2();
-  
+
   // Calculate percentages of total CO2
-  
- // Array of totals
-const totals = [totalLandbrug, totalForarbejdning, totalEmballage, totalTransport, totalDetail];
 
-// Calculate total of non-zero values
-const totalOfNonZero = totals.reduce((sum, total) => sum + total, 0);
+  // Array of totals
+  const totals = [totalLandbrug, totalForarbejdning, totalEmballage, totalTransport, totalDetail];
 
-// Calculate percentages in a single step
-const percentages = totals.map(total => {
-  if (totalOfNonZero !== 0) {
-    return ((total / totalOfNonZero) * 100).toFixed(2);
-  } else {
-    // If all input values are zero, distribute percentages equally
-    return (100 / totals.length).toFixed(2);
-  }
-});
+  // Calculate total of non-zero values
+  const totalOfNonZero = totals.reduce((sum, total) => sum + total, 0);
 
-// Destructure the percentages array
-const [percentLandbrug, percentForarbejdning, percentEmballage, percentTransport, percentDetail] = percentages;
+  // Calculate percentages in a single step
+  const percentages = totals.map((total) => {
+    if (totalOfNonZero !== 0) {
+      return ((total / totalOfNonZero) * 100).toFixed(2);
+    } else {
+      // If all input values are zero, distribute percentages equally
+      return (100 / totals.length).toFixed(2);
+    }
+  });
 
-// Sum of all percentages
-const totalPercentage = percentages.reduce((sum, percent) => sum + parseFloat(percent), 0).toFixed(2);
- // Round the totals to 2 decimal places for logging
- const roundedTotalLandbrug = totalLandbrug.toFixed(2);
- const roundedTotalForarbejdning = totalForarbejdning.toFixed(2);
- const roundedTotalEmballage = totalEmballage.toFixed(2);
- const roundedTotalTransport = totalTransport.toFixed(2);
- const roundedTotalDetail = totalDetail.toFixed(2);
- const roundedTotalCO2 = totalCO2.toFixed(2);
+  // Destructure the percentages array
+  const [percentLandbrug, percentForarbejdning, percentEmballage, percentTransport, percentDetail] = percentages;
 
-// Log the results
-console.log("Total CO2:", totalCO2);
-console.log("Total Landbrug:", totalLandbrug, "(Landbrug Procent:", percentLandbrug + "%)");
-console.log("Total Forarbejdning:", totalForarbejdning, "(Forarbejdning Procent:", percentForarbejdning + "%)");
-console.log("Total Emballage:", totalEmballage, "(Emballage Procent:", percentEmballage + "%)");
-console.log("Total Transport:", totalTransport, "(Transport Procent:", percentTransport + "%)");
-console.log("Total Detail:", totalDetail, "(Detail Procent:", percentDetail + "%)");
-console.log("Total Procent:", totalPercentage + "%");
+  // Sum of all percentages
+  const totalPercentage = percentages.reduce((sum, percent) => sum + parseFloat(percent), 0).toFixed(2);
+  // Round the totals to 2 decimal places for logging
+  const roundedTotalLandbrug = totalLandbrug.toFixed(2);
+  const roundedTotalForarbejdning = totalForarbejdning.toFixed(2);
+  const roundedTotalEmballage = totalEmballage.toFixed(2);
+  const roundedTotalTransport = totalTransport.toFixed(2);
+  const roundedTotalDetail = totalDetail.toFixed(2);
+  const roundedTotalCO2 = totalCO2.toFixed(2);
 
+  // Log the results
+  console.log("Total CO2:", totalCO2);
+  console.log("Total Landbrug:", totalLandbrug, "(Landbrug Procent:", percentLandbrug + "%)");
+  console.log("Total Forarbejdning:", totalForarbejdning, "(Forarbejdning Procent:", percentForarbejdning + "%)");
+  console.log("Total Emballage:", totalEmballage, "(Emballage Procent:", percentEmballage + "%)");
+  console.log("Total Transport:", totalTransport, "(Transport Procent:", percentTransport + "%)");
+  console.log("Total Detail:", totalDetail, "(Detail Procent:", percentDetail + "%)");
+  console.log("Total Procent:", totalPercentage + "%");
 }
-
-
 
 // Bestem farven baseret på det beregnede CO2-udslip
 let color;
@@ -131,7 +110,7 @@ if (sum < grøn_tærskel) {
 }
 // Funktion til at opdatere farvespektrummet
 function updateColorSpectrum() {
-  const colorSpectrum = document.getElementById('colorSpectrum');
+  const colorSpectrum = document.getElementById("colorSpectrum");
   colorSpectrum.style.display = "block"; // Vis farvespektrummet
 
   // Definer grænser for farveskift
@@ -143,7 +122,7 @@ function updateColorSpectrum() {
 }
 
 // Hent knappen og tilføj en event listener til klik
-document.getElementById('calculateGrid').addEventListener('click', updateColorSpectrum);
+document.getElementById("calculateGrid").addEventListener("click", updateColorSpectrum);
 
 function calculateCO2() {
   // Simpel beregning
@@ -152,14 +131,13 @@ function calculateCO2() {
   let redThreshold = 1000;
 
   // Vis farvespektrum
-  let colorSpectrum = document.getElementById('colorSpectrum');
+  let colorSpectrum = document.getElementById("colorSpectrum");
   colorSpectrum.style.display = "block";
 
   // Vis tallene
-  let colorValues = document.getElementById('colorValues');
+  let colorValues = document.getElementById("colorValues");
   c.appendChild(innerCircle);
 }
-
 
 /*
 // Opdater farven på den ydre cirkel
@@ -182,3 +160,22 @@ function changeouterCircleColor(color) {
   document.querySelector(".outerCircle").style.backgroundColor = color;
 }
 */
+
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("calculateBtn");
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function () {
+  modal.style.display = "block";
+};
+// When the user clicks on  (x), close the modal
+span.onclick = function () {
+  modal.style.display = "none";
+};
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
