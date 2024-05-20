@@ -291,3 +291,18 @@ sub {
 .icon-space {
   margin-right: 30px;
 }
+#CO2Circle {
+  position: absolute;
+  top: 30%;
+  left: 10%; /* Justér venstre margin efter behov */
+  transform: translateY(-50%);
+}
+#colorSpectrum {
+  position: absolute;
+  width: 300px; /* Juster bredden efter behov */
+  height: 20px;
+  left: 7%; /* Juster venstre placering efter behov */
+  bottom: 400px; /* Placer farvespektrummet under cirklen */
+  background: linear-gradient(to right, hsl(0, 100%, 50%) 0%, yellow 50%, green 100%);
+  border-radius: 10px;
+}

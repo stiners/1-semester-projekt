@@ -168,16 +168,16 @@ function updateColorSpectrum() {
   colorSpectrum.style.display = "block"; // Vis farvespektrummet
 
   // Definer grænser for farveskift
-  const grøn_tærskel = 100; // Eksempelværdi, skal ændres efter dine behov
-  const gul_tærskel = 200; // Eksempelværdi, skal ændres efter dine behov
+  const green_terskel = 100; // Eksempelværdi, skal ændres efter dine behov
+  const Yellow_terskel_tærskel = 200; // Eksempelværdi, skal ændres efter dine behov
 
   // Anvend lineær gradient til baggrund
-  colorSpectrum.style.background = `linear-gradient(to right, green ${grøn_tærskel}px, yellow ${gul_tærskel}px, red ${gul_tærskel}px)`;
+  colorSpectrum.style.background = `linear-gradient(to right, 
+    rgba(34, 139, 34, 0.8) ${green_terskel}px, 
+    rgba(255, 255, 0, 0.8) ${Yellow_terskel}px, 
+    rgba(255, 69, 0, 0.8) ${Yellow_terskel}px, 
+    rgba(255, 0, 0, 0.8))`;
 }
-
-// Hent knappen og tilføj en event listener til klik
-document.getElementById("calculateGrid").addEventListener("click", updateColorSpectrum);
-
  product_circles
 function calculateCO2() {
   // Simpel beregning
@@ -193,7 +193,37 @@ function calculateCO2() {
   let colorValues = document.getElementById("colorValues");
   //c.appendChild(innerCircle);
 }
+// Definition af CO2-udslipsterskler
+const greenThreshold = 1000;
+const yellowThreshold = 2000;
 
+// Hent cirkel-elementet
+const CO2Circle = document.getElementById('CO2Circle');
+const textElement = CO2Circle.querySelector('text');
+
+// Funktion til at opdatere cirkelens farve og tekst
+function updateCircleColorAndText(value) {
+  let color;
+  if (value < 2) {
+    color = "green";
+  } else if (value >= 2 && value <= 5) {
+    color = "yellow";
+  } else {
+    color = "red";
+  }
+  // Opdater farven og teksten i cirklen
+  CO2Circle.querySelector('circle').setAttribute('fill', color);
+  textElement.textContent = value.toFixed(2);
+}
+
+// Event-lytter til beregningsknappen
+document.getElementById("calculateBtn").addEventListener("click", function() {
+  // Simuleret CO2-udledning (kan erstattes med faktiske beregninger)
+  const simulatedCO2Value = Math.random() * 3000; // Tilfældigt tal mellem 0 og 3000
+
+  // Opdater cirkelens farve og tekst med den simulerede værdi
+  updateCircleColorAndText(simulatedCO2Value);
+});
 // function calculateCO2() {
 //   // Simpel beregning
 //   let greenThreshold = 0;
