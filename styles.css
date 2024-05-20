@@ -247,6 +247,7 @@ sub {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   animation-name: animatetop;
   animation-duration: 0.4s;
+  padding: 50px;
 }
 /* Add Animation */
 @keyframes animatetop {
@@ -273,4 +274,20 @@ sub {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.percentageVisualization {
+  font-size: 50px;
+  font-weight: bold;
+  text-align: left;
+  color: #000;
+  padding: 5px;
+  font-family: "Chivo", sans-serif;
+  font-optical-sizing: auto;
+  margin-right: 10px;
+  margin-left: 60%;
+}
+
+.icon-space {
+  margin-right: 30px;
 }

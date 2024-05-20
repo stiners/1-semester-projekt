@@ -3,11 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="https://tinyurl.com/23qz7hwh" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" />
     <link
+      href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,23 +35,32 @@
         <button type="button" id="calculateBtn">Beregn</button>
       </div>
 
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
 
-  <div id="myModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
+          <div class="percentageVisualization" id="farmingPercentage"><i class="fa fa-tractor icon-space"></i></div>
+          <div class="percentageVisualization" id="transportPercentage">
+            <i class="fa-solid fa-truck icon-space"></i>
+          </div>
+          <div class="percentageVisualization" id="packagingPercentage"><i class="fa-solid fa-box icon-space"></i></div>
+          <div class="percentageVisualization" id="processingPercentage">
+            <i class="fa-solid fa-gears icon-space"></i>
+          </div>
+          <div class="percentageVisualization" id="detailPercentage"><i class="fa-solid fa-shop icon-space"></i></div>
+          <div class="percentageVisualization" id="ILUCPercentage"><i class="fa-solid fa-tree icon-space"></i></div>
 
-      <!-- Farvespektrum -->
-      <div id="colorSpectrum" style="width: 300px; height: 20px; margin-top: 20px; display: none;"></div>
-      
-      <!-- Tallene -->
-      <div id="colorValues" style="text-align: center; margin-top: 40px;display: none;">
-        <span style="margin-left: -600px; color: rgb(48, 18, 216);">1000</span>
-        <span style="margin-left: -270px; color: rgb(48, 18, 216);">500</span>
-        <span style="margin-left: -200px; color: rgb(48, 18, 216);">0</span>
+          <!-- Farvespektrum -->
+          <div id="colorSpectrum" style="width: 300px; height: 20px; margin-top: 20px; display: none"></div>
+
+          <!-- Tallene -->
+          <div id="colorValues" style="text-align: center; margin-top: 40px; display: none">
+            <span style="margin-left: -600px; color: rgb(48, 18, 216)">1000</span>
+            <span style="margin-left: -270px; color: rgb(48, 18, 216)">500</span>
+            <span style="margin-left: -200px; color: rgb(48, 18, 216)">0</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
     </div>
 
     <script src="scripts.js"></script>

@@ -1,4 +1,5 @@
 let numbers = [];
+let percentages = [];
 
 // Definition af CO2-udslipstærskler
 const grøn_tærskel = 1000; // Definér grøn tærskelværdi
@@ -48,6 +49,11 @@ function calculateTotalDetail() {
   return shoppingBasketData.reduce((total, item) => total + Number(item.detail || 0), 0);
 }
 
+// Function for calculation of ILUC
+function calculateTotalILUC() {
+  return shoppingBasketData.reduce((total, item) => total + Number(item.ILUC || 0), 0);
+}
+
 // Main function to calculate CO2 and log the results
 function calculateCO2() {
   const totalLandbrug = calculateTotalLandbrug();
@@ -55,18 +61,19 @@ function calculateCO2() {
   const totalEmballage = calculateTotalEmballage();
   const totalTransport = calculateTotalTransport();
   const totalDetail = calculateTotalDetail();
+  const totalILUC = calculateTotalILUC();
   const totalCO2 = calculateTotalCO2();
 
   // Calculate percentages of total CO2
 
   // Array of totals
-  const totals = [totalLandbrug, totalForarbejdning, totalEmballage, totalTransport, totalDetail];
+  const totals = [totalLandbrug, totalForarbejdning, totalEmballage, totalTransport, totalDetail, totalILUC];
 
   // Calculate total of non-zero values
   const totalOfNonZero = totals.reduce((sum, total) => sum + total, 0);
 
   // Calculate percentages in a single step
-  const percentages = totals.map((total) => {
+  percentages = totals.map((total) => {
     if (totalOfNonZero !== 0) {
       return ((total / totalOfNonZero) * 100).toFixed(2);
     } else {
@@ -76,7 +83,8 @@ function calculateCO2() {
   });
 
   // Destructure the percentages array
-  const [percentLandbrug, percentForarbejdning, percentEmballage, percentTransport, percentDetail] = percentages;
+  const [percentLandbrug, percentForarbejdning, percentEmballage, percentTransport, percentDetail, percentILUC] =
+    percentages;
 
   // Sum of all percentages
   const totalPercentage = percentages.reduce((sum, percent) => sum + parseFloat(percent), 0).toFixed(2);
@@ -86,6 +94,7 @@ function calculateCO2() {
   const roundedTotalEmballage = totalEmballage.toFixed(2);
   const roundedTotalTransport = totalTransport.toFixed(2);
   const roundedTotalDetail = totalDetail.toFixed(2);
+  const roundedTotalILUC = totalILUC.toFixed(2);
   const roundedTotalCO2 = totalCO2.toFixed(2);
 
   // Log the results
@@ -95,8 +104,53 @@ function calculateCO2() {
   console.log("Total Emballage:", totalEmballage, "(Emballage Procent:", percentEmballage + "%)");
   console.log("Total Transport:", totalTransport, "(Transport Procent:", percentTransport + "%)");
   console.log("Total Detail:", totalDetail, "(Detail Procent:", percentDetail + "%)");
+  console.log("Total ILUC:", totalILUC, "(ILUC Procent:", percentILUC + "%)");
   console.log("Total Procent:", totalPercentage + "%");
 }
+
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("calculateBtn");
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function () {
+  modal.style.display = "block";
+
+  const farmingDiv = document.getElementById("farmingPercentage");
+  const farmingPercentage = document.createTextNode(percentages[0] + "%");
+  farmingDiv.appendChild(farmingPercentage);
+
+  const processingDiv = document.getElementById("processingPercentage");
+  const processingPercentage = document.createTextNode(percentages[1] + "%");
+  processingDiv.appendChild(processingPercentage);
+
+  const packagingDiv = document.getElementById("packagingPercentage");
+  const packagingPercentage = document.createTextNode(percentages[2] + "%");
+  packagingDiv.appendChild(packagingPercentage);
+
+  const transportDiv = document.getElementById("transportPercentage");
+  const transportPercentage = document.createTextNode(percentages[3] + "%");
+  transportDiv.appendChild(transportPercentage);
+
+  const detailDiv = document.getElementById("detailPercentage");
+  const detailPercentage = document.createTextNode(percentages[4] + "%");
+  detailDiv.appendChild(detailPercentage);
+
+  const ILUCDiv = document.getElementById("ILUCPercentage");
+  const ILUCPercentage = document.createTextNode(percentages[5] + "%");
+  ILUCDiv.appendChild(ILUCPercentage);
+};
+
+// When the user clicks on  (x), close the modal
+span.onclick = function () {
+  modal.style.display = "none";
+};
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
 
 // Bestem farven baseret på det beregnede CO2-udslip
 let color;
@@ -124,20 +178,20 @@ function updateColorSpectrum() {
 // Hent knappen og tilføj en event listener til klik
 document.getElementById("calculateGrid").addEventListener("click", updateColorSpectrum);
 
-function calculateCO2() {
-  // Simpel beregning
-  let greenThreshold = 0;
-  let yellowThreshold = 500;
-  let redThreshold = 1000;
+// function calculateCO2() {
+//   // Simpel beregning
+//   let greenThreshold = 0;
+//   let yellowThreshold = 500;
+//   let redThreshold = 1000;
 
-  // Vis farvespektrum
-  let colorSpectrum = document.getElementById("colorSpectrum");
-  colorSpectrum.style.display = "block";
+//   // Vis farvespektrum
+//   let colorSpectrum = document.getElementById("colorSpectrum");
+//   colorSpectrum.style.display = "block";
 
-  // Vis tallene
-  let colorValues = document.getElementById("colorValues");
-  c.appendChild(innerCircle);
-}
+//   // Vis tallene
+//   let colorValues = document.getElementById("colorValues");
+//   c.appendChild(innerCircle);
+// }
 
 /*
 // Opdater farven på den ydre cirkel
@@ -160,22 +214,3 @@ function changeouterCircleColor(color) {
   document.querySelector(".outerCircle").style.backgroundColor = color;
 }
 */
-
-var modal = document.getElementById("myModal");
-var btn = document.getElementById("calculateBtn");
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal
-btn.onclick = function () {
-  modal.style.display = "block";
-};
-// When the user clicks on  (x), close the modal
-span.onclick = function () {
-  modal.style.display = "none";
-};
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
