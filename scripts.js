@@ -178,6 +178,22 @@ function updateColorSpectrum() {
 // Hent knappen og tilføj en event listener til klik
 document.getElementById("calculateGrid").addEventListener("click", updateColorSpectrum);
 
+ product_circles
+function calculateCO2() {
+  // Simpel beregning
+  let greenThreshold = 0;
+  let yellowThreshold = 500;
+  let redThreshold = 1000;
+
+  // Vis farvespektrum
+  let colorSpectrum = document.getElementById("colorSpectrum");
+  colorSpectrum.style.display = "block";
+
+  // Vis tallene
+  let colorValues = document.getElementById("colorValues");
+  //c.appendChild(innerCircle);
+}
+
 // function calculateCO2() {
 //   // Simpel beregning
 //   let greenThreshold = 0;
