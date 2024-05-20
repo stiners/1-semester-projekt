@@ -136,7 +136,7 @@ function calculateCO2() {
 
   // Vis tallene
   let colorValues = document.getElementById("colorValues");
-  c.appendChild(innerCircle);
+  //c.appendChild(innerCircle);
 }
 
 /*
