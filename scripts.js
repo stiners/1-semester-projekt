@@ -97,15 +97,7 @@ function calculateCO2() {
   const roundedTotalILUC = totalILUC.toFixed(2);
   const roundedTotalCO2 = totalCO2.toFixed(2);
 
-  // Log the results
-  console.log("Total CO2:", totalCO2);
-  console.log("Total Landbrug:", totalLandbrug, "(Landbrug Procent:", percentLandbrug + "%)");
-  console.log("Total Forarbejdning:", totalForarbejdning, "(Forarbejdning Procent:", percentForarbejdning + "%)");
-  console.log("Total Emballage:", totalEmballage, "(Emballage Procent:", percentEmballage + "%)");
-  console.log("Total Transport:", totalTransport, "(Transport Procent:", percentTransport + "%)");
-  console.log("Total Detail:", totalDetail, "(Detail Procent:", percentDetail + "%)");
-  console.log("Total ILUC:", totalILUC, "(ILUC Procent:", percentILUC + "%)");
-  console.log("Total Procent:", totalPercentage + "%");
+  
 }
 
 var modal = document.getElementById("myModal");
@@ -144,13 +136,35 @@ btn.onclick = function () {
 // When the user clicks on  (x), close the modal
 span.onclick = function () {
   modal.style.display = "none";
+  document.getElementById('foodListGrid').innerHTML = '';
+  clearPercentageDivs();
+  percentages.length = [];
+
+
 };
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
+    document.getElementById('foodListGrid').innerHTML = '';
+    clearPercentageDivs();
+    percentages.length = [];
+
   }
 };
+
+// Function to clear percentage divs
+function clearPercentageDivs() {
+  const divs = ["farmingPercentage", "processingPercentage", "packagingPercentage", "transportPercentage", "detailPercentage", "ILUCPercentage"];
+  
+  divs.forEach(divId => {
+    const div = document.getElementById(divId);
+    if (div.childNodes.length > 1) {
+      div.removeChild(div.lastChild); // Remove the text node
+    }
+  });
+}
+
 
 // Bestem farven baseret på det beregnede CO2-udslip
 let color;
