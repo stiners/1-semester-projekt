@@ -88,8 +88,7 @@ function calculateCO2() {
 
   // Sum of all percentages
   const totalPercentage = percentages.reduce((sum, percent) => sum + parseFloat(percent), 0).toFixed(2);
-  // Round the totals to 2 decimal places for logging
-  
+ 
 
   
 }
