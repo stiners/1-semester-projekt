@@ -39,7 +39,9 @@ const circles = svg
   .attr("cx", (d) => d.cx)
   .attr("cy", (d) => d.cy)
   .attr("r", (d) => d.radius)
-  .attr("fill", "yellow")
+  .attr("fill", "#E1ECC8")
+  .attr("stroke", "#475646")
+  .attr("stroke-width", 1)
   .attr("data-category", (d) => d.category)
   .attr("data-expanded", false)
   .classed("circleClass", true);
@@ -163,7 +165,8 @@ function emptyBasket() {
 // Function to remove food item circles
 function removeFoodItemCircles(category) {
   const sanitizedCategory = sanitizeCategoryName(category);
-  svg.selectAll(`.foodItemCircle-${sanitizedCategory}`)
+  svg
+    .selectAll(`.foodItemCircle-${sanitizedCategory}`)
     .transition()
     .duration(500)
     .attr("r", 0)
