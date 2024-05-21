@@ -75,10 +75,10 @@ function calculateCO2() {
   // Calculate percentages in a single step
   percentages = totals.map((total) => {
     if (totalOfNonZero !== 0) {
-      return ((total / totalOfNonZero) * 100).toFixed(2);
+      return Math.round((total / totalOfNonZero) * 100);
     } else {
       // If all input values are zero, distribute percentages equally
-      return (100 / totals.length).toFixed(2);
+      return Math.round(100 / totals.length);
     }
   });
 
@@ -89,13 +89,7 @@ function calculateCO2() {
   // Sum of all percentages
   const totalPercentage = percentages.reduce((sum, percent) => sum + parseFloat(percent), 0).toFixed(2);
   // Round the totals to 2 decimal places for logging
-  const roundedTotalLandbrug = totalLandbrug.toFixed(2);
-  const roundedTotalForarbejdning = totalForarbejdning.toFixed(2);
-  const roundedTotalEmballage = totalEmballage.toFixed(2);
-  const roundedTotalTransport = totalTransport.toFixed(2);
-  const roundedTotalDetail = totalDetail.toFixed(2);
-  const roundedTotalILUC = totalILUC.toFixed(2);
-  const roundedTotalCO2 = totalCO2.toFixed(2);
+  
 
   
 }
