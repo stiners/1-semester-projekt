@@ -4,22 +4,22 @@ let mainData;
 let shoppingBasketData = [];
 
 const circleData = [
-  { radius: 120, cx: 720, cy: 450, category: "Grøntsager og grøntsagsprodukter" },
-  { radius: 90, cx: 450, cy: 250, category: "Kød og fjerkræ" },
-  { radius: 38, cx: 1280, cy: 750, category: "Vin. øl og spiritus" },
-  { radius: 45, cx: 1250, cy: 180, category: "Brød og bageartikler" },
-  { radius: 55, cx: 750, cy: 100, category: "Korn og kornprodukter" },
-  { radius: 65, cx: 400, cy: 600, category: "Færdigretter" },
-  { radius: 20, cx: 120, cy: 600, category: "Svampe og svampeprodukter" },
-  { radius: 20, cx: 1000, cy: 100, category: "Nødder og frø" },
-  { radius: 25, cx: 250, cy: 100, category: "Slik og sukkervarer" },
-  { radius: 70, cx: 1000, cy: 300, category: "Frugt og frugtprodukter" },
-  { radius: 55, cx: 650, cy: 750, category: "Planteprodukter og -drikke" },
-  { radius: 80, cx: 1000, cy: 650, category: "Fisk og skaldyr" },
-  { radius: 53, cx: 1250, cy: 450, category: "Smagsgivere og krydderier" },
-  { radius: 50, cx: 250, cy: 440, category: "Mælk. mejeriprodukter og æg" },
-  { radius: 30, cx: 150, cy: 250, category: "Bælgfrugter og bælgfrugtprodukter" },
-  { radius: 40, cx: 200, cy: 750, category: "Drikkevarer" },
+  { radius: 30, cx: 100, cy: 100, category: "Grøntsager og grøntsagsprodukter" },
+  { radius: 40, cx: 100, cy: 200, category: "Kød og fjerkræ" },
+  { radius: 50, cx: 100, cy: 300, category: "Vin. øl og spiritus" },
+  { radius: 60, cx: 100, cy: 400, category: "Brød og bageartikler" },
+  { radius: 30, cx: 100, cy: 500, category: "Korn og kornprodukter" },
+  { radius: 30, cx: 100, cy: 600, category: "Færdigretter" },
+  { radius: 20, cx: 100, cy: 650, category: "Svampe og svampeprodukter" },
+  { radius: 20, cx: 500, cy: 100, category: "Nødder og frø" },
+  { radius: 20, cx: 500, cy: 200, category: "Slik og sukkervarer" },
+  { radius: 20, cx: 500, cy: 300, category: "Frugt og frugtprodukter" },
+  { radius: 20, cx: 500, cy: 400, category: "Planteprodukter og -drikke" },
+  { radius: 20, cx: 500, cy: 500, category: "Fisk og skaldyr" },
+  { radius: 20, cx: 500, cy: 600, category: "Smagsgivere og krydderier" },
+  { radius: 20, cx: 500, cy: 650, category: "Mælk. mejeriprodukter og æg" },
+  { radius: 20, cx: 800, cy: 100, category: "Bælgfrugter og bælgfrugtprodukter" },
+  { radius: 20, cx: 800, cy: 200, category: "Drikkevarer" },
 ];
 
 // Function to sanitize category names
@@ -28,9 +28,9 @@ function sanitizeCategoryName(category) {
 }
 
 // Append an SVG element to the selected div
-const svg = myDiv.append("svg").attr("width", 1500).attr("height", 900);
+const svg = myDiv.append("svg").attr("width", 1200).attr("height", 700);
 
-// Append circles to the SVG element for categories
+// Append circles to the SVG element
 const circles = svg
   .selectAll("circle")
   .data(circleData)
@@ -39,27 +39,13 @@ const circles = svg
   .attr("cx", (d) => d.cx)
   .attr("cy", (d) => d.cy)
   .attr("r", (d) => d.radius)
-  .attr("fill", "#D22B2B")
+  .attr("fill", "yellow")
   .attr("data-category", (d) => d.category)
   .attr("data-expanded", false)
   .classed("circleClass", true);
 
-  svg
-  .selectAll(".circleText")
-  .data(circleData)
-  .enter()
-  .append("text")
-  .attr("x", (d) => d.cx)
-  .attr("y", (d) => d.cy - d.radius - 10) // Adjust positioning above the circle
-  .attr("text-anchor", "middle")
-  .attr("font-size", "16px")
-  .attr("font-family", "Arial, sans-serif") // Set font family
-  .attr("font-weight", "bold") // Set font weight
-  .attr("fill", "#333") // Set text color
-  .text((d) => d.category);
-  // Add titles to circles
+// Add titles to circles
 circles.append("title").text((d) => d.category);
-
 
 // Attach click event listener to circles
 circles.on("click", function (event, d) {
@@ -76,7 +62,7 @@ circles.on("click", function (event, d) {
       .attr("cy", clickedCircle.attr("data-original-cy"))
       .on("end", function () {
         this.parentNode.appendChild(this);
-        removeFoodItemRects(sanitizedCategory);
+        removeFoodItemCircles(sanitizedCategory);
       });
 
     // Reset the expanded attribute
@@ -89,7 +75,7 @@ circles.on("click", function (event, d) {
       .attr("data-original-cy", clickedCircle.attr("cy"))
       .transition()
       .duration(500)
-      .attr("r", 1600)
+      .attr("r", 1200)
       .on("end", function () {
         this.parentNode.appendChild(this);
         handleCategoryClick(clickedCircle, d.category);
@@ -121,83 +107,32 @@ function handleCategoryClick(clickedCircle, category) {
     .then((categoryData) => {
       console.log("Fetched category data:", categoryData);
       mainData = categoryData;
-      createFoodItemRects(category, categoryData);
+      createFoodItemCircles(category, categoryData);
     })
     .catch((error) => {
       console.error("Error fetching category data:", error);
     });
 }
 
-// Function to create food item rectangles
-function createFoodItemRects(category, foodItems) {
+// Function to create food item circles
+function createFoodItemCircles(category, foodItems) {
   const sanitizedCategory = sanitizeCategoryName(category);
-  const rectsPerRow = 6;
-  let currentX = 100;
-  let currentY = 10;
-  const rowHeight = 70;
-  
-  // Find the clicked circle
-  const clickedCircle = d3.select(`circle[data-category="${category}"]`);
-  const circleRadius = +clickedCircle.attr("r");
-  const circleX = +clickedCircle.attr("cx");
-  const circleY = +clickedCircle.attr("cy");
-  
-  // Calculate bounds for positioning the rectangles
-  const minX = circleX - circleRadius + 10; // +10 for padding
-  const maxX = circleX + circleRadius - 10; // -10 for padding
-  const minY = circleY - circleRadius + 10; // +10 for padding
-  const maxY = circleY + circleRadius - 10; // -10 for padding
-  
-  const foodItemRects = svg
-    .selectAll(`.foodItemRect-${sanitizedCategory}`)
+  const circlesPerRow = 10;
+
+  const foodItemCircles = svg
+    .selectAll(`.foodItemCircle-${sanitizedCategory}`)
     .data(foodItems, (d) => d.produkt)
     .enter()
-    .append("g")
-    .classed(`foodItemGroup-${sanitizedCategory}`, true)
-    .each(function (d, i) {
-      const group = d3.select(this);
-      const textLength = d.produkt.length * 7;
-      const rectWidth = Math.max(60, textLength);
-      
-      if (i % rectsPerRow === 0 && i !== 0) {
-        currentX = 100;
-        currentY += rowHeight;
-      }
-      
-      // Calculate position within bounds
-      const rectX = Math.min(Math.max(currentX, minX), maxX - rectWidth);
-      const rectY = Math.min(Math.max(currentY, minY), maxY - 60); // 60 is the rect height
-      
-      group
-        .append("rect")
-        .attr("x", rectX)
-        .attr("y", rectY)
-        .attr("width", rectWidth)
-        .attr("height", 60)
-        .attr("fill", "purple")
-        .attr("stroke", "black")
-        .attr("stroke-width", 2)
-        .attr("rx", 10)
-        .attr("ry", 10)
-        .attr("opacity", 0.8)
-        .attr("data-product", d.produkt)
-        .attr("data-category", sanitizedCategory)
-        .classed(`foodItemRect-${sanitizedCategory}`, true);
+    .append("circle")
+    .attr("cx", (d, i) => 100 + (i % circlesPerRow) * 70)
+    .attr("cy", (d, i) => 100 + Math.floor(i / circlesPerRow) * 70)
+    .attr("r", 30)
+    .attr("fill", "purple")
+    .attr("data-product", (d) => d.produkt)
+    .attr("data-category", sanitizedCategory)
+    .classed(`foodItemCircle-${sanitizedCategory}`, true);
 
-      group
-        .append("text")
-        .attr("x", rectX + 10)
-        .attr("y", rectY + 35)
-        .attr("font-size", "12px")
-        .attr("fill", "white")
-        .text(d.produkt)
-        .classed(`foodItemText-${sanitizedCategory}`, true);
-
-      currentX = rectX + rectWidth + 10; // Adjust spacing between rectangles
-    });
-
-  // Add click event listeners to the groups
-  foodItemRects.on("click", function (event, d) {
+  foodItemCircles.on("click", function (event, d) {
     addToShoppingBasket(d);
   });
 }
@@ -216,13 +151,6 @@ function addToShoppingBasket(foodItem) {
   foodListGrid.appendChild(foodItemDiv);
 }
 
-
-// Select the "Tøm kurv" button
-const emptyBasketBtn = document.getElementById("emptyBaskBtn");
-
-// Attach click event listener to the button
-emptyBasketBtn.addEventListener("click", emptyBasket);
-
 // Function to empty the shopping basket
 function emptyBasket() {
   const shopBasket = document.getElementById("foodListGrid");
@@ -232,14 +160,19 @@ function emptyBasket() {
   shoppingBasketData = [];
 }
 
-// Function to remove food item rectangles and text
-function removeFoodItemRects(category) {
+// Function to remove food item circles
+function removeFoodItemCircles(category) {
   const sanitizedCategory = sanitizeCategoryName(category);
-  svg.selectAll(`.foodItemGroup-${sanitizedCategory}`)
+  svg.selectAll(`.foodItemCircle-${sanitizedCategory}`)
     .transition()
     .duration(500)
-    .attr("opacity", 0)
+    .attr("r", 0)
     .on("end", function () {
       d3.select(this).remove();
     });
 }
+
+// Attach event listener to the empty basket button when the DOM is loaded
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("emptyBaskBtn").addEventListener("click", emptyBasket);
+});
