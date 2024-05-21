@@ -35,6 +35,7 @@
         <button type="button" id="calculateBtn">Beregn</button>
       </div>
 
+      <!-- Modal for CO2 Calculation -->
       <div id="myModal" class="modal">
         <div class="modal-content">
           <span class="close">&times;</span>
@@ -50,20 +51,20 @@
           <div class="percentageVisualization" id="detailPercentage"><i class="fa-solid fa-shop icon-space"></i></div>
           <div class="percentageVisualization" id="ILUCPercentage"><i class="fa-solid fa-tree icon-space"></i></div>
 
-            <div id="circlesGrid">
-              <!-- Cirkel til CO2-udledning -->
-              <div id="CO2Circle">
-                <svg width="200" height="200">
-                  <circle cx="100" cy="100" r="90" stroke="black" stroke-width="10" fill="white" />
-                  <text x="100" y="110" text-anchor="middle" font-size="24px" fill="black">0</text>
-                </svg>
-              </div>
+          <div id="circlesGrid">
+            <!-- Circle for CO2 emission -->
+            <div id="CO2Circle">
+              <svg width="200" height="200">
+                <circle cx="100" cy="100" r="90" stroke="black" stroke-width="10" fill="white" />
+                <text x="100" y="110" text-anchor="middle" font-size="24px" fill="black">0</text>
+              </svg>
             </div>
+          </div>
           
-          <!-- Farvespektrum -->
+          <!-- Color spectrum -->
           <div id="colorSpectrum" style="width: 300px; height: 20px; margin-top: 20px; display: none"></div>
 
-          <!-- Tallene -->
+          <!-- Numbers -->
           <div id="colorValues" style="text-align: center; margin-top: 40px; display: none">
             <span style="margin-left: -600px; color: rgb(48, 18, 216)">1000</span>
             <span style="margin-left: -270px; color: rgb(48, 18, 216)">500</span>
@@ -71,7 +72,18 @@
           </div>
         </div>
       </div>
-    </div>
+
+      <!-- Modal for Category -->
+      <div id="categoryModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+      
+          <!-- Add your content for the category modal here -->
+          <h2>Category Modal</h2>
+          <p>This is the content of the category modal.</p>
+          <div id="productRect"></div> <!-- Ensure this div exists for appending SVG -->
+        </div>
+      </div>
 
     <script src="scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
