@@ -187,8 +187,6 @@ sub {
   align-items: center;
 }
 
-
-
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -279,10 +277,9 @@ sub {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top:-250px;
+  margin-top: -250px;
   padding: 0 20px; /* Tilføj polstring til at adskille tallene */
   display: inline-block; /* Gør elementerne til blok-elementer, så margin-left virker */
-
 }
 
 .color-value {
@@ -290,7 +287,6 @@ sub {
   margin-left: 200px; /* Justér afstanden mellem tallene */
   font-weight: bold; /* Gør tallene tykkere */
   font-size: larger; /* Gør tallene større */
-
 }
 .color-value {
   font-weight: bold;
@@ -306,4 +302,20 @@ sub {
 .percentage-span {
   float: right;
 }
+<<<<<<< HEAD
+=======
+
+#CO2Circle {
+  width: 500px;
+  height: 500px;
+  background-color: green; /* Example color, change as needed */
+  border-radius: 50%; /* Makes the div a circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black; /* Text color inside the circle */
+  font-size: 80px; /* Example font size, change as needed */
+  font-family: Arial, sans-serif; /* Example font family, change as needed */
+}
+>>>>>>> 5d73b714b85d2f7a86f541fecbc977146d473146
 
