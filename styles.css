@@ -26,6 +26,7 @@ html {
   overflow: hidden;
   border-radius: 10px;
   border: #e1ecc8 2px solid;
+  place-content: center;
 }
 
 .shoppingBasket {
