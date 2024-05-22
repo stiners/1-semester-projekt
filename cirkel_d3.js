@@ -3,23 +3,23 @@ const myDiv = d3.select("#circlesGrid");
 let mainData;
 let shoppingBasketData = [];
 
-const circleData = [
-  { radius: 30, cx: 100, cy: 100, category: "Grøntsager og grøntsagsprodukter" },
-  { radius: 40, cx: 100, cy: 200, category: "Kød og fjerkræ" },
-  { radius: 50, cx: 100, cy: 300, category: "Vin. øl og spiritus" },
-  { radius: 60, cx: 100, cy: 400, category: "Brød og bageartikler" },
-  { radius: 30, cx: 100, cy: 500, category: "Korn og kornprodukter" },
-  { radius: 30, cx: 100, cy: 600, category: "Færdigretter" },
-  { radius: 20, cx: 100, cy: 650, category: "Svampe og svampeprodukter" },
-  { radius: 20, cx: 500, cy: 100, category: "Nødder og frø" },
-  { radius: 20, cx: 500, cy: 200, category: "Slik og sukkervarer" },
-  { radius: 20, cx: 500, cy: 300, category: "Frugt og frugtprodukter" },
-  { radius: 20, cx: 500, cy: 400, category: "Planteprodukter og -drikke" },
-  { radius: 20, cx: 500, cy: 500, category: "Fisk og skaldyr" },
-  { radius: 20, cx: 500, cy: 600, category: "Smagsgivere og krydderier" },
-  { radius: 20, cx: 500, cy: 650, category: "Mælk. mejeriprodukter og æg" },
-  { radius: 20, cx: 800, cy: 100, category: "Bælgfrugter og bælgfrugtprodukter" },
-  { radius: 20, cx: 800, cy: 200, category: "Drikkevarer" },
+const rectData = [
+  { width: 40, height: 40, category: "Grøntsager og grøntsagsprodukter" },
+  { width: 40, height: 40, category: "Kød og fjerkræ" },
+  { width: 40, height: 40, category: "Vin. øl og spiritus" },
+  { width: 40, height: 40, category: "Brød og bageartikler" },
+  { width: 40, height: 40, category: "Korn og kornprodukter" },
+  { width: 40, height: 40, category: "Færdigretter" },
+  { width: 40, height: 40, category: "Svampe og svampeprodukter" },
+  { width: 40, height: 40, category: "Nødder og frø" },
+  { width: 40, height: 40, category: "Slik og sukkervarer" },
+  { width: 40, height: 40, category: "Frugt og frugtprodukter" },
+  { width: 40, height: 40, category: "Planteprodukter og -drikke" },
+  { width: 40, height: 40, category: "Fisk og skaldyr" },
+  { width: 40, height: 40, category: "Smagsgivere og krydderier" },
+  { width: 40, height: 40, category: "Mælk. mejeriprodukter og æg" },
+  { width: 40, height: 40, category: "Bælgfrugter og bælgfrugtprodukter" },
+  { width: 40, height: 40, category: "Drikkevarer" },
 ];
 
 // Function to sanitize category names
@@ -28,77 +28,51 @@ function sanitizeCategoryName(category) {
 }
 
 // Append an SVG element to the selected div
-const svg = myDiv.append("svg").attr("width", 1200).attr("height", 700);
+const svg = myDiv.append("svg").attr("width", 1500).attr("height", 900);
 
-// Append circles to the SVG element
-const circles = svg
-  .selectAll("circle")
-  .data(circleData)
+// Position rectangles in a grid with 4 rows
+const cols = 4;
+const spacing = 50;
+const rects = svg
+  .selectAll("rect")
+  .data(rectData)
   .enter()
-  .append("circle")
-  .attr("cx", (d) => d.cx)
-  .attr("cy", (d) => d.cy)
-  .attr("r", (d) => d.radius)
+  .append("rect")
+  .attr("x", (d, i) => (i % cols) * (200 + spacing) + 100)
+  .attr("y", (d, i) => Math.floor(i / cols) * (150 + spacing) + 50)
+  .attr("width", (d) => d.width)
+  .attr("height", (d) => d.height)
   .attr("fill", "#E1ECC8")
   .attr("stroke", "#475646")
   .attr("stroke-width", 1)
   .attr("data-category", (d) => d.category)
-  .attr("data-expanded", false)
-  .classed("circleClass", true);
+  .classed("rectClass", true);
 
-// Add titles to circles
-circles.append("title").text((d) => d.category);
+svg
+  .selectAll(".rectText")
+  .data(rectData)
+  .enter()
+  .append("text")
+  .attr("x", (d, i) => (i % cols) * (200 + spacing) + 100 + d.width / 2)
+  .attr(
+    "y",
+    (d, i) => Math.floor(i / cols) * (150 + spacing) + 50 + d.height / 2
+  )
+  .attr("text-anchor", "middle")
+  .attr("font-size", "16px")
+  .attr("font-family", "Arial, sans-serif")
+  .attr("font-weight", "bold")
+  .attr("fill", "#333")
+  .text((d) => d.category);
 
-// Attach click event listener to circles
-circles.on("click", function (event, d) {
-  const clickedCircle = d3.select(this);
+// Attach click event listener to rectangles
+rects.on("click", function (event, d) {
   const sanitizedCategory = sanitizeCategoryName(d.category);
-
-  if (clickedCircle.attr("data-expanded") === "true") {
-    // Transition the circle back to its original size and position
-    clickedCircle
-      .transition()
-      .duration(500)
-      .attr("r", clickedCircle.attr("data-original-r"))
-      .attr("cx", clickedCircle.attr("data-original-cx"))
-      .attr("cy", clickedCircle.attr("data-original-cy"))
-      .on("end", function () {
-        this.parentNode.appendChild(this);
-        removeFoodItemCircles(sanitizedCategory);
-      });
-
-    // Reset the expanded attribute
-    clickedCircle.attr("data-expanded", "false");
-  } else {
-    // Transition the circle to a larger size and store its original size and position
-    clickedCircle
-      .attr("data-original-r", clickedCircle.attr("r"))
-      .attr("data-original-cx", clickedCircle.attr("cx"))
-      .attr("data-original-cy", clickedCircle.attr("cy"))
-      .transition()
-      .duration(500)
-      .attr("r", 1200)
-      .on("end", function () {
-        this.parentNode.appendChild(this);
-        handleCategoryClick(clickedCircle, d.category);
-      });
-
-    // Set the expanded attribute
-    clickedCircle.attr("data-expanded", "true");
-  }
+  handleCategoryClick(d.category);
 });
 
-// Attach hover event listeners to circles
-circles
-  .on("mouseenter", function () {
-    d3.select(this).classed("hovered", true);
-  })
-  .on("mouseleave", function () {
-    d3.select(this).classed("hovered", false);
-  });
-
-// Function to handle category circle click
-function handleCategoryClick(clickedCircle, category) {
+// Function to handle category rectangle click
+function handleCategoryClick(category) {
   fetch(`http://localhost:4000/category/${category}`)
     .then((response) => {
       if (!response.ok) {
@@ -109,40 +83,93 @@ function handleCategoryClick(clickedCircle, category) {
     .then((categoryData) => {
       console.log("Fetched category data:", categoryData);
       mainData = categoryData;
-      createFoodItemCircles(category, categoryData);
+      showPopup(category, categoryData);
     })
     .catch((error) => {
       console.error("Error fetching category data:", error);
     });
 }
 
-// Function to create food item circles
-function createFoodItemCircles(category, foodItems) {
-  const sanitizedCategory = sanitizeCategoryName(category);
-  const circlesPerRow = 10;
+function showPopup(category, foodItems) {
+  // We sort alphabetically
+  foodItems.sort((a, b) => {
+    const productA = a.produkt.toLowerCase();
+    const productB = b.produkt.toLowerCase();
 
-  const foodItemCircles = svg
-    .selectAll(`.foodItemCircle-${sanitizedCategory}`)
-    .data(foodItems, (d) => d.produkt)
+    if (productA < productB) {
+      return -1;
+    }
+    if (productA > productB) {
+      return 1;
+    }
+    return 0;
+  });
+  
+  const popup = d3
+    .select("body")
+
+    .append("div")
+    .attr("class", "popup")
+    .style("position", "fixed")
+    .style("left", "40%")
+    .style("top", "50%")
+    .style("transform", "translate(-50%, -50%)")
+    .style("background", "white")
+    .style("padding", "20px")
+    .style("width", "65vw")
+    .style("border", "1px solid black")
+    .style("box-shadow", "0 0 10px rgba(0,0,0,0.5)")
+    .style("display", "flex")
+    .style("flex-direction", "column");
+
+  popup.append("h2").text(category);
+  const foodItemContainer = popup
+    .append("div")
+    .style("display", "flex")
+    .style("flex-wrap", "wrap");
+
+  foodItemContainer
+    .selectAll(".foodItem")
+    .data(foodItems)
     .enter()
-    .append("circle")
-    .attr("cx", (d, i) => 100 + (i % circlesPerRow) * 70)
-    .attr("cy", (d, i) => 100 + Math.floor(i / circlesPerRow) * 70)
-    .attr("r", 30)
-    .attr("fill", "purple")
-    .attr("data-product", (d) => d.produkt)
-    .attr("data-category", sanitizedCategory)
-    .classed(`foodItemCircle-${sanitizedCategory}`, true);
+    .append("div")
+    .attr("class", "foodItem")
+    .style("margin", "5px 0")
+    .style("width", "12%")
+    .style("padding", "10px")
+    .style("border-top", "2px solid black")
+    .style("cursor", "pointer")
+    .text((d) => d.produkt)
+    .on("click", function (event, d) {
+      addToShoppingBasket(d);
+    })
 
-  foodItemCircles.on("click", function (event, d) {
-    addToShoppingBasket(d);
+    .on("mouseover", function () {
+      d3.select(this)
+        .style("background-color", "lightgrey")
+        .style("color", "red") // Change text color to black on hover
+        .style("border-radius", "10px");
+    })
+    .on("mouseout", function () {
+      d3.select(this)
+        .style("background-color", "white") // Revert to original background color
+        .style("color", "black") // Revert to original text color
+        .style("border-radius", "0"); // Revert to original border radius
+    });
+
+  // Close popup when clicking outside
+  d3.select(document).on("click.popup", function (event) {
+    const isClickedOutside = !popup.node().contains(event.target);
+    if (isClickedOutside) {
+      popup.remove();
+      d3.select(document).on("click.popup", null); // Remove the click event listener
+    }
   });
 }
 
 // Function to add item to the shopping basket
 function addToShoppingBasket(foodItem) {
   shoppingBasketData.push(foodItem);
-
   console.log("Shopping basket data:", shoppingBasketData);
 
   const foodListGrid = document.getElementById("foodListGrid");
@@ -153,6 +180,12 @@ function addToShoppingBasket(foodItem) {
   foodListGrid.appendChild(foodItemDiv);
 }
 
+// Select the "Tøm kurv" button
+const emptyBasketBtn = document.getElementById("emptyBaskBtn");
+
+// Attach click event listener to the button
+emptyBasketBtn.addEventListener("click", emptyBasket);
+
 // Function to empty the shopping basket
 function emptyBasket() {
   const shopBasket = document.getElementById("foodListGrid");
@@ -162,20 +195,15 @@ function emptyBasket() {
   shoppingBasketData = [];
 }
 
-// Function to remove food item circles
-function removeFoodItemCircles(category) {
+// Function to remove food item rectangles and text
+function removeFoodItemRects(category) {
   const sanitizedCategory = sanitizeCategoryName(category);
   svg
-    .selectAll(`.foodItemCircle-${sanitizedCategory}`)
+    .selectAll(`.foodItemGroup-${sanitizedCategory}`)
     .transition()
     .duration(500)
-    .attr("r", 0)
+    .attr("opacity", 0)
     .on("end", function () {
       d3.select(this).remove();
     });
 }
-
-// Attach event listener to the empty basket button when the DOM is loaded
-document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("emptyBaskBtn").addEventListener("click", emptyBasket);
-});

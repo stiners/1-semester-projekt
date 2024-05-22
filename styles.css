@@ -275,6 +275,10 @@ sub {
   background: linear-gradient(to right, hsl(0, 100%, 50%) 0%, yellow 50%, green 100%);
   border-radius: 10px;
 }
+<<<<<<< HEAD
+
+
+=======
 #colorSpectrumContainer {
   display: flex;
   justify-content: space-between;
@@ -306,4 +310,5 @@ sub {
 .percentage-span {
   float: right;
 }
+>>>>>>> main
 
