@@ -34,46 +34,32 @@
       <div class="shoppingBasket" id="calculateGrid">
         <button type="button" id="calculateBtn">BEREGN</button>
       </div>
+    </div>
 
-      <!-- Modal for CO2 Calculation -->
-      <div id="myModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="percentageVisualization farmingGrid" id="farmingPercentage">
+          <i class="fa fa-tractor icon-space farmingGrid"></i>
+        </div>
+        <div class="percentageVisualization" id="transportPercentage">
+          <i class="fa-solid fa-truck icon-space"></i>
+        </div>
+        <div class="percentageVisualization" id="packagingPercentage"><i class="fa-solid fa-box icon-space"></i></div>
+        <div class="percentageVisualization" id="processingPercentage">
+          <i class="fa-solid fa-gears icon-space"></i>
+        </div>
+        <div class="percentageVisualization" id="detailPercentage"><i class="fa-solid fa-shop icon-space"></i></div>
+        <div class="percentageVisualization" id="ILUCPercentage"><i class="fa-solid fa-tree icon-space"></i></div>
+      </div>
 
-          <div class="percentageVisualization" id="farmingPercentage"><i class="fa fa-tractor icon-space"></i></div>
-          <div class="percentageVisualization" id="transportPercentage">
-            <i class="fa-solid fa-truck icon-space"></i>
-          </div>
-          <div class="percentageVisualization" id="packagingPercentage"><i class="fa-solid fa-box icon-space"></i></div>
-          <div class="percentageVisualization" id="processingPercentage">
-            <i class="fa-solid fa-gears icon-space"></i>
-          </div>
-          <div class="percentageVisualization" id="detailPercentage"><i class="fa-solid fa-shop icon-space"></i></div>
-          <div class="percentageVisualization" id="ILUCPercentage"><i class="fa-solid fa-tree icon-space"></i></div>
-
-          <div>
-            <!-- Cirkel til CO2-udledning -->
-            <div id="CO2Circle">
-              <svg width="200" height="200">
-                <circle cx="100" cy="100" r="90" stroke="black" stroke-width="10" fill="white" />
-                <text x="100" y="110" text-anchor="middle" font-size="24px" fill="black">0</text>
-              </svg>
-            </div>
-          </div>
-
-          <!-- Farvespektrum -->
-          <div id="colorSpectrum" style="width: 300px; height: 20px; margin-top: 20px; display: none"></div>
-
-          <!-- Tallene -->
-          <div id="spectrumContainer">
-            <div id="colorSpectrum"></div>
-            <div id="colorValues">
-              <div id="colorSpectrumContainer">
-              <span style="margin-left: 0; color: black">0</span>
-              <span style="margin-left: 100px; color: black(5, 5, 0)">500</span>
-              <span style="margin-left: 200px; color: black">1000</span>
-            </div>
-          </div>
+      <div class="resultCircleGrid">
+        <div id="CO2Circle"></div>
+        <div id="colorSpectrumContainer">
+          <div id="colorSpectrumNew"></div>
+        </div>
+      </div>
+    </div>
 
     <script src="scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>

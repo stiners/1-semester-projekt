@@ -157,34 +157,9 @@ sub {
   margin-top: 1000px;
 }
 
-.circleClass:hover {
+.rectClass:hover {
   stroke: orange;
   stroke-width: 2px;
-}
-
-/* Tilføjet for at style den ydre cirkel */
-.outerCircle {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background-color: transparent;
-  margin: auto;
-}
-
-/* Tilføjet for at style den indre cirkel */
-.innerCircle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background-color: #c4d7b2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /* The Modal (background) */
@@ -203,6 +178,8 @@ sub {
 }
 /* Modal Content */
 .modal-content {
+  display: grid;
+  grid-template: repeat(8, 1fr) / repeat(12, 1fr);
   position: relative;
   background-color: #f8ffea;
   margin: auto;
@@ -214,7 +191,8 @@ sub {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   animation-name: animatetop;
   animation-duration: 0.4s;
-  padding: 50px;
+  padding: 1%;
+  overflow: hidden;
 }
 /* Add Animation */
 @keyframes animatetop {
@@ -244,54 +222,58 @@ sub {
 }
 
 .percentageVisualization {
+  grid-column: 1/5;
+  grid-row: 1/10;
   font-size: 50px;
   font-weight: bold;
-  text-align: left;
+  /* text-align: left; */
   color: #000;
-  padding: 5px;
+  padding: 1%;
   font-family: "Chivo", sans-serif;
-  font-optical-sizing: auto;
-  margin-right: 10px;
-  margin-left: 60%;
+  /* font-optical-sizing: auto; */
+  /* margin-right: 10px;
+  margin-left: 60%; */
 }
 
 .icon-space {
-  margin-right: 30px;
-}
-#CO2Circle {
-  position: absolute;
-  top: 30%;
-  left: 10%; /* Justér venstre margin efter behov */
-  transform: translateY(-50%);
-}
-#colorSpectrum {
-  position: absolute;
-  width: 300px; /* Juster bredden efter behov */
-  height: 20px;
-  left: 7%; /* Juster venstre placering efter behov */
-  bottom: 400px; /* Placer farvespektrummet under cirklen */
-  background: linear-gradient(to right, hsl(0, 100%, 50%) 0%, yellow 50%, green 100%);
-  border-radius: 10px;
-}
-#colorSpectrumContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: -250px;
-  padding: 0 20px; /* Tilføj polstring til at adskille tallene */
-  display: inline-block; /* Gør elementerne til blok-elementer, så margin-left virker */
+  padding: 0%;
 }
 
-.color-value {
-  text-align: center;
-  margin-left: 200px; /* Justér afstanden mellem tallene */
-  font-weight: bold; /* Gør tallene tykkere */
-  font-size: larger; /* Gør tallene større */
+#farmingPercentage {
+  grid-column: 8/13;
+  grid-row: 2/3;
 }
-.color-value {
-  font-weight: bold;
-  font-size: larger;
+
+.farmingGrid {
+  grid-column: 8/13;
+  grid-row: 2/3;
 }
+
+#transportPercentage {
+  grid-column: 8/18;
+  grid-row: 3/4;
+}
+
+#packagingPercentage {
+  grid-column: 8/13;
+  grid-row: 4/5;
+}
+
+#processingPercentage {
+  grid-column: 8/13;
+  grid-row: 5/6;
+}
+
+#detailPercentage {
+  grid-column: 8/13;
+  grid-row: 6/7;
+}
+
+#ILUCPercentage {
+  grid-column: 8/13;
+  grid-row: 7/8;
+}
+
 .bar {
   height: 20px;
   background-color: #72a76d;
@@ -300,5 +282,26 @@ sub {
 }
 
 .percentage-span {
+  grid-column: 8/13;
   float: right;
 }
+
+/* .resultCircleGrid {
+  grid-column: 1/7;
+  grid-row: 9;
+}
+#CO2Circle {
+  grid-column: 1/7;
+  transform: translateY(-50%);
+}
+#colorSpectrumNew {
+  grid-column: 1/7;
+  grid-row: 1/2;
+  width: 300px;
+  height: 20px;
+  background: linear-gradient(to right, hsl(0, 100%, 50%) 0%, yellow 50%, green 100%);
+}
+
+#colorSpectrumContainer {
+  grid-column: 1/7;
+} */
