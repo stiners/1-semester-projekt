@@ -32,36 +32,46 @@ const svg = myDiv.append("svg").attr("width", 1500).attr("height", 900);
 
 // Position rectangles in a grid with 4 rows
 const cols = 4;
-const spacing = 50;
-const rects = svg
-  .selectAll("rect")
+const spacing = 30;
+const rectWidth = 200;
+const rectHeight = 100;
+const cellWidth = rectWidth + spacing;
+const cellHeight = rectHeight + spacing;
+
+// Append rectangles and text within the same SVG element
+const rectsAndText = svg
+  .selectAll(".rectAndText")
   .data(rectData)
   .enter()
+  .append("g") // Append a group for each data point
+  .attr("class", "rectAndText")
+  .attr(
+    "transform",
+    (d, i) => `translate(${(i % cols) * cellWidth + spacing}, ${Math.floor(i / cols) * cellHeight + spacing})`
+  );
+
+// Append rectangles to each group
+const rects = rectsAndText
   .append("rect")
-  .attr("x", (d, i) => (i % cols) * (200 + spacing) + 100)
-  .attr("y", (d, i) => Math.floor(i / cols) * (150 + spacing) + 50)
-  .attr("width", (d) => d.width)
-  .attr("height", (d) => d.height)
+  .attr("width", rectWidth)
+  .attr("height", rectHeight)
+  .attr("rx", 10)
+  .attr("ry", 10)
   .attr("fill", "#E1ECC8")
   .attr("stroke", "#475646")
   .attr("stroke-width", 1)
   .attr("data-category", (d) => d.category)
   .classed("rectClass", true);
 
-svg
-  .selectAll(".rectText")
-  .data(rectData)
-  .enter()
+// Append text within each group
+rectsAndText
   .append("text")
-  .attr("x", (d, i) => (i % cols) * (200 + spacing) + 100 + d.width / 2)
-  .attr(
-    "y",
-    (d, i) => Math.floor(i / cols) * (150 + spacing) + 50 + d.height / 2
-  )
+  .attr("x", rectWidth / 2)
+  .attr("y", rectHeight / 2)
   .attr("text-anchor", "middle")
+  .attr("dominant-baseline", "middle")
   .attr("font-size", "16px")
-  .attr("font-family", "Arial, sans-serif")
-  .attr("font-weight", "bold")
+  .attr("font-family", "Prompt, sans-serif")
   .attr("fill", "#333")
   .text((d) => d.category);
 
@@ -70,7 +80,6 @@ rects.on("click", function (event, d) {
   const sanitizedCategory = sanitizeCategoryName(d.category);
   handleCategoryClick(d.category);
 });
-
 // Function to handle category rectangle click
 function handleCategoryClick(category) {
   fetch(`http://localhost:4000/category/${category}`)
@@ -104,29 +113,30 @@ function showPopup(category, foodItems) {
     }
     return 0;
   });
-  
-  const popup = d3
-    .select("body")
 
+  const popup = d3
+    .select("#circlesGrid")
     .append("div")
     .attr("class", "popup")
     .style("position", "fixed")
-    .style("left", "40%")
-    .style("top", "50%")
+    .style("left", "38%")
+    .style("top", "55%")
     .style("transform", "translate(-50%, -50%)")
-    .style("background", "white")
+    .style("background", "#F7FFE5")
     .style("padding", "20px")
     .style("width", "65vw")
-    .style("border", "1px solid black")
+    .style("height", "40vw")
+    .style("font-family", "Prompt, sans-serif")
+    .style("color", "#475646")
+    .style("border", "2px solid #475646")
+    .style("border-radius", "10px")
     .style("box-shadow", "0 0 10px rgba(0,0,0,0.5)")
-    .style("display", "flex")
-    .style("flex-direction", "column");
+    .style("overflow-y", "auto");
+  // .style("display", "flex")
+  // .style("flex-direction", "column");
 
   popup.append("h2").text(category);
-  const foodItemContainer = popup
-    .append("div")
-    .style("display", "flex")
-    .style("flex-wrap", "wrap");
+  const foodItemContainer = popup.append("div").style("display", "flex").style("flex-wrap", "wrap");
 
   foodItemContainer
     .selectAll(".foodItem")
@@ -145,15 +155,11 @@ function showPopup(category, foodItems) {
     })
 
     .on("mouseover", function () {
-      d3.select(this)
-        .style("background-color", "lightgrey")
-        .style("color", "red") // Change text color to black on hover
-        .style("border-radius", "10px");
+      d3.select(this).style("color", "#2a332a").style("border-radius", "10px");
     })
     .on("mouseout", function () {
       d3.select(this)
-        .style("background-color", "white") // Revert to original background color
-        .style("color", "black") // Revert to original text color
+        .style("color", "#475646") // Revert to original text color
         .style("border-radius", "0"); // Revert to original border radius
     });
 

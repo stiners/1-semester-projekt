@@ -9,8 +9,6 @@ const percentageDivs = [
   "ILUCPercentage",
 ];
 
-
-
 // Select the button container
 let buttonContainer = document.getElementById("emptyBaskBtnGrid");
 // Create a new button element
@@ -72,7 +70,7 @@ function calculateCO2() {
   const roundedTotalCO2 = totalCO2.toFixed(2);
   const color = determineColor(totalCO2);
   const circleElement = document.getElementById("CO2Circle");
-  circleElement.textContent = `${roundedTotalCO2} co2/kg`; 
+  circleElement.textContent = `${roundedTotalCO2} co2/kg`;
   circleElement.style.backgroundColor = color;
 
   // Calculate percentages of total CO2
@@ -134,6 +132,7 @@ function populatePercentageDivs() {
     if (div) {
       const percentage = document.createElement("span");
       percentage.classList.add("percentage-span");
+      percentage.id = "percentage-span-" + index;
       percentage.textContent = percentages[index] + "%";
       div.appendChild(percentage);
     } else {
@@ -147,8 +146,8 @@ function clearPercentageDivs() {
   percentageDivs.forEach((divId) => {
     const div = document.getElementById(divId);
     if (div.childNodes.length > 1) {
-      div.removeChild(div.lastChild); // Remove the bar
-      div.removeChild(div.lastChild); // Remove the text node
+      div.removeChild(div.lastChild);
+      div.removeChild(div.lastChild);
     }
   });
 }
@@ -162,6 +161,7 @@ function barChart() {
     if (div) {
       const bar = document.createElement("div");
       bar.classList.add("bar");
+      bar.id = "bar-" + index;
 
       // Normalize the percentage
       const normalizedPercentage = (percentages[index] / maxPercentage) * 100;
@@ -176,73 +176,19 @@ function barChart() {
 }
 
 // Definition af CO2-udslipstærskler
-const green_co2 = 10; 
-const yellow_co2 = 20; 
+const green_co2 = 10;
+const yellow_co2 = 20;
 
 function determineColor(totalCO2) {
   // Determine the color based on the thresholds
   let color;
   if (totalCO2 < green_co2) {
-    color = "green";
+    color = "#91C483";
   } else if (totalCO2 < yellow_co2) {
-    color = "yellow";
+    color = "#F7D060";
   } else {
-    color = "red";
+    color = "#FF6D60";
   }
 
   return color;
 }
-
-
-// Funktion til at opdatere farvespektrummet
-function updateColorSpectrum() {
-  const colorSpectrum = document.getElementById("colorSpectrum");
-  colorSpectrum.style.display = "block"; // Vis farvespektrummet
-
-  // Definer grænser for farveskift
-  const grøn_tærskel = 100; // Eksempelværdi, skal ændres efter dine behov
-  const gul_tærskel = 200; // Eksempelværdi, skal ændres efter dine behov
-
-  // Anvend lineær gradient til baggrund
-  colorSpectrum.style.background = `linear-gradient(to right, green ${grøn_tærskel}px, yellow ${gul_tærskel}px, red ${gul_tærskel}px)`;
-}
-
-// Hent knappen og tilføj en event listener til klik
-document.getElementById("calculateGrid").addEventListener("click", updateColorSpectrum);
-
-// function calculateCO2() {
-//   // Simpel beregning
-//   let greenThreshold = 0;
-//   let yellowThreshold = 500;
-//   let redThreshold = 1000;
-
-//   // Vis farvespektrum
-//   let colorSpectrum = document.getElementById("colorSpectrum");
-//   colorSpectrum.style.display = "block";
-
-//   // Vis tallene
-//   let colorValues = document.getElementById("colorValues");
-//   c.appendChild(innerCircle);
-// }
-
-/*
-// Opdater farven på den ydre cirkel
-const outerCircle = document.getElementById("outerCircle");
-outerCircle.style.display = "block"; // Vis cirklen
-outerCircle.style.backgroundColor = color; // Indstil farven på den ydre cirkel
-
-// Tjek om den indre cirkel allerede eksisterer, hvis ikke opret den
-let innerCircle = document.querySelector(".innerCircle");
-if (!innerCircle) {
-  innerCircle = document.createElement("div");
-  innerCircle.classList.add("innerCircle");
-  outerCircle.appendChild(innerCircle);
-}
-
-innerCircle.textContent = sum; // Opdater summen i den indre cirkel
-
-// Funktion til at ændre farven på den indre cirkel
-function changeouterCircleColor(color) {
-  document.querySelector(".outerCircle").style.backgroundColor = color;
-}
-*/

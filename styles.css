@@ -26,6 +26,7 @@ html {
   overflow: hidden;
   border-radius: 10px;
   border: #e1ecc8 2px solid;
+  place-content: center;
 }
 
 .shoppingBasket {
@@ -157,34 +158,9 @@ sub {
   margin-top: 1000px;
 }
 
-.circleClass:hover {
+.rectClass:hover {
   stroke: orange;
   stroke-width: 2px;
-}
-
-/* Tilføjet for at style den ydre cirkel */
-.outerCircle {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background-color: transparent;
-  margin: auto;
-}
-
-/* Tilføjet for at style den indre cirkel */
-.innerCircle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background-color: #c4d7b2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /* The Modal (background) */
@@ -203,8 +179,11 @@ sub {
 }
 /* Modal Content */
 .modal-content {
+  display: grid;
+  grid-template: repeat(16, 1fr) / repeat(12, 1fr);
+  grid-gap: 1em;
   position: relative;
-  background-color: #f8ffea;
+  background-color: #feebe6;
   margin: auto;
   padding: 0;
   border-radius: 25px;
@@ -214,7 +193,8 @@ sub {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   animation-name: animatetop;
   animation-duration: 0.4s;
-  padding: 50px;
+  padding: 1%;
+  overflow: hidden;
 }
 /* Add Animation */
 @keyframes animatetop {
@@ -244,75 +224,148 @@ sub {
 }
 
 .percentageVisualization {
-  font-size: 50px;
-  font-weight: bold;
-  text-align: left;
-  color: #000;
-  padding: 5px;
-  font-family: "Chivo", sans-serif;
-  font-optical-sizing: auto;
-  margin-right: 10px;
-  margin-left: 60%;
+  grid-column: 9/13;
+}
+
+#farmingPercentage {
+  grid-row: 3/5;
+}
+
+#processingPercentage {
+  grid-row: 5/7;
+}
+
+#packagingPercentage {
+  grid-row: 7/9;
+}
+#transportPercentage {
+  grid-row: 9/11;
+}
+
+#detailPercentage {
+  grid-row: 11/13;
+}
+
+#ILUCPercentage {
+  grid-row: 13/15;
 }
 
 .icon-space {
-  margin-right: 30px;
-}
-#CO2Circle {
-  position: absolute;
-  top: 30%;
-  left: 10%; /* Justér venstre margin efter behov */
-  transform: translateY(-50%);
-}
-#colorSpectrum {
-  position: absolute;
-  width: 300px; /* Juster bredden efter behov */
-  height: 20px;
-  left: 7%; /* Juster venstre placering efter behov */
-  bottom: 400px; /* Placer farvespektrummet under cirklen */
-  background: linear-gradient(to right, hsl(0, 100%, 50%) 0%, yellow 50%, green 100%);
-  border-radius: 10px;
-}
-#colorSpectrumContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: -250px;
-  padding: 0 20px; /* Tilføj polstring til at adskille tallene */
-  display: inline-block; /* Gør elementerne til blok-elementer, så margin-left virker */
+  grid-column: 8/9;
+  font-size: 60px;
 }
 
-.color-value {
-  text-align: center;
-  margin-left: 200px; /* Justér afstanden mellem tallene */
-  font-weight: bold; /* Gør tallene tykkere */
-  font-size: larger; /* Gør tallene større */
+.fa-tractor {
+  grid-row: 3/5;
 }
-.color-value {
-  font-weight: bold;
-  font-size: larger;
+
+.fa-gears {
+  grid-row: 5/7;
 }
+
+.fa-box {
+  grid-row: 7/9;
+}
+
+.fa-truck {
+  grid-row: 9/11;
+}
+
+.fa-shop {
+  grid-row: 11/13;
+}
+
+.fa-tree {
+  grid-row: 13/15;
+}
+
 .bar {
+  grid-column: 9/13;
   height: 20px;
-  background-color: #72a76d;
-  margin: 5px 0;
+  background-color: #e1821c;
+  margin-top: 4px;
   border-radius: 5px;
+  background: linear-gradient(to right, #ff8800, #ff0000);
+  width: var(--bar-length, 100%);
+}
+
+#bar-0 {
+  grid-row: 4/5;
+}
+
+#bar-1 {
+  grid-row: 6/7;
+}
+
+#bar-2 {
+  grid-row: 8/9;
+}
+
+#bar-3 {
+  grid-row: 10/11;
+}
+
+#bar-4 {
+  grid-row: 12/13;
+}
+
+#bar-5 {
+  grid-row: 14/15;
 }
 
 .percentage-span {
-  float: right;
+  grid-column: 10/11;
+  font-size: 30px;
+  font-weight: bold;
+  color: #000;
+  padding: 1%;
+  font-family: "Chivo", sans-serif;
+}
+
+#percentage-span-0 {
+  grid-row: 3/4;
+}
+
+#percentage-span-1 {
+  grid-row: 5/6;
+}
+
+#percentage-span-2 {
+  grid-row: 7/8;
+}
+
+#percentage-span-3 {
+  grid-row: 9/10;
+}
+
+#percentage-span-4 {
+  grid-row: 11/12;
+}
+
+#percentage-span-5 {
+  grid-row: 7/8;
+}
+
+#colorSpectrumNew {
+  grid-column: 1;
+  grid-row: 5/15;
+  width: 20px;
+  height: 300px;
+  background: linear-gradient(to bottom, #ff6d60 0%, #f7d060 50%, #91c483 100%);
+  border-radius: 25px;
 }
 
 #CO2Circle {
-  width: 500px;
-  height: 500px;
-  background-color: green; /* Example color, change as needed */
-  border-radius: 50%; /* Makes the div a circle */
+  grid-column: 2/8;
+  grid-row: 3/17;
+  width: 400px;
+  height: 400px;
+  background-color: green;
+  border-radius: 50%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  color: black; /* Text color inside the circle */
-  font-size: 80px; /* Example font size, change as needed */
-  font-family: Arial, sans-serif; /* Example font family, change as needed */
+  color: black;
+  font-size: 80px;
+  font-family: "Chivo", sans-serif;
+  text-align: center;
 }
-
