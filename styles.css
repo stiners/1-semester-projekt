@@ -179,7 +179,8 @@ sub {
 /* Modal Content */
 .modal-content {
   display: grid;
-  grid-template: repeat(8, 1fr) / repeat(12, 1fr);
+  grid-template: repeat(16, 1fr) / repeat(12, 1fr);
+  grid-gap: 1em;
   position: relative;
   background-color: #f8ffea;
   margin: auto;
@@ -222,70 +223,125 @@ sub {
 }
 
 .percentageVisualization {
-  grid-column: 1/5;
-  grid-row: 1/10;
-  font-size: 50px;
-  font-weight: bold;
-  /* text-align: left; */
-  color: #000;
-  padding: 1%;
-  font-family: "Chivo", sans-serif;
-  /* font-optical-sizing: auto; */
-  /* margin-right: 10px;
-  margin-left: 60%; */
-}
-
-.icon-space {
-  padding: 0%;
+  grid-column: 9/13;
 }
 
 #farmingPercentage {
-  grid-column: 8/13;
-  grid-row: 2/3;
-}
-
-.farmingGrid {
-  grid-column: 8/13;
-  grid-row: 2/3;
-}
-
-#transportPercentage {
-  grid-column: 8/18;
-  grid-row: 3/4;
-}
-
-#packagingPercentage {
-  grid-column: 8/13;
-  grid-row: 4/5;
+  grid-row: 3/5;
 }
 
 #processingPercentage {
-  grid-column: 8/13;
-  grid-row: 5/6;
+  grid-row: 5/7;
+}
+
+#packagingPercentage {
+  grid-row: 7/9;
+}
+#transportPercentage {
+  grid-row: 9/11;
 }
 
 #detailPercentage {
-  grid-column: 8/13;
-  grid-row: 6/7;
+  grid-row: 11/13;
 }
 
 #ILUCPercentage {
-  grid-column: 8/13;
-  grid-row: 7/8;
+  grid-row: 13/15;
+}
+
+.icon-space {
+  grid-column: 8/9;
+  font-size: 60px;
+}
+
+.fa-tractor {
+  grid-row: 3/5;
+}
+
+.fa-gears {
+  grid-row: 5/7;
+}
+
+.fa-box {
+  grid-row: 7/9;
+}
+
+.fa-truck {
+  grid-row: 9/11;
+}
+
+.fa-shop {
+  grid-row: 11/13;
+}
+
+.fa-tree {
+  grid-row: 13/15;
 }
 
 .bar {
+  grid-column: 9/13;
   height: 20px;
   background-color: #72a76d;
-  margin: 5px 0;
+  margin-top: 4px;
   border-radius: 5px;
 }
 
-.percentage-span {
-  grid-column: 8/13;
-  float: right;
+#bar-0 {
+  grid-row: 4/5;
 }
 
+#bar-1 {
+  grid-row: 6/7;
+}
+
+#bar-2 {
+  grid-row: 8/9;
+}
+
+#bar-3 {
+  grid-row: 10/11;
+}
+
+#bar-4 {
+  grid-row: 12/13;
+}
+
+#bar-5 {
+  grid-row: 14/15;
+}
+
+.percentage-span {
+  grid-column: 10/11;
+  font-size: 30px;
+  font-weight: bold;
+  color: #000;
+  padding: 1%;
+  font-family: "Chivo", sans-serif;
+}
+
+#percentage-span-0 {
+  grid-row: 3/4;
+}
+
+#percentage-span-1 {
+  grid-row: 5/6;
+}
+
+#percentage-span-2 {
+  grid-row: 7/8;
+}
+
+#percentage-span-3 {
+  grid-row: 9/10;
+}
+
+#percentage-span-4 {
+  grid-row: 11/12;
+}
+
+#percentage-span-5 {
+  grid-row: 7/8;
+}
 /* .resultCircleGrid {
   grid-column: 1/7;
   grid-row: 9;

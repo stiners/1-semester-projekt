@@ -131,6 +131,7 @@ function populatePercentageDivs() {
     if (div) {
       const percentage = document.createElement("span");
       percentage.classList.add("percentage-span");
+      percentage.id = "percentage-span-" + index;
       percentage.textContent = percentages[index] + "%";
       div.appendChild(percentage);
     } else {
@@ -159,6 +160,7 @@ function barChart() {
     if (div) {
       const bar = document.createElement("div");
       bar.classList.add("bar");
+      bar.id = "bar-" + index;
 
       // Normalize the percentage
       const normalizedPercentage = (percentages[index] / maxPercentage) * 100;
