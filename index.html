@@ -56,13 +56,19 @@
         <i class="fa-solid fa-tree icon-space"></i>
       </div>
 
-      <div class="resultCircleGrid">
-        <div id="CO2Circle"></div>
-        <div id="colorSpectrumContainer">
-          <div id="colorSpectrumNew"></div>
-        </div>
-      </div>
-    </div>
+          <!-- Farvespektrum -->
+          <div id="colorSpectrum" style="width: 300px; height: 20px; margin-top: 20px; display: none"></div>
+
+          <!-- Tallene -->
+          <div id="spectrumContainer">
+            <div id="colorSpectrum"></div>
+            <div id="colorValues">
+              <div id="colorSpectrumContainer">
+              <span style="margin-left: 0; color: black">0</span>
+              <span style="margin-left: 100px; color: black(5, 5, 0)">500</span>
+              <span style="margin-left: 200px; color: black">1000</span>
+            </div>
+          </div>
 
     <script src="scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
