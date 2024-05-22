@@ -302,3 +302,17 @@ sub {
 .percentage-span {
   float: right;
 }
+
+#CO2Circle {
+  width: 500px;
+  height: 500px;
+  background-color: green; /* Example color, change as needed */
+  border-radius: 50%; /* Makes the div a circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black; /* Text color inside the circle */
+  font-size: 80px; /* Example font size, change as needed */
+  font-family: Arial, sans-serif; /* Example font family, change as needed */
+}
+

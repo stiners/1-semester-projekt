@@ -9,9 +9,7 @@ const percentageDivs = [
   "ILUCPercentage",
 ];
 
-// Definition af CO2-udslipstærskler
-const grøn_tærskel = 1000; // Definér grøn tærskelværdi
-const gul_tærskel = 2000; // Definér gul tærskelværdi
+
 
 // Select the button container
 let buttonContainer = document.getElementById("emptyBaskBtnGrid");
@@ -71,6 +69,11 @@ function calculateCO2() {
   const totalDetail = calculateTotalDetail();
   const totalILUC = calculateTotalILUC();
   const totalCO2 = calculateTotalCO2();
+  const roundedTotalCO2 = totalCO2.toFixed(2);
+  const color = determineColor(totalCO2);
+  const circleElement = document.getElementById("CO2Circle");
+  circleElement.textContent = `${roundedTotalCO2} co2/kg`; 
+  circleElement.style.backgroundColor = color;
 
   // Calculate percentages of total CO2
 
@@ -172,16 +175,25 @@ function barChart() {
   });
 }
 
-// Bestem farven baseret på det beregnede CO2-udslip
-let color;
-let sum;
-if (sum < grøn_tærskel) {
-  color = "green";
-} else if (sum < gul_tærskel) {
-  color = "yellow";
-} else {
-  color = "red";
+// Definition af CO2-udslipstærskler
+const green_co2 = 10; 
+const yellow_co2 = 20; 
+
+function determineColor(totalCO2) {
+  // Determine the color based on the thresholds
+  let color;
+  if (totalCO2 < green_co2) {
+    color = "green";
+  } else if (totalCO2 < yellow_co2) {
+    color = "yellow";
+  } else {
+    color = "red";
+  }
+
+  return color;
 }
+
+
 // Funktion til at opdatere farvespektrummet
 function updateColorSpectrum() {
   const colorSpectrum = document.getElementById("colorSpectrum");
