@@ -42,7 +42,9 @@ const rects = svg
   .attr("y", (d, i) => Math.floor(i / cols) * (150 + spacing) + 50)
   .attr("width", (d) => d.width)
   .attr("height", (d) => d.height)
-  .attr("fill", "#D22B2B")
+  .attr("fill", "#E1ECC8")
+  .attr("stroke", "#475646")
+  .attr("stroke-width", 1)
   .attr("data-category", (d) => d.category)
   .classed("rectClass", true);
 

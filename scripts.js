@@ -1,5 +1,13 @@
 let numbers = [];
 let percentages = [];
+const percentageDivs = [
+  "farmingPercentage",
+  "processingPercentage",
+  "packagingPercentage",
+  "transportPercentage",
+  "detailPercentage",
+  "ILUCPercentage",
+];
 
 // Definition af CO2-udslipstærskler
 const grøn_tærskel = 1000; // Definér grøn tærskelværdi
@@ -75,10 +83,10 @@ function calculateCO2() {
   // Calculate percentages in a single step
   percentages = totals.map((total) => {
     if (totalOfNonZero !== 0) {
-      return ((total / totalOfNonZero) * 100).toFixed(2);
+      return Math.round((total / totalOfNonZero) * 100);
     } else {
       // If all input values are zero, distribute percentages equally
-      return (100 / totals.length).toFixed(2);
+      return Math.round(100 / totals.length);
     }
   });
 
@@ -88,24 +96,6 @@ function calculateCO2() {
 
   // Sum of all percentages
   const totalPercentage = percentages.reduce((sum, percent) => sum + parseFloat(percent), 0).toFixed(2);
-  // Round the totals to 2 decimal places for logging
-  const roundedTotalLandbrug = totalLandbrug.toFixed(2);
-  const roundedTotalForarbejdning = totalForarbejdning.toFixed(2);
-  const roundedTotalEmballage = totalEmballage.toFixed(2);
-  const roundedTotalTransport = totalTransport.toFixed(2);
-  const roundedTotalDetail = totalDetail.toFixed(2);
-  const roundedTotalILUC = totalILUC.toFixed(2);
-  const roundedTotalCO2 = totalCO2.toFixed(2);
-
-  // Log the results
-  console.log("Total CO2:", totalCO2);
-  console.log("Total Landbrug:", totalLandbrug, "(Landbrug Procent:", percentLandbrug + "%)");
-  console.log("Total Forarbejdning:", totalForarbejdning, "(Forarbejdning Procent:", percentForarbejdning + "%)");
-  console.log("Total Emballage:", totalEmballage, "(Emballage Procent:", percentEmballage + "%)");
-  console.log("Total Transport:", totalTransport, "(Transport Procent:", percentTransport + "%)");
-  console.log("Total Detail:", totalDetail, "(Detail Procent:", percentDetail + "%)");
-  console.log("Total ILUC:", totalILUC, "(ILUC Procent:", percentILUC + "%)");
-  console.log("Total Procent:", totalPercentage + "%");
 }
 
 var modal = document.getElementById("myModal");
@@ -116,41 +106,71 @@ var span = document.getElementsByClassName("close")[0];
 btn.onclick = function () {
   modal.style.display = "block";
 
-  const farmingDiv = document.getElementById("farmingPercentage");
-  const farmingPercentage = document.createTextNode(percentages[0] + "%");
-  farmingDiv.appendChild(farmingPercentage);
-
-  const processingDiv = document.getElementById("processingPercentage");
-  const processingPercentage = document.createTextNode(percentages[1] + "%");
-  processingDiv.appendChild(processingPercentage);
-
-  const packagingDiv = document.getElementById("packagingPercentage");
-  const packagingPercentage = document.createTextNode(percentages[2] + "%");
-  packagingDiv.appendChild(packagingPercentage);
-
-  const transportDiv = document.getElementById("transportPercentage");
-  const transportPercentage = document.createTextNode(percentages[3] + "%");
-  transportDiv.appendChild(transportPercentage);
-
-  const detailDiv = document.getElementById("detailPercentage");
-  const detailPercentage = document.createTextNode(percentages[4] + "%");
-  detailDiv.appendChild(detailPercentage);
-
-  const ILUCDiv = document.getElementById("ILUCPercentage");
-  const ILUCPercentage = document.createTextNode(percentages[5] + "%");
-  ILUCDiv.appendChild(ILUCPercentage);
+  populatePercentageDivs();
+  barChart();
 };
 
 // When the user clicks on  (x), close the modal
 span.onclick = function () {
   modal.style.display = "none";
+  clearPercentageDivs();
+  percentages.length = [];
 };
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
+    clearPercentageDivs();
+    percentages.length = [];
   }
 };
+
+function populatePercentageDivs() {
+  percentageDivs.forEach((divId, index) => {
+    const div = document.getElementById(divId);
+    if (div) {
+      const percentage = document.createElement("span");
+      percentage.classList.add("percentage-span");
+      percentage.textContent = percentages[index] + "%";
+      div.appendChild(percentage);
+    } else {
+      console.error(`Element with id ${divId} not found`);
+    }
+  });
+}
+
+// Function to clear percentage divs
+function clearPercentageDivs() {
+  percentageDivs.forEach((divId) => {
+    const div = document.getElementById(divId);
+    if (div.childNodes.length > 1) {
+      div.removeChild(div.lastChild); // Remove the bar
+      div.removeChild(div.lastChild); // Remove the text node
+    }
+  });
+}
+
+function barChart() {
+  // Find the maximum percentage
+  const maxPercentage = Math.max(...percentages);
+
+  percentageDivs.forEach((divId, index) => {
+    const div = document.getElementById(divId);
+    if (div) {
+      const bar = document.createElement("div");
+      bar.classList.add("bar");
+
+      // Normalize the percentage
+      const normalizedPercentage = (percentages[index] / maxPercentage) * 100;
+
+      bar.style.width = normalizedPercentage + "%";
+      div.appendChild(bar);
+      console.log("Bar chart added to the modal");
+    } else {
+      console.error(`Element with id ${divId} not found`);
+    }
+  });
+}
 
 // Bestem farven baseret på det beregnede CO2-udslip
 let color;
