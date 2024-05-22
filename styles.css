@@ -187,8 +187,6 @@ sub {
   align-items: center;
 }
 
-
-
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -275,18 +273,13 @@ sub {
   background: linear-gradient(to right, hsl(0, 100%, 50%) 0%, yellow 50%, green 100%);
   border-radius: 10px;
 }
-<<<<<<< HEAD
-
-
-=======
 #colorSpectrumContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top:-250px;
+  margin-top: -250px;
   padding: 0 20px; /* Tilføj polstring til at adskille tallene */
   display: inline-block; /* Gør elementerne til blok-elementer, så margin-left virker */
-
 }
 
 .color-value {
@@ -294,7 +287,6 @@ sub {
   margin-left: 200px; /* Justér afstanden mellem tallene */
   font-weight: bold; /* Gør tallene tykkere */
   font-size: larger; /* Gør tallene større */
-
 }
 .color-value {
   font-weight: bold;
@@ -310,5 +302,3 @@ sub {
 .percentage-span {
   float: right;
 }
->>>>>>> main
-
