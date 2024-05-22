@@ -182,7 +182,7 @@ sub {
   grid-template: repeat(16, 1fr) / repeat(12, 1fr);
   grid-gap: 1em;
   position: relative;
-  background-color: #f8ffea;
+  background-color: #feebe6;
   margin: auto;
   padding: 0;
   border-radius: 25px;
@@ -281,9 +281,11 @@ sub {
 .bar {
   grid-column: 9/13;
   height: 20px;
-  background-color: #72a76d;
+  background-color: #e1821c;
   margin-top: 4px;
   border-radius: 5px;
+  background: linear-gradient(to right, #ff8800, #ff0000);
+  width: var(--bar-length, 100%);
 }
 
 #bar-0 {
