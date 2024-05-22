@@ -302,8 +302,6 @@ sub {
 .percentage-span {
   float: right;
 }
-<<<<<<< HEAD
-=======
 
 #CO2Circle {
   width: 500px;
@@ -317,5 +315,4 @@ sub {
   font-size: 80px; /* Example font size, change as needed */
   font-family: Arial, sans-serif; /* Example font family, change as needed */
 }
->>>>>>> 5d73b714b85d2f7a86f541fecbc977146d473146
 
