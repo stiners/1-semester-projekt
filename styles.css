@@ -189,7 +189,7 @@ sub {
 
 /* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
+  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -204,7 +204,7 @@ sub {
 /* Modal Content */
 .modal-content {
   display: grid;
-  grid-template: repeat(16, 1fr) / repeat(12, 1fr);
+  grid-template: repeat(32, 1fr) / repeat(12, 1fr);
   grid-gap: 1em;
   position: relative;
   background-color: #feebe6;
@@ -217,7 +217,7 @@ sub {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   animation-name: animatetop;
   animation-duration: 0.4s;
-  padding: 1%;
+  padding: 2%;
   overflow: hidden;
 }
 /* Add Animation */
@@ -240,6 +240,7 @@ sub {
   font-size: 28px;
   font-weight: bold;
 }
+
 .close:hover,
 .close:focus {
   color: #000;
@@ -252,55 +253,56 @@ sub {
 }
 
 #farmingPercentage {
-  grid-row: 3/5;
+  grid-row: 5/8;
 }
 
 #processingPercentage {
-  grid-row: 5/7;
+  grid-row: 8/11;
 }
 
 #packagingPercentage {
-  grid-row: 7/9;
+  grid-row: 11/14;
 }
+
 #transportPercentage {
-  grid-row: 9/11;
+  grid-row: 14/17;
 }
 
 #detailPercentage {
-  grid-row: 11/13;
+  grid-row: 17/20;
 }
 
 #ILUCPercentage {
-  grid-row: 13/15;
+  grid-row: 20/23;
 }
 
 .icon-space {
   grid-column: 8/9;
-  font-size: 60px;
+  font-size: 50px;
 }
 
 .fa-tractor {
-  grid-row: 3/5;
-}
-
-.fa-gears {
   grid-row: 5/7;
 }
 
+.fa-gears {
+  grid-row: 8/10;
+}
+
 .fa-box {
-  grid-row: 7/9;
-}
-
-.fa-truck {
-  grid-row: 9/11;
-}
-
-.fa-shop {
   grid-row: 11/13;
 }
 
+.fa-truck {
+  grid-row: 14/16;
+}
+
+.fa-shop {
+  grid-row: 17/19;
+}
+
 .fa-tree {
-  grid-row: 13/15;
+  grid-row: 20/22;
 }
 
 .bar {
@@ -309,32 +311,31 @@ sub {
   background-color: #e1821c;
   margin-top: 4px;
   border-radius: 5px;
-  background: linear-gradient(to right, #ff8800, #ff0000);
   width: var(--bar-length, 100%);
 }
 
 #bar-0 {
-  grid-row: 4/5;
-}
-
-#bar-1 {
   grid-row: 6/7;
 }
 
+#bar-1 {
+  grid-row: 9/10;
+}
+
 #bar-2 {
-  grid-row: 8/9;
-}
-
-#bar-3 {
-  grid-row: 10/11;
-}
-
-#bar-4 {
   grid-row: 12/13;
 }
 
+#bar-3 {
+  grid-row: 15/16;
+}
+
+#bar-4 {
+  grid-row: 18/19;
+}
+
 #bar-5 {
-  grid-row: 14/15;
+  grid-row: 21/22;
 }
 
 .percentage-span {
@@ -347,41 +348,41 @@ sub {
 }
 
 #percentage-span-0 {
-  grid-row: 3/4;
-}
-
-#percentage-span-1 {
   grid-row: 5/6;
 }
 
+#percentage-span-1 {
+  grid-row: 8/9;
+}
+
 #percentage-span-2 {
-  grid-row: 7/8;
-}
-
-#percentage-span-3 {
-  grid-row: 9/10;
-}
-
-#percentage-span-4 {
   grid-row: 11/12;
 }
 
+#percentage-span-3 {
+  grid-row: 14/15;
+}
+
+#percentage-span-4 {
+  grid-row: 17/18;
+}
+
 #percentage-span-5 {
-  grid-row: 7/8;
+  grid-row: 20/21;
 }
 
 #colorSpectrumNew {
   grid-column: 1;
-  grid-row: 5/15;
+  grid-row: 5/24;
   width: 20px;
-  height: 300px;
+  height: 400px;
   background: linear-gradient(to bottom, #ff6d60 0%, #f7d060 50%, #91c483 100%);
   border-radius: 25px;
 }
 
 #CO2Circle {
   grid-column: 2/8;
-  grid-row: 3/17;
+  grid-row: 5/24;
   width: 400px;
   height: 400px;
   background-color: green;
@@ -404,13 +405,39 @@ sub {
   color: #475646;
   text-transform: uppercase;
   letter-spacing: 2px;
-  position: relative; /* Tilføjer relativ positionering */
+  position: relative;
 }
 
 #header::before {
-  content: "🌍 "; /* Tilføjer et ikon for at indikere emnet */
-  font-size: 32px; /* Ændrer ikonets størrelse */
+  content: "🌍 ";
+  font-size: 32px;
   position: absolute;
-  top: 70px; /* Flytter ikonet opad for at passe til overskriften */
+  top: 70px;
   left: calc(50% - 16px); /* Justerer ikonet til midten af overskriften */
+}
+
+.resultPopupHeaderGrid {
+  grid-column: 1/13;
+  grid-row: 1/5;
+  place-content: center;
+}
+
+#resultPopupHeader {
+  text-align: center;
+  font-size: 20px;
+  font-family: "Prompt", sans-serif;
+  font-weight: bold;
+}
+
+.textBox {
+  grid-column: 1/13;
+  grid-row: 25/34;
+  border-radius: 25px;
+  border: orange 2px solid;
+}
+
+#textBoxText {
+  font-family: "Prompt", sans-serif;
+  padding-left: 20px;
+  padding-right: 20px;
 }
