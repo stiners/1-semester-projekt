@@ -67,10 +67,11 @@ function calculateCO2() {
   const totalDetail = calculateTotalDetail();
   const totalILUC = calculateTotalILUC();
   const totalCO2 = calculateTotalCO2();
-  const color = determineColor(totalCO2);
+  const totalRoundedCo2 = Math.round(totalCO2);
+  const color = determineColor(avarageCO2);
   const avarageCO2 = Math.round(totalCO2 / shoppingBasketData.length);
   const circleElement = document.getElementById("CO2Circle");
-  circleElement.innerText = `${avarageCO2} CO₂/kg`;
+  circleElement.innerText = `${totalRoundedCo2} CO₂/kg`;
   circleElement.style.backgroundColor = color;
 
   // Calculate percentages of total CO2
