@@ -1,3 +1,5 @@
+//const { text } = require("body-parser");
+
 let numbers = [];
 let percentages = [];
 const percentageDivs = [
@@ -73,6 +75,7 @@ function calculateCO2() {
   const circleElement = document.getElementById("CO2Circle");
   circleElement.innerText = `${totalRoundedCo2} CO₂/kg`;
   circleElement.style.backgroundColor = color;
+  console.log(avarageCO2);
 
   // Calculate percentages of total CO2
 
@@ -185,11 +188,17 @@ function determineColor(avarageCO2) {
   let color;
   if (avarageCO2 < green_co2) {
     color = "#91C483";
+    text="Din indkøbskurv er klimavenlig!"
   } else if (avarageCO2 < yellow_co2) {
     color = "#F7D060";
+    text="Din indkøbskurv er moderat klimabelastende"
   } else {
     color = "#FF6D60";
+    text ="Din indkøbskurv er klimabelastende"
   }
+  const textBox = document.getElementById("textBoxText");
+  textBox.textContent = text;
 
   return color;
+  
 }
