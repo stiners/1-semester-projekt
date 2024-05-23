@@ -179,12 +179,12 @@ function barChart() {
 const green_co2 = 10;
 const yellow_co2 = 20;
 
-function determineColor(totalCO2) {
+function determineColor(avarageCO2) {
   // Determine the color based on the thresholds
   let color;
-  if (totalCO2 < green_co2) {
+  if (avarageCO2 < green_co2) {
     color = "#91C483";
-  } else if (totalCO2 < yellow_co2) {
+  } else if (avarageCO2 < yellow_co2) {
     color = "#F7D060";
   } else {
     color = "#FF6D60";
