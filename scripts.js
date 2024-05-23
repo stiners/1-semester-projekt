@@ -68,8 +68,8 @@ function calculateCO2() {
   const totalILUC = calculateTotalILUC();
   const totalCO2 = calculateTotalCO2();
   const totalRoundedCo2 = Math.round(totalCO2);
-  const color = determineColor(avarageCO2);
   const avarageCO2 = Math.round(totalCO2 / shoppingBasketData.length);
+  const color = determineColor(avarageCO2);
   const circleElement = document.getElementById("CO2Circle");
   circleElement.innerText = `${totalRoundedCo2} CO₂/kg`;
   circleElement.style.backgroundColor = color;
