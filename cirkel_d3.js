@@ -4,22 +4,22 @@ let mainData;
 let shoppingBasketData = [];
 
 const rectData = [
-  { width: 40, height: 40, category: "Grøntsager og grøntsagsprodukter" },
-  { width: 40, height: 40, category: "Kød og fjerkræ" },
-  { width: 40, height: 40, category: "Vin. øl og spiritus" },
-  { width: 40, height: 40, category: "Brød og bageartikler" },
-  { width: 40, height: 40, category: "Korn og kornprodukter" },
-  { width: 40, height: 40, category: "Færdigretter" },
-  { width: 40, height: 40, category: "Svampe og svampeprodukter" },
-  { width: 40, height: 40, category: "Nødder og frø" },
-  { width: 40, height: 40, category: "Slik og sukkervarer" },
-  { width: 40, height: 40, category: "Frugt og frugtprodukter" },
-  { width: 40, height: 40, category: "Planteprodukter og -drikke" },
-  { width: 40, height: 40, category: "Fisk og skaldyr" },
-  { width: 40, height: 40, category: "Smagsgivere og krydderier" },
-  { width: 40, height: 40, category: "Mælk. mejeriprodukter og æg" },
-  { width: 40, height: 40, category: "Bælgfrugter og bælgfrugtprodukter" },
-  { width: 40, height: 40, category: "Drikkevarer" },
+  { category: "Grøntsager og grøntsagsprodukter" },
+  { category: "Kød og fjerkræ" },
+  { category: "Vin. øl og spiritus" },
+  { category: "Brød og bageartikler" },
+  { category: "Korn og kornprodukter" },
+  { category: "Færdigretter" },
+  { category: "Svampe og svampeprodukter" },
+  { category: "Nødder og frø" },
+  { category: "Slik og sukkervarer" },
+  { category: "Frugt og frugtprodukter" },
+  { category: "Planteprodukter og -drikke" },
+  { category: "Fisk og skaldyr" },
+  { category: "Smagsgivere og krydderier" },
+  { category: "Mælk. mejeriprodukter og æg" },
+  { category: "Bælgfrugter og bælgfrugtprodukter" },
+  { category: "Drikkevarer" },
 ];
 
 // Function to sanitize category names
@@ -33,7 +33,7 @@ const svg = myDiv.append("svg").attr("width", 1500).attr("height", 900);
 // Position rectangles in a grid with 4 rows
 const cols = 4;
 const spacing = 30;
-const rectWidth = 200;
+const rectWidth = 260;
 const rectHeight = 100;
 const cellWidth = rectWidth + spacing;
 const cellHeight = rectHeight + spacing;
@@ -70,7 +70,7 @@ rectsAndText
   .attr("y", rectHeight / 2)
   .attr("text-anchor", "middle")
   .attr("dominant-baseline", "middle")
-  .attr("font-size", "16px")
+  .attr("font-size", "15px")
   .attr("font-family", "Prompt, sans-serif")
   .attr("fill", "#333")
   .text((d) => d.category);
@@ -155,12 +155,11 @@ function showPopup(category, foodItems) {
     })
 
     .on("mouseover", function () {
-      d3.select(this).style("color", "#2a332a").style("border-radius", "10px");
+      d3.select(this).style("color", "#54b856").style;
     })
     .on("mouseout", function () {
       d3.select(this)
         .style("color", "#475646") // Revert to original text color
-        .style("border-radius", "0"); // Revert to original border radius
     });
 
   // Close popup when clicking outside
