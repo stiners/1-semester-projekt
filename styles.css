@@ -58,7 +58,7 @@ html {
   letter-spacing: 3px;
   color: #475646;
   font-family: ,sans-serif;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Tilføjet tekstskygge for dybde */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
   text-transform: uppercase; /* Gør teksten til store bogstaver */
 
 }
