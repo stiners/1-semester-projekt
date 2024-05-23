@@ -67,10 +67,11 @@ function calculateCO2() {
   const totalDetail = calculateTotalDetail();
   const totalILUC = calculateTotalILUC();
   const totalCO2 = calculateTotalCO2();
-  const roundedTotalCO2 = totalCO2.toFixed(2);
-  const color = determineColor(totalCO2);
+  const totalRoundedCo2 = Math.round(totalCO2);
+  const avarageCO2 = Math.round(totalCO2 / shoppingBasketData.length);
+  const color = determineColor(avarageCO2);
   const circleElement = document.getElementById("CO2Circle");
-  circleElement.textContent = `${roundedTotalCO2} co2/kg`;
+  circleElement.innerText = `${totalRoundedCo2} CO₂/kg`;
   circleElement.style.backgroundColor = color;
 
   // Calculate percentages of total CO2
@@ -179,12 +180,12 @@ function barChart() {
 const green_co2 = 10;
 const yellow_co2 = 20;
 
-function determineColor(totalCO2) {
+function determineColor(avarageCO2) {
   // Determine the color based on the thresholds
   let color;
-  if (totalCO2 < green_co2) {
+  if (avarageCO2 < green_co2) {
     color = "#91C483";
-  } else if (totalCO2 < yellow_co2) {
+  } else if (avarageCO2 < yellow_co2) {
     color = "#F7D060";
   } else {
     color = "#FF6D60";

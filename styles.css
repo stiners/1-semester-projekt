@@ -17,6 +17,9 @@ html {
   place-content: center;
   border-radius: 10px;
   border: #e1ecc8 2px solid;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Tilføjet tekstskygge for dybde */
+
+
 }
 
 #circlesGrid {
@@ -30,27 +33,36 @@ html {
 }
 
 .shoppingBasket {
-  grid-column: 4/5;
-  font-family: "Prompt", sans-serif;
-  font-weight: 100;
-  font-style: normal;
+  grid-column: 4 / span 1;
   color: #475646;
+  display: flex;
+  flex-direction: column;
+  gap: 0,9rem;
+  font-family: sans-serif;
 }
 
 #shopBaskHeaderGrid {
-  grid-row: 10/15;
+  grid-row: 10 / 15;
   background-color: #c4d7b2;
   place-content: center;
   border-radius: 10px;
   border: #e1ecc8 2px solid;
-  letter-spacing: 3px;
-  color: #475646;
-}
+  padding: 10px;
 
+
+}
 #shopBaskHeader {
   text-align: center;
-  font-size: larger;
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 3px;
+  color: #475646;
+  font-family: sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+  text-transform: uppercase; /* Gør teksten til store bogstaver */
+
 }
+
 
 #foodListGrid {
   grid-row: 15/45;
@@ -58,6 +70,8 @@ html {
   border-radius: 10px;
   border: #e1ecc8 2px solid;
   padding: 10px;
+  font-size: 1.1rem;
+  font-family: "Prompt", sans-serif;
 }
 
 #emptyBasketGrid {
@@ -81,6 +95,7 @@ html {
   cursor: pointer;
   font-size: 16px;
   font-family: "Prompt", sans-serif;
+
 }
 
 #emptyBaskBtn:hover {
@@ -89,9 +104,14 @@ html {
 }
 
 #emptyBasket {
+  font-family:  "sans-serif";
+  font-size: 1.1rem;
+  color: #475646;
+  font-weight: normal;
   text-align: center;
-  font-size: larger;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
+
 
 #calculateGrid {
   grid-column: 4/5;
@@ -112,8 +132,11 @@ html {
   width: 100%;
   height: 100%;
   cursor: pointer;
-  font-size: 20px;
-  font-family: "Prompt", sans-serif;
+  font-weight: bold; /* Gør teksten fed */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+  color:#475646;
+  font-size: 25px;
+  font-family: sans-serif;
   letter-spacing: 2px;
 }
 
@@ -127,9 +150,10 @@ html {
   text-align: center;
   align-self: center;
   margin: 0;
-  font-family: "Bungee Spice", sans-serif;
+  font-family: "Prompt", sans-serif;
   font-weight: 400;
   font-style: normal;
+  
 }
 
 sub {
