@@ -73,7 +73,6 @@ function calculateCO2() {
   circleElement.textContent = `${roundedTotalCO2} co2/kg`;
   circleElement.style.backgroundColor = color;
 
- 
   // Calculate percentages of total CO2
 
   // Array of totals
@@ -193,30 +192,3 @@ function determineColor(totalCO2) {
 
   return color;
 }
-// Add cross button functionality
-function addCrossButton() {
-  const crossButton = document.createElement("button");
-  crossButton.textContent = "X";
-  crossButton.id = "crossButton";
-  crossButton.style.position = "absolute";
-  crossButton.style.top = "10px";
-  crossButton.style.right = "10px";
-
-  crossButton.addEventListener("click", function () {
-    document.querySelectorAll(".category-content").forEach(content => content.style.display = "none");
-    document.getElementById("categoryContainer").style.display = "block";
-    crossButton.remove();
-  });
-
-  document.body.appendChild(crossButton);
-}
-
-document.querySelectorAll(".category-button").forEach(button => {
-  button.addEventListener("click", function () {
-    document.querySelectorAll(".category-content").forEach(content => content.style.display = "none");
-    document.getElementById(button.dataset.target).style.display = "block";
-    document.getElementById("categoryContainer").style.display = "none";
-    addCrossButton();
-  });
-});
-
