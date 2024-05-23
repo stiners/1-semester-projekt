@@ -370,21 +370,6 @@ sub {
   text-align: center;
 }
 
-.close {
-  position: absolute;
-  top: 5px;
-  right: 15px;
-  color: #F62B2B;
-  font-size: 28px;
-  font-weight: bold;
-}
-.bar {
-  height: 20px;
-  background-color: #E1821C;
-  border-radius: 5px;
-  background: linear-gradient(to right, #FF8800, #FF0000);
-  transition: width 0.3s;
-}
 #header {
   font-size: 48px;
   text-align: center;
@@ -405,4 +390,3 @@ sub {
   top: 70px; /* Flytter ikonet opad for at passe til overskriften */
   left: calc(50% - 16px); /* Justerer ikonet til midten af overskriften */
 }
-
