@@ -165,7 +165,7 @@ sub {
 
 /* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
+  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -229,27 +229,27 @@ sub {
 }
 
 #farmingPercentage {
-  grid-row: 5/8; /* shifted down by 2 rows */
+  grid-row: 5/8;
 }
 
 #processingPercentage {
-  grid-row: 8/11; /* shifted down by 2 rows */
+  grid-row: 8/11;
 }
 
 #packagingPercentage {
-  grid-row: 11/14; /* shifted down by 2 rows */
+  grid-row: 11/14;
 }
 
 #transportPercentage {
-  grid-row: 14/17; /* shifted down by 2 rows */
+  grid-row: 14/17;
 }
 
 #detailPercentage {
-  grid-row: 17/20; /* shifted down by 2 rows */
+  grid-row: 17/20;
 }
 
 #ILUCPercentage {
-  grid-row: 20/23; /* shifted down by 2 rows */
+  grid-row: 20/23;
 }
 
 .icon-space {
@@ -258,27 +258,27 @@ sub {
 }
 
 .fa-tractor {
-  grid-row: 5/7; /* shifted down by 2 rows */
+  grid-row: 5/7;
 }
 
 .fa-gears {
-  grid-row: 8/10; /* shifted down by 2 rows */
+  grid-row: 8/10;
 }
 
 .fa-box {
-  grid-row: 11/13; /* shifted down by 2 rows */
+  grid-row: 11/13;
 }
 
 .fa-truck {
-  grid-row: 14/16; /* shifted down by 2 rows */
+  grid-row: 14/16;
 }
 
 .fa-shop {
-  grid-row: 17/19; /* shifted down by 2 rows */
+  grid-row: 17/19;
 }
 
 .fa-tree {
-  grid-row: 20/22; /* shifted down by 2 rows */
+  grid-row: 20/22;
 }
 
 .bar {
@@ -287,32 +287,31 @@ sub {
   background-color: #e1821c;
   margin-top: 4px;
   border-radius: 5px;
-  /* background: linear-gradient(to right, #ff8800, #ff0000); */
   width: var(--bar-length, 100%);
 }
 
 #bar-0 {
-  grid-row: 6/7; /* shifted down by 2 rows */
+  grid-row: 6/7;
 }
 
 #bar-1 {
-  grid-row: 9/10; /* shifted down by 2 rows */
+  grid-row: 9/10;
 }
 
 #bar-2 {
-  grid-row: 12/13; /* shifted down by 2 rows */
+  grid-row: 12/13;
 }
 
 #bar-3 {
-  grid-row: 15/16; /* shifted down by 2 rows */
+  grid-row: 15/16;
 }
 
 #bar-4 {
-  grid-row: 18/19; /* shifted down by 2 rows */
+  grid-row: 18/19;
 }
 
 #bar-5 {
-  grid-row: 21/22; /* shifted down by 2 rows */
+  grid-row: 21/22;
 }
 
 .percentage-span {
@@ -325,32 +324,32 @@ sub {
 }
 
 #percentage-span-0 {
-  grid-row: 5/6; /* shifted down by 2 rows */
+  grid-row: 5/6;
 }
 
 #percentage-span-1 {
-  grid-row: 8/9; /* shifted down by 2 rows */
+  grid-row: 8/9;
 }
 
 #percentage-span-2 {
-  grid-row: 11/12; /* shifted down by 2 rows */
+  grid-row: 11/12;
 }
 
 #percentage-span-3 {
-  grid-row: 14/15; /* shifted down by 2 rows */
+  grid-row: 14/15;
 }
 
 #percentage-span-4 {
-  grid-row: 17/18; /* shifted down by 2 rows */
+  grid-row: 17/18;
 }
 
 #percentage-span-5 {
-  grid-row: 20/21; /* shifted down by 2 rows */
+  grid-row: 20/21;
 }
 
 #colorSpectrumNew {
   grid-column: 1;
-  grid-row: 5/34; /* shifted down by 2 rows */
+  grid-row: 5/24;
   width: 20px;
   height: 400px;
   background: linear-gradient(to bottom, #ff6d60 0%, #f7d060 50%, #91c483 100%);
@@ -359,7 +358,7 @@ sub {
 
 #CO2Circle {
   grid-column: 2/8;
-  grid-row: 5/34; /* shifted down by 2 rows */
+  grid-row: 5/24;
   width: 400px;
   height: 400px;
   background-color: green;
@@ -382,14 +381,14 @@ sub {
   color: #475646;
   text-transform: uppercase;
   letter-spacing: 2px;
-  position: relative; /* Tilføjer relativ positionering */
+  position: relative;
 }
 
 #header::before {
-  content: "🌍 "; /* Tilføjer et ikon for at indikere emnet */
-  font-size: 32px; /* Ændrer ikonets størrelse */
+  content: "🌍 ";
+  font-size: 32px;
   position: absolute;
-  top: 70px; /* Flytter ikonet opad for at passe til overskriften */
+  top: 70px;
   left: calc(50% - 16px); /* Justerer ikonet til midten af overskriften */
 }
 
