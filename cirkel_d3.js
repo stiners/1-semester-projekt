@@ -31,9 +31,9 @@ function sanitizeCategoryName(category) {
 const svg = myDiv.append("svg").attr("width", 1500).attr("height", 900);
 
 // Position rectangles in a grid with 4 rows
-const cols = 4;
+const cols = 3;
 const spacing = 30;
-const rectWidth = 260;
+const rectWidth = 305;
 const rectHeight = 100;
 const cellWidth = rectWidth + spacing;
 const cellHeight = rectHeight + spacing;
@@ -158,8 +158,7 @@ function showPopup(category, foodItems) {
       d3.select(this).style("color", "#54b856").style;
     })
     .on("mouseout", function () {
-      d3.select(this)
-        .style("color", "#475646") // Revert to original text color
+      d3.select(this).style("color", "#475646"); // Revert to original text color
     });
 
   // Close popup when clicking outside
