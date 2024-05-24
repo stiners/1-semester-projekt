@@ -119,7 +119,7 @@ function showPopup(category, foodItems) {
     .append("div")
     .attr("class", "popup")
     .style("position", "fixed")
-    .style("left", "38%")
+    .style("left", "37.8%")
     .style("top", "55%")
     .style("transform", "translate(-50%, -50%)")
     .style("background", "#F7FFE5")
@@ -132,8 +132,6 @@ function showPopup(category, foodItems) {
     .style("border-radius", "10px")
     .style("box-shadow", "0 0 10px rgba(0,0,0,0.5)")
     .style("overflow-y", "auto");
-  // .style("display", "flex")
-  // .style("flex-direction", "column");
 
   popup.append("h2").text(category);
   const foodItemContainer = popup.append("div").style("display", "flex").style("flex-wrap", "wrap");
@@ -180,6 +178,16 @@ function addToShoppingBasket(foodItem) {
 
   const foodItemDiv = document.createElement("div");
   foodItemDiv.innerText = foodItem.produkt;
+
+  const removeItemElement = document.createElement("i");
+  removeItemElement.classList.add("fa", "fa-trash", "remove-item");
+  removeItemElement.addEventListener("click", function () {
+    const index = shoppingBasketData.indexOf(foodItem);
+    shoppingBasketData.splice(index, 1);
+    foodListGrid.removeChild(foodItemDiv);
+  });
+
+  foodItemDiv.appendChild(removeItemElement);
 
   foodListGrid.appendChild(foodItemDiv);
 }

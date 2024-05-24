@@ -41,11 +41,12 @@
       <div class="modal-content">
         <span class="close">&times;</span>
         <div class="resultPopupHeaderGrid">
-          <p id="resultPopupHeader">Her kan du se dit samlede forbrug</p> 
+          <p id="resultPopupHeader">Her kan du se dit samlede forbrug</p>
         </div>
 
         <div class="percentageVisualization" id="farmingPercentage"></div>
         <i class="fa fa-tractor icon-space"></i>
+        <!-- <div id="farming-tooltip">Test</div> -->
         <div class="percentageVisualization" id="processingPercentage"></div>
         <i class="fa-solid fa-gears icon-space"></i>
         <div class="percentageVisualization" id="packagingPercentage"></div>
@@ -59,10 +60,18 @@
         <div id="colorSpectrumNew"></div>
         <div id="CO2Circle"></div>
         <div class="textBox">
-          <p id="textBoxText">RØD: Højt CO2-aftryk – Dette betyder sandsynligvis, at der er produkter i din kurv som oksekød, lam eller importerede varer, der har rejst lange afstande. Overvej at erstatte disse med mere bæredygtige alternativer som kylling, bælgfrugter, eller lokale og sæsonbetonede grøntsager. </p>
-          <p>Til venstre ses co2-udslippet pr. kg mad, og til højre ses fordelingen af udslippet på de forskellige kategorier. Før musen hen over hver kategori for at se hvad de betyder</p>
+          <p id="textBoxText">
+            RØD: Højt CO2-aftryk – Dette betyder sandsynligvis, at der er produkter i din kurv som oksekød, lam eller
+            importerede varer, der har rejst lange afstande. Overvej at erstatte disse med mere bæredygtige alternativer
+            som kylling, bælgfrugter, eller lokale og sæsonbetonede grøntsager.
+          </p>
+          <p>
+            Til venstre ses co2-udslippet pr. kg mad, og til højre ses fordelingen af udslippet på de forskellige
+            kategorier. Før musen hen over hver kategori for at se hvad de betyder
+          </p>
         </div>
       </div>
+    </div>
 
     <script src="scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
