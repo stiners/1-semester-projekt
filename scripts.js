@@ -91,7 +91,7 @@ function calculateCO2() {
       return Math.round((total / totalOfNonZero) * 100);
     } else {
       // If all input values are zero, distribute percentages equally
-      return Math.round(100 / totals.length);
+      return Math.round(0 / totals.length);
     }
   });
 
@@ -188,17 +188,16 @@ function determineColor(avarageCO2) {
   let color;
   if (avarageCO2 < green_co2) {
     color = "#91C483";
-    text="Din indkøbskurv er klimavenlig!"
+    text = "Din indkøbskurv er klimavenlig!";
   } else if (avarageCO2 < yellow_co2) {
     color = "#F7D060";
-    text="Din indkøbskurv er moderat klimabelastende"
+    text = "Din indkøbskurv er moderat klimabelastende";
   } else {
     color = "#FF6D60";
-    text ="Din indkøbskurv er klimabelastende"
+    text = "Din indkøbskurv er klimabelastende";
   }
   const textBox = document.getElementById("textBoxText");
   textBox.textContent = text;
 
   return color;
-  
 }
