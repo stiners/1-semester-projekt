@@ -293,6 +293,10 @@ sub {
   font-size: 50px;
 }
 
+.icon-space:hover {
+  transform: scale(1.1);
+}
+
 .fa-tractor {
   grid-row: 5/7;
 }
@@ -430,4 +434,123 @@ sub {
   font-family: "Prompt", sans-serif;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+#farmingTooltip {
+  display: none;
+  position: absolute;
+  z-index: 999;
+  grid-column: 9/13;
+  grid-row: 5/8;
+  color: black;
+  background-color: white;
+  padding: 10px;
+}
+
+#processingTooltip {
+  display: none;
+  position: absolute;
+  z-index: 999;
+  grid-column: 9/13;
+  grid-row: 8/11;
+  color: black;
+  background-color: white;
+  padding: 10px;
+}
+
+#packagingTooltip {
+  display: none;
+  position: absolute;
+  z-index: 999;
+  grid-column: 9/13;
+  grid-row: 11/14;
+  color: black;
+  background-color: white;
+  padding: 10px;
+}
+
+#transportTooltip {
+  display: none;
+  position: absolute;
+  z-index: 999;
+  grid-column: 9/13;
+  grid-row: 14/17;
+  color: black;
+  background-color: white;
+  padding: 10px;
+}
+
+#detailTooltip {
+  display: none;
+  position: absolute;
+  z-index: 999;
+  grid-column: 9/13;
+  grid-row: 17/20;
+  color: black;
+  background-color: white;
+  padding: 10px;
+}
+
+#ILUCTooltip {
+  display: none;
+  position: absolute;
+  z-index: 999;
+  grid-column: 9/13;
+  grid-row: 20/23;
+  color: black;
+  background-color: white;
+  padding: 10px;
+}
+
+.fa-tractor:hover + #farmingTooltip {
+  display: block;
+  border: orange 2px solid;
+  border-radius: 10px;
+  font-family: "Prompt", sans-serif;
+  font-size: 12px;
+}
+
+.fa-gears:hover + #processingTooltip {
+  display: block;
+  border: orange 2px solid;
+  border-radius: 10px;
+  font-family: "Prompt", sans-serif;
+  font-size: 12px;
+}
+
+.fa-box:hover + #packagingTooltip {
+  display: block;
+  border: orange 2px solid;
+  border-radius: 10px;
+  font-family: "Prompt", sans-serif;
+  font-size: 12px;
+}
+
+.fa-truck:hover + #transportTooltip {
+  display: block;
+  border: orange 2px solid;
+  border-radius: 10px;
+  font-family: "Prompt", sans-serif;
+  font-size: 12px;
+}
+
+.fa-shop:hover + #detailTooltip {
+  display: block;
+  border: orange 2px solid;
+  border-radius: 10px;
+  font-family: "Prompt", sans-serif;
+  font-size: 12px;
+}
+
+.fa-tree:hover + #ILUCTooltip {
+  display: block;
+  border: orange 2px solid;
+  border-radius: 10px;
+  font-family: "Prompt", sans-serif;
+  font-size: 12px;
+}
+
+.pack .remove-item {
+  float: right;
+  cursor: pointer;
 }
