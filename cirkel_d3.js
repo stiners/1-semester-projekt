@@ -61,6 +61,7 @@ const rects = rectsAndText
   .attr("stroke", "#475646")
   .attr("stroke-width", 1)
   .attr("data-category", (d) => d.category)
+  .style("cursor", "pointer")
   .classed("rectClass", true);
 
 // Append text within each group
