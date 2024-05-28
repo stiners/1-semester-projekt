@@ -43,12 +43,30 @@ html {
 
 #circlesGrid {
   grid-column: 1/4;
-  grid-row: 10/60;
+  grid-row: 10/65;
   background-color: #c4d7b2;
   overflow: hidden;
   border-radius: 10px;
   border: #e1ecc8 2px solid;
   place-content: center;
+}
+
+#databaseBtn {
+  grid-column: 1/4;
+  grid-row: 60/65;
+  border-radius: 10px;
+  border: #e1ecc8 2px solid;
+  place-content: center;
+  background-color: #a0c49d;
+  margin: 1rem;
+  font-family: "Prompt", sans-serif;
+  color: #475646;
+  text-align: center;
+}
+
+#databaseBtn:hover {
+  background-color: #eba75f;
+  border-radius: 10px;
 }
 
 .shoppingBasket {
@@ -553,4 +571,12 @@ sub {
 .remove-item {
   float: right;
   cursor: pointer;
+}
+
+.metaInfoGrid {
+  grid-column: 4 / span 1;
+  grid-row: 55/65;
+  border: #e1ecc8 2px solid;
+  border-radius: 10px;
+  text-align: center;
 }
