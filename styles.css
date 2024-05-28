@@ -550,7 +550,7 @@ sub {
   font-size: 12px;
 }
 
-.pack .remove-item {
+.remove-item {
   float: right;
   cursor: pointer;
 }
