@@ -89,7 +89,9 @@ function calculateCO2() {
   percentages = totals.map((total) => {
     if (totalOfNonZero !== 0) {
       return Math.round((total / totalOfNonZero) * 100);
-    } 
+    } else {
+      return 0;
+    }
   });
 
   // Destructure the percentages array
@@ -184,20 +186,24 @@ function determineColor(avarageCO2) {
   // Determine the color based on the thresholds
   let color;
   let text;
-  const fixedText = "Til venstre ses CO2-udslippet pr. kg mad, og til højre ses fordelingen af udslippet på de forskellige kategorier. Før musen hen over hver kategori for at se hvad de betyder.";
+  const fixedText =
+    "Til venstre ses CO2-udslippet pr. kg mad, og til højre ses fordelingen af udslippet i de forskellige kategorier. Før musen hen over ikonerne for at se hvad de betyder.";
   if (avarageCO2 < green_co2) {
     color = "#91C483";
-    text = "Grøn: Lavt CO2-aftryk – Godt gået! Din kurv består hovedsageligt af produkter med lav CO2-udledning, som grøntsager, frugt, korn og bælgfrugter. Fortsæt med at vælge bæredygtige varer for at minimere din miljøpåvirkning.";
+    text =
+      "Grøn: Lavt CO2-aftryk – Godt gået! Din kurv består hovedsageligt af produkter med lav CO2-udledning, som grøntsager, frugt, korn og bælgfrugter. Fortsæt med at vælge bæredygtige varer for at minimere din miljøpåvirkning.";
   } else if (avarageCO2 < yellow_co2) {
     color = "#F7D060";
-    text = "Gul: Mellem CO2-aftryk – Din kurv indeholder både produkter med højt og lavt CO2-aftryk. Der er plads til forbedring. For eksempel kan du bytte svinekød eller mejeriprodukter med plantebaserede alternativer som tofu, havremælk eller andre plantebaserede produkter.";
+    text =
+      "Gul: Mellem CO2-aftryk – Din kurv indeholder både produkter med højt og lavt CO2-aftryk. Der er plads til forbedring. For eksempel kan du bytte svinekød eller mejeriprodukter med plantebaserede alternativer som tofu, havremælk eller andre plantebaserede produkter.";
   } else {
     color = "#FF6D60";
-    text = "Rød: Højt CO2-aftryk – Dette betyder sandsynligvis, at der er produkter i din kurv som oksekød, lam eller importerede varer, der har rejst lange afstande. Overvej at erstatte disse med mere bæredygtige alternativer som kylling, bælgfrugter, eller lokale og sæsonbetonede grøntsager.";
+    text =
+      "Rød: Højt CO2-aftryk – Dette betyder sandsynligvis, at der er produkter i din kurv som oksekød, lam eller importerede varer, der har rejst lange afstande. Overvej at erstatte disse med mere bæredygtige alternativer som kylling, bælgfrugter, eller lokale og sæsonbetonede grøntsager.";
   }
 
-  const textBox = document.getElementById("textBoxText");
-  textBox.innerHTML = text + "<br><br>" + fixedText;
+  const textBoxGrid = document.getElementById("textBoxText");
+  textBoxGrid.innerHTML = text + "<br><br>" + fixedText;
 
   return color;
 }
