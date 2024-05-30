@@ -1,6 +1,3 @@
-const port = process.env.PORT || 4000;
-const baseUrl = process.env.BASE_URL || "localhost";
-
 const myDiv = d3.select("#circlesGrid");
 
 let shoppingBasketData = [];
@@ -80,7 +77,7 @@ rects.on("click", function (event, d) {
 
 // Function to handle category rectangle click
 function handleCategoryClick(category) {
-  fetch(`http://${baseUrl}:${port}/category/${category}`)
+  fetch(`http://${process.env.BASE_URL}:${process.env.PORT}/category/${category}`)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
