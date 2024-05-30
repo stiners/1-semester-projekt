@@ -23,9 +23,9 @@ app.use(
 
 const path = require("path");
 const { request } = require("http");
-app.use(express.static(path.join(__dirname, "1-semester-projekt-3")));
+app.use(express.static(path.join(__dirname, '../public')));
 app.get("/",(request,response) =>{
-   response.sendFile(path.join(__dirname,"1-semester-projekt-3","index.html"))
+   response.sendFile(path.join(__dirname,"../public/pages/index.html"))
   });
 
 app.get("/", (request, response) => {
