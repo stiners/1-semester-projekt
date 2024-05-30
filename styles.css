@@ -531,6 +531,7 @@ sub {
   border: #e1ecc8 2px solid;
   border-radius: 10px;
   text-align: center;
+  place-content: center;
 }
 
 #colorSpectrumNew {
