@@ -1,3 +1,4 @@
+// Import required modules
 const { Pool } = require("pg");
 require("dotenv").config();
 const csvtojson = require("csvtojson");
@@ -9,6 +10,7 @@ const pool = new Pool({
   },
 });
 
+// Define a function to fetch category data from the database
 const fetchCategoryData = (request, response) => {
   const kategori = request.params.kategori;
   pool.query(
@@ -121,6 +123,7 @@ const populateFoods = (request, response) => {
     });
 };
 
+//Export modules
 module.exports = {
   getFoods,
   insertFood,

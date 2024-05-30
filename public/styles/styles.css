@@ -49,6 +49,7 @@ html {
   border-radius: 10px;
   border: #e1ecc8 2px solid;
   place-content: center;
+  overflow: scroll;
 }
 
 #databaseBtn {
@@ -530,6 +531,7 @@ sub {
   border: #e1ecc8 2px solid;
   border-radius: 10px;
   text-align: center;
+  place-content: center;
 }
 
 #colorSpectrumNew {
