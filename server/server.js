@@ -19,11 +19,9 @@ app.use(
     extended: true,
   })
 );
-app.use(
-  cors({
-    origin: "*",
-  })
-);
+app.use(cors());
+
+app.options("*", cors());
 
 app.get("/", (request, response) => {
   response.sendFile(path.join(__dirname, "../public/pages/index.html"));
