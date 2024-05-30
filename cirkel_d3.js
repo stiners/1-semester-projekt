@@ -1,6 +1,5 @@
 const myDiv = d3.select("#circlesGrid");
 
-let mainData;
 let shoppingBasketData = [];
 
 const rectData = [
@@ -21,11 +20,6 @@ const rectData = [
   { category: "Bælgfrugter og bælgfrugtprodukter" },
   { category: "Drikkevarer" },
 ];
-
-// Function to sanitize category names
-function sanitizeCategoryName(category) {
-  return category.replace(/[^a-zA-Z0-9]/g, "_");
-}
 
 // Append an SVG element to the selected div
 const svg = myDiv.append("svg").attr("width", 1500).attr("height", 900);
@@ -78,9 +72,9 @@ rectsAndText
 
 // Attach click event listener to rectangles
 rects.on("click", function (event, d) {
-  const sanitizedCategory = sanitizeCategoryName(d.category);
   handleCategoryClick(d.category);
 });
+
 // Function to handle category rectangle click
 function handleCategoryClick(category) {
   fetch(`http://localhost:4000/category/${category}`)
@@ -92,7 +86,6 @@ function handleCategoryClick(category) {
     })
     .then((categoryData) => {
       console.log("Fetched category data:", categoryData);
-      mainData = categoryData;
       showPopup(category, categoryData);
     })
     .catch((error) => {
@@ -115,6 +108,7 @@ function showPopup(category, foodItems) {
     return 0;
   });
 
+  // Create a popup container within the #circlesGrid div
   const popup = d3
     .select("#circlesGrid")
     .append("div")
@@ -137,6 +131,7 @@ function showPopup(category, foodItems) {
   popup.append("h2").text(category);
   const foodItemContainer = popup.append("div").style("display", "flex").style("flex-wrap", "wrap");
 
+  // For each food item, create a new div element in the food item container
   foodItemContainer
     .selectAll(".foodItem")
     .data(foodItems)
@@ -152,9 +147,8 @@ function showPopup(category, foodItems) {
     .on("click", function (event, d) {
       addToShoppingBasket(d);
     })
-
     .on("mouseover", function () {
-      d3.select(this).style("color", "#54b856").style;
+      d3.select(this).style("color", "#54b856");
     })
     .on("mouseout", function () {
       d3.select(this).style("color", "#475646"); // Revert to original text color
@@ -206,17 +200,4 @@ function emptyBasket() {
     shopBasket.removeChild(shopBasket.firstChild);
   }
   shoppingBasketData = [];
-}
-
-// Function to remove food item rectangles and text
-function removeFoodItemRects(category) {
-  const sanitizedCategory = sanitizeCategoryName(category);
-  svg
-    .selectAll(`.foodItemGroup-${sanitizedCategory}`)
-    .transition()
-    .duration(500)
-    .attr("opacity", 0)
-    .on("end", function () {
-      d3.select(this).remove();
-    });
 }

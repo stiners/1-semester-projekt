@@ -1,7 +1,8 @@
-//const { text } = require("body-parser");
-
+// Define arrays to store numbers and percentages
 let numbers = [];
 let percentages = [];
+
+// Define an array of IDs corresponding to percentage divs
 const percentageDivs = [
   "farmingPercentage",
   "processingPercentage",
@@ -13,8 +14,10 @@ const percentageDivs = [
 
 // Select the button container
 let buttonContainer = document.getElementById("emptyBaskBtnGrid");
+
 // Create a new button element
 let newButton = document.createElement("button");
+
 newButton.textContent = "Click me";
 // Add a click event listener to the button
 newButton.addEventListener("click", function () {
@@ -25,37 +28,32 @@ newButton.addEventListener("click", function () {
 let calculateButton = document.querySelector("#calculateGrid button");
 calculateButton.addEventListener("click", calculateCO2);
 
-// Functions for calculation of CO2
+
+// Function definitions for CO2 and other metric calculations
 function calculateTotalCO2() {
   return shoppingBasketData.reduce((total, item) => total + Number(item.co2e_pr_kg || 0), 0);
 }
 
-// Function for calculation of landbrug
 function calculateTotalLandbrug() {
   return shoppingBasketData.reduce((total, item) => total + Number(item.landbrug || 0), 0);
 }
 
-// Function for calculation of forarbejdning
 function calculateTotalForarbejdning() {
   return shoppingBasketData.reduce((total, item) => total + Math.abs(Number(item.forarbejdning || 0)), 0);
 }
 
-// Function for calculation of emballage
 function calculateTotalEmballage() {
   return shoppingBasketData.reduce((total, item) => total + Number(item.emballage || 0), 0);
 }
 
-// Function for calculation of transport
 function calculateTotalTransport() {
   return shoppingBasketData.reduce((total, item) => total + Number(item.transport || 0), 0);
 }
 
-// Function for calculation of detail
 function calculateTotalDetail() {
   return shoppingBasketData.reduce((total, item) => total + Number(item.detail || 0), 0);
 }
 
-// Function for calculation of ILUC
 function calculateTotalILUC() {
   return shoppingBasketData.reduce((total, item) => total + Number(item.ILUC || 0), 0);
 }
@@ -70,16 +68,15 @@ function calculateCO2() {
   const totalILUC = calculateTotalILUC();
   const totalCO2 = calculateTotalCO2();
   const totalRoundedCo2 = Math.round(totalCO2);
-  const avarageCO2 = Math.round(totalCO2 / shoppingBasketData.length);
-  const color = determineColor(avarageCO2);
+  const averageCO2 = Math.round(totalCO2 / shoppingBasketData.length);
+  const color = determineColor(averageCO2);
+
   const circleElement = document.getElementById("CO2Circle");
   circleElement.innerText = `${totalRoundedCo2} CO₂/kg`;
   circleElement.style.backgroundColor = color;
-  console.log(avarageCO2);
+  console.log(averageCO2);
 
   // Calculate percentages of total CO2
-
-  // Array of totals
   const totals = [totalLandbrug, totalForarbejdning, totalEmballage, totalTransport, totalDetail, totalILUC];
 
   // Calculate total of non-zero values
@@ -93,18 +90,12 @@ function calculateCO2() {
       return 0;
     }
   });
-
-  // Destructure the percentages array
-  const [percentLandbrug, percentForarbejdning, percentEmballage, percentTransport, percentDetail, percentILUC] =
-    percentages;
-
-  // Sum of all percentages
-  const totalPercentage = percentages.reduce((sum, percent) => sum + parseFloat(percent), 0).toFixed(2);
 }
 
-var modal = document.getElementById("myModal");
-var btn = document.getElementById("calculateBtn");
-var span = document.getElementsByClassName("close")[0];
+// Fetching necessary elements for modal functionality
+let modal = document.getElementById("myModal");
+let btn = document.getElementById("calculateBtn");
+let span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal
 btn.onclick = function () {
@@ -120,6 +111,7 @@ span.onclick = function () {
   clearPercentageDivs();
   percentages.length = [];
 };
+
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
   if (event.target == modal) {
@@ -129,6 +121,7 @@ window.onclick = function (event) {
   }
 };
 
+// Function to populate percentage divs with percentages
 function populatePercentageDivs() {
   percentageDivs.forEach((divId, index) => {
     const div = document.getElementById(divId);
@@ -155,8 +148,8 @@ function clearPercentageDivs() {
   });
 }
 
+// Generate bar chart
 function barChart() {
-  // Find the maximum percentage
   const maxPercentage = Math.max(...percentages);
 
   percentageDivs.forEach((divId, index) => {
@@ -166,7 +159,7 @@ function barChart() {
       bar.classList.add("bar");
       bar.id = "bar-" + index;
 
-      // Normalize the percentage
+      
       const normalizedPercentage = (percentages[index] / maxPercentage) * 100;
 
       bar.style.width = normalizedPercentage + "%";
@@ -178,16 +171,16 @@ function barChart() {
   });
 }
 
-// Definition af CO2-udslipstærskler
+// CO2 thresholds and color determination
 const green_co2 = 10;
 const yellow_co2 = 20;
 
+ // Determine the color based on the thresholds
 function determineColor(avarageCO2) {
-  // Determine the color based on the thresholds
   let color;
   let text;
-  const fixedText =
-    "Til venstre ses CO2-udslippet pr. kg mad, og til højre ses fordelingen af udslippet i de forskellige kategorier. Før musen hen over ikonerne for at se hvad de betyder.";
+  const fixedText = "Til venstre ses CO2-udslippet pr. kg mad, og til højre ses fordelingen af udslippet i de forskellige kategorier. Før musen hen over ikonerne for at se hvad de betyder.";
+  
   if (avarageCO2 < green_co2) {
     color = "#91C483";
     text =
