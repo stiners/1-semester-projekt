@@ -1,3 +1,8 @@
+require("dotenv").config();
+
+const port = process.env.PORT || 4000;
+const baseUrl = process.env.BASE_URL || "localhost";
+
 const myDiv = d3.select("#circlesGrid");
 
 let shoppingBasketData = [];
