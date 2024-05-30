@@ -21,6 +21,13 @@ app.use(
   })
 );
 
+const path = require("path");
+const { request } = require("http");
+app.use(express.static(path.join(__dirname, "1-semester-projekt-3")));
+app.get("/",(request,response) =>{
+   response.sendFile(path.join(__dirname,"1-semester-projekt-3","index.html"))
+  });
+
 app.get("/", (request, response) => {
   response.json({ info: "Node.js, Express, and Postgres API" });
   // response.sendFile(__dirname + "/index.html");
