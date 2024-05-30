@@ -4,6 +4,7 @@ const app = express();
 const cors = require("cors");
 const db = require("./queries");
 const port = process.env.PORT || 4000;
+const baseUrl = process.env.BASE_URL || "localhost";
 // const foodItem = document.getElementById("foodItem");
 // const foodCategory = document.getElementById("foodCategory");
 
@@ -40,4 +41,5 @@ app.post("/populateFoods", db.populateFoods);
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);
+  console.log(`App base url ${baseUrl}.`);
 });
