@@ -77,7 +77,7 @@ rects.on("click", function (event, d) {
 
 // Function to handle category rectangle click
 function handleCategoryClick(category) {
-  fetch(`https://one-semester-projekt-g1.onrender.com:4000/category/${category}`)
+  fetch(`/category/${category}`)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
