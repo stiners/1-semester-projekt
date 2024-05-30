@@ -1,103 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="https://tinyurl.com/23qz7hwh" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" />
-    <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <title>Madberegner</title>
-</head>
-<body>
+    <title>Klimakøkkenet</title>
+  </head>
+  <body>
     <div class="parent">
-        <div id="headerGrid">
-            <h1 id="header">HVOR MEGET CO<sub>2</sub> UDLEDER DIT MÅLTID?</h1>
-            <p class="headerText blinking-text">Sammensæt dit måltid og se hvordan du kan reducere dit CO2-aftryk!</p>
-        </div>
-        <div id="circlesGrid"></div>
-        <a href="https://denstoreklimadatabase.dk" id="databaseBtn" style="text-decoration: none" target="_blank">
-            Klik <u>her</u> for at se hvor vi har vores data fra
-            <img src="iconSVGs/database.svg" alt="Database Icon" height="12" />
-        </a>
-        <div class="shoppingBasket" id="shopBaskHeaderGrid">
-            <p id="shopBaskHeader">INDKØBSKURV</p>
-        </div>
-        <div class="shoppingBasket" id="foodListGrid"></div>
-        <div class="shoppingBasket" id="emptyBasketGrid">
-            <button id="emptyBaskBtn">Tøm kurven</button>
-        </div>
-        <div class="shoppingBasket" id="calculateGrid">
-            <button type="button" id="calculateBtn">BEREGN</button>
-        </div>
-        <div class="metaInfoGrid shoppingBasket">
-            <p>
-                Når dit måltid beregnes inddeles det samlede udslip i seks kategorier: landbrug
-                <img src="iconSVGs/tractor.svg" alt="Tractor Icon" height="12" />, forarbejdning 
-                <img src="iconSVGs/gears.svg" alt="Gears Icon" height="12" />, emballage 
-                <img src="iconSVGs/box.svg" alt="Box Icon" height="12" />, transport 
-                <img src="iconSVGs/truck.svg" alt="Truck Icon" height="12" />, detail 
-                <img src="iconSVGs/shop.svg" alt="Shop Icon" height="12" /> og ILUC (Indirect Land Usage)
-                <img src="iconSVGs/tree.svg" alt="Tree Icon" height="12" />, så du nemt kan danne dig et overblik over, hvor dit måltid har
-                den største negative effekt.
-            </p>
-        </div>
+      <div id="headerGrid">
+        <h1 id="header">HVOR MEGET CO<sub>2</sub> UDLEDER DIT MÅLTID?</h1>
+        <p class="headerText blinking-text">Sammensæt dit måltid og se hvordan du kan reducere dit CO2-aftryk!</p>
+      </div>
+      <div id="circlesGrid"></div>
+      <a href="https://denstoreklimadatabase.dk" id="databaseBtn" style="text-decoration: none" target="_blank">
+        Klik <u>her</u> for at se hvor vi har vores data fra
+        <img src="iconSVGs/database.svg" alt="Database Icon" height="12" />
+      </a>
+      <div class="shoppingBasket" id="shopBaskHeaderGrid">
+        <p id="shopBaskHeader">INDKØBSKURV</p>
+      </div>
+      <div class="shoppingBasket" id="foodListGrid"></div>
+      <div class="shoppingBasket" id="emptyBasketGrid">
+        <button id="emptyBaskBtn">Tøm kurven</button>
+      </div>
+      <div class="shoppingBasket" id="calculateGrid">
+        <button type="button" id="calculateBtn">BEREGN</button>
+      </div>
+      <div class="metaInfoGrid shoppingBasket">
+        <p>
+          Når dit måltid beregnes inddeles det samlede udslip i seks kategorier: landbrug
+          <img src="iconSVGs/tractor.svg" alt="Tractor Icon" height="12" />, forarbejdning
+          <img src="iconSVGs/gears.svg" alt="Gears Icon" height="12" />, emballage
+          <img src="iconSVGs/box.svg" alt="Box Icon" height="12" />, transport
+          <img src="iconSVGs/truck.svg" alt="Truck Icon" height="12" />, detail
+          <img src="iconSVGs/shop.svg" alt="Shop Icon" height="12" /> og ILUC (Indirect Land Usage)
+          <img src="iconSVGs/tree.svg" alt="Tree Icon" height="12" />, så du nemt kan danne dig et overblik over, hvor
+          dit måltid har den største negative effekt.
+        </p>
+      </div>
     </div>
     <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="resultPopupHeaderGrid">
-                <p id="resultPopupHeader">Her kan du se dit samlede forbrug</p>
-            </div>
-            <div class="percentageVisualization" id="farmingPercentage"></div>
-            <i class="fa fa-tractor icon-space"></i>
-            <div id="farmingTooltip">
-                LANDBRUG: denne kategori dækker udledninger forbundet med landbrugsproduktionen af ingredienserne.
-            </div>
-            <div class="percentageVisualization" id="processingPercentage"></div>
-            <i class="fa-solid fa-gears icon-space"></i>
-            <div id="processingTooltip">
-                FORARBEJDNING: Forarbejdning indebærer behandlingen af råvarer eller halvfabrikata for at omdanne dem til
-                færdige produkter. Dette kan omfatte en række processer, herunder raffinering, opdeling, blanding og
-                emballering.
-            </div>
-            <div class="percentageVisualization" id="packagingPercentage"></div>
-            <i class="fa-solid fa-box icon-space"></i>
-            <div id="packagingTooltip">
-                EMBALLAGE: Emballage refererer til materialer, såsom kasser, poser, flasker osv., der bruges til at beskytte,
-                indeholde og præsentere produkter under opbevaring og transport.
-            </div>
-            <div class="percentageVisualization" id="transportPercentage"></div>
-            <i class="fa-solid fa-truck icon-space"></i>
-            <div id="transportTooltip">
-                TRANSPORT: Transport dækker transporten af varer eller personer fra et sted til et andet. Dette kan omfatte
-                forskellige former for transport, såsom lastbiler, skibe, tog og fly.
-            </div>
-            <div class="percentageVisualization" id="detailPercentage"></div>
-            <i class="fa-solid fa-shop icon-space"></i>
-            <div id="detailTooltip">
-                DETAIL: Udledninger forbundet med detailhandel - det kan f.eks. være strøm til lyskilder og køleskabe.
-            </div>
-            <div class="percentageVisualization" id="ILUCPercentage"></div>
-            <i class="fa-solid fa-tree icon-space"></i>
-            <div id="ILUCTooltip">
-                ILUC: ILUC, eller Indirect Land Use Change, er en betegnelse for den indirekte påvirkning, som effekten af at
-                øge landbrugsarealer kan have på skov, økosystemer, eller andet, og som kan medføre uønskede miljømæssige
-                konsekvenser. Disse udgør størstedelen af fødevarernes miljø- og klimabelastning på globalt plan. Denne faktor
-                kan mere end fordoble klimabelastningen og således være helt afgørende for den samlede udledning.
-            </div>
-            <div id="colorSpectrumNew"></div>
-            <div id="CO2Circle"></div>
-            <div class="textBoxGrid">
-                <p id="textBoxText"></p>
-            </div>
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="resultPopupHeaderGrid">
+          <p id="resultPopupHeader">Her kan du se dit samlede forbrug</p>
         </div>
+        <div class="percentageVisualization" id="farmingPercentage"></div>
+        <i class="fa fa-tractor icon-space"></i>
+        <div id="farmingTooltip">
+          LANDBRUG: denne kategori dækker udledninger forbundet med landbrugsproduktionen af ingredienserne.
+        </div>
+        <div class="percentageVisualization" id="processingPercentage"></div>
+        <i class="fa-solid fa-gears icon-space"></i>
+        <div id="processingTooltip">
+          FORARBEJDNING: Forarbejdning indebærer behandlingen af råvarer eller halvfabrikata for at omdanne dem til
+          færdige produkter. Dette kan omfatte en række processer, herunder raffinering, opdeling, blanding og
+          emballering.
+        </div>
+        <div class="percentageVisualization" id="packagingPercentage"></div>
+        <i class="fa-solid fa-box icon-space"></i>
+        <div id="packagingTooltip">
+          EMBALLAGE: Emballage refererer til materialer, såsom kasser, poser, flasker osv., der bruges til at beskytte,
+          indeholde og præsentere produkter under opbevaring og transport.
+        </div>
+        <div class="percentageVisualization" id="transportPercentage"></div>
+        <i class="fa-solid fa-truck icon-space"></i>
+        <div id="transportTooltip">
+          TRANSPORT: Transport dækker transporten af varer eller personer fra et sted til et andet. Dette kan omfatte
+          forskellige former for transport, såsom lastbiler, skibe, tog og fly.
+        </div>
+        <div class="percentageVisualization" id="detailPercentage"></div>
+        <i class="fa-solid fa-shop icon-space"></i>
+        <div id="detailTooltip">
+          DETAIL: Udledninger forbundet med detailhandel - det kan f.eks. være strøm til lyskilder og køleskabe.
+        </div>
+        <div class="percentageVisualization" id="ILUCPercentage"></div>
+        <i class="fa-solid fa-tree icon-space"></i>
+        <div id="ILUCTooltip">
+          ILUC: ILUC, eller Indirect Land Use Change, er en betegnelse for den indirekte påvirkning, som effekten af at
+          øge landbrugsarealer kan have på skov, økosystemer, eller andet, og som kan medføre uønskede miljømæssige
+          konsekvenser. Disse udgør størstedelen af fødevarernes miljø- og klimabelastning på globalt plan. Denne faktor
+          kan mere end fordoble klimabelastningen og således være helt afgørende for den samlede udledning.
+        </div>
+        <div id="colorSpectrumNew"></div>
+        <div id="CO2Circle"></div>
+        <div class="textBoxGrid">
+          <p id="textBoxText"></p>
+        </div>
+      </div>
     </div>
     <script src="scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="cirkel_d3.js"></script>
-</body>
+  </body>
 </html>
