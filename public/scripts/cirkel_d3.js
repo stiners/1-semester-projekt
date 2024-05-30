@@ -77,7 +77,7 @@ rects.on("click", function (event, d) {
 
 // Function to handle category rectangle click
 function handleCategoryClick(category) {
-  fetch(`http://127.0.0.1:4000/category/${category}/`)
+  fetch(`http://localhost:4000/category/${category}`)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
