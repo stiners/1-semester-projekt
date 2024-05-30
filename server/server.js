@@ -9,6 +9,9 @@ const port = process.env.PORT || 4000;
 
 require("dotenv").config();
 
+const path = require("path");
+const { request } = require("http");
+
 app.use(express.static(path.join(__dirname, "../public")));
 app.use(bodyParser.json());
 app.use(
@@ -21,9 +24,6 @@ app.use(
     origin: "*",
   })
 );
-
-const path = require("path");
-const { request } = require("http");
 
 app.get("/", (request, response) => {
   response.sendFile(path.join(__dirname, "../public/pages/index.html"));
