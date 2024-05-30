@@ -9,6 +9,7 @@ const port = process.env.PORT || 4000;
 
 require("dotenv").config();
 
+app.use(express.static(path.join(__dirname, "../public")));
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
@@ -23,10 +24,10 @@ app.use(
 
 const path = require("path");
 const { request } = require("http");
-app.use(express.static(path.join(__dirname, '../public')));
-app.get("/",(request,response) =>{
-   response.sendFile(path.join(__dirname,"../public/pages/index.html"))
-  });
+
+app.get("/", (request, response) => {
+  response.sendFile(path.join(__dirname, "../public/pages/index.html"));
+});
 
 app.get("/", (request, response) => {
   response.json({ info: "Node.js, Express, and Postgres API" });
